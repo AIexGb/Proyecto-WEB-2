@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div class="main-content">
+  <div class="contenido-principal">
     <header>
         <a href="/">
           <div class="logo">
@@ -35,11 +35,11 @@
         </nav>
       </header>
 
-      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <div class="alternar-menu" id="AlternarMenu">&#9776;</div>
 
-      <div class="sidebar" id="sidebar">
+      <div class="barra-lateral" id="BarraLateral">
         <nav>
-          <a href="/" class="selected">
+          <a href="/" class="seleccionado">
             <svg
               class="img"
               viewBox="0 0 16 16"
@@ -55,11 +55,11 @@
             <span>Conocenos</span>
           </a>
 
-          <a href="/paginas/Planificador_Nutricional/" class="selected">
+          <a href="/paginas/Planificador_Nutricional/" class="seleccionado">
             <svg
               class="img"
               version="1.1"
-              id="Uploaded to svgrepo.com"
+              id="CargadoEnSvgrepo"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 32 32"
@@ -67,13 +67,13 @@
               fill="#ffffff"
               stroke="#ffffff"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="PortaFondoSvg" stroke-width="0"></g>
               <g
-                id="SVGRepo_tracerCarrier"
+                id="PortaTrazadorSvg"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               ></g>
-              <g id="SVGRepo_iconCarrier">
+              <g id="PortaIconoSvg">
                 <style type="text/css">
                   .blueprint_een {
                     fill: #ffffff;
@@ -95,47 +95,47 @@
       <div class="contenedor-general">
         <div class="filtros">
           <h2>Filtro por Tipo</h2>
-          <select id="filtroCategoria">
+          <select id="FiltroCategoria">
             <option value="todos">Todos</option>
             <option value="proteina">Proteínas</option>
             <option value="carb">Carbohidratos</option>
             <option value="grasas">Grasas</option>
           </select>
-          <label for=""><input type="search" id="busquedaIngrediente" placeholder="Buscar por ingrediente"></label>
+          <label for=""><input type="search" id="BusquedaIngrediente" placeholder="Buscar por ingrediente"></label>
 
           <div class="ingredientes">
-            <div class="categoria" id="proteina"></div>
-            <div class="categoria" id="carb"></div>
-            <div class="categoria" id="grasas"></div>
+            <div class="categoria" id="Proteina"></div>
+            <div class="categoria" id="Carbohidratos"></div>
+            <div class="categoria" id="Grasas"></div>
           </div>
 
 
 
-          <div class="btn"><button>Agregar</button></div>
+          <div class="boton"><button>Agregar</button></div>
         </div>
 
-        <div class="right">
+        <div class="derecha">
           <div class="platillos">
-            <div class="btn2" id="btn-platillo-1"><button>Platillo 1</button></div>
-            <div class="btn2" id="btn-platillo-2"><button>Platillo 2</button></div>
-            <div class="btn2" id="btn-platillo-3"><button>Platillo 3</button></div>
-            <div class="btn2" id="btn-platillo-4"><button>Platillo 4 (opcional)</button></div>
-            <div class="btn2" id="btn-platillo-5"><button>Platillo 5 (opcional)</button></div>
+            <div class="boton-secundario" id="BotonPlatillo1"><button>Platillo 1</button></div>
+            <div class="boton-secundario" id="BotonPlatillo2"><button>Platillo 2</button></div>
+            <div class="boton-secundario" id="BotonPlatillo3"><button>Platillo 3</button></div>
+            <div class="boton-secundario" id="BotonPlatillo4"><button>Platillo 4 (opcional)</button></div>
+            <div class="boton-secundario" id="BotonPlatillo5"><button>Platillo 5 (opcional)</button></div>
           </div>
 
-          <div class="down">
-            <div class="left">
+          <div class="abajo">
+            <div class="izquierda">
               <div class="nutriente">
                 <div class="fila-titulo">
                   <h3>Proteína</h3>
                   <label>Cantidad (gr)</label>
                 </div>
 
-                <div class="fila-input">
-                  <input type="text" class="input-nombre" placeholder="Proteína" readonly>
-                  <div class="cantidad-wrap">
-                    <input type="text" class="input-cantidad">
-                    <button class="btn-x">X</button>
+                <div class="fila-entrada">
+                  <input type="text" class="entrada-nombre" placeholder="Proteína" readonly>
+                  <div class="envoltorio-cantidad">
+                    <input type="text" class="entrada-cantidad">
+                    <button class="boton-equis">X</button>
                   </div>
                 </div>
               </div>
@@ -146,11 +146,11 @@
                   <label>Cantidad (gr)</label>
                 </div>
 
-                <div class="fila-input">
-                  <input type="text" class="input-nombre" placeholder="Carbohidratos" readonly>
-                  <div class="cantidad-wrap">
-                    <input type="text" class="input-cantidad">
-                    <button class="btn-x">X</button>
+                <div class="fila-entrada">
+                  <input type="text" class="entrada-nombre" placeholder="Carbohidratos" readonly>
+                  <div class="envoltorio-cantidad">
+                    <input type="text" class="entrada-cantidad">
+                    <button class="boton-equis">X</button>
                   </div>
                 </div>
               </div>
@@ -161,25 +161,25 @@
                   <label>Cantidad (gr)</label>
                 </div>
 
-                <div class="fila-input">
-                  <input type="text" class="input-nombre" placeholder="Grasas" readonly>
-                  <div class="cantidad-wrap">
-                    <input type="text" class="input-cantidad">
-                    <button class="btn-x">X</button>
+                <div class="fila-entrada">
+                  <input type="text" class="entrada-nombre" placeholder="Grasas" readonly>
+                  <div class="envoltorio-cantidad">
+                    <input type="text" class="entrada-cantidad">
+                    <button class="boton-equis">X</button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="contenedor-right">
+            <div class="contenedor-derecha">
 
               <div class="cuentas">
-                <div class="conta">
-                  <p>Optima (KCal): <input type="text" name="caloriasOptimas" id="input-optimo" readonly></p>
+                <div class="cuenta">
+                  <p>Optima (KCal): <input type="text" name="caloriasOptimas" id="InputOptimo" readonly></p>
                 </div>
 
-                <div class="conta">
-                  <p>Actual (KCal): <input type="text" name="caloriasActuales" id="input-actual" readonly></p>
+                <div class="cuenta">
+                  <p>Actual (KCal): <input type="text" name="caloriasActuales" id="InputActual" readonly></p>
                 </div>
               </div>
 
@@ -190,10 +190,10 @@
             </div>
           </div>
 
-          <div class="actions">
-            <button id="btnLimpiar">Limpiar</button>
-            <button id="btnImprimir">Imprimir</button>
-            <button id="btnGuardar">Guardar</button>
+          <div class="acciones">
+            <button id="BotonLimpiar">Limpiar</button>
+            <button id="BotonImprimir">Imprimir</button>
+            <button id="BotonGuardar">Guardar</button>
 
           </div>
         </div>
@@ -203,24 +203,24 @@
         </div>
       </div>
 
-      <div class="platos-nombres">
-        <div class="platos">
+      <div class="platillos-nombres">
+        <div class="plato">
           <p>Nombre de Platillo</p>
         </div>
-        <div class="platos">
+        <div class="plato">
           <p>Nombre de Platillo</p>
         </div>
-        <div class="platos">
+        <div class="plato">
           <p>Nombre de Platillo</p>
         </div>
-        <div class="platos">
+        <div class="plato">
           <p>Nombre de Platillo</p>
         </div>
       </div>
     </main>
-    <footer class="footer">
-      <div class="fot-container">
-        <div class="columm">
+    <footer class="pie">
+      <div class="contenedor-pie">
+        <div class="columna">
           <h2>Planificación</h2>
           <ul>
             <li><a href="/">Conocenos</a></li>
@@ -229,7 +229,7 @@
         </div>
       </div>
 
-      <div class="copy">
+      <div class="derechos">
         <p>©2025 Todos los derechos reservados.</p>
       </div>
     </footer>

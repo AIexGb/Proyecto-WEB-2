@@ -14,7 +14,7 @@ body {
   width: 100%;
 }
 
-.contenedor-up {
+.contenedor-superior {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -32,12 +32,12 @@ body {
   text-align: center;
 }
 
-.text {
+.texto {
   margin-top: 20px;
   font-size: 20px;
 }
 
-.contenedor-down {
+.contenedor-inferior {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +47,7 @@ body {
   max-width: 1200px;
 }
 
-.contenedor-left {
+.contenedor-izquierda {
   display: flex;
   align-items: center;
 }
@@ -59,13 +59,13 @@ body {
   padding: 20px;
 }
 
-.contenedor-right {
+.contenedor-derecha {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image img {
+.imagen img {
   width: 300px;
   height: 300px;
   object-fit: cover;
@@ -78,21 +78,19 @@ body {
     margin-top: 0px;
   }
 
-  .contenedor-down {
+  .contenedor-inferior {
     flex-direction: column-reverse;
   }
 }
 
 /* --- Ajustes para móviles y tabletas --- */
 @media (max-width: 768px) {
-  /* Aumentar altura del cuadro morado */
-  .nutrition {
-    padding-bottom: 90px; /* Aumenta más si quieres más espacio */
+  .nutricion {
+    padding-bottom: 90px;
     position: relative;
   }
 
-  /* Colocar el info arriba del botón Resetear */
-  .nutrition .info {
+  .nutricion .info {
     margin-top: 15px;
     display: block !important;
     order: 3;

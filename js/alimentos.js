@@ -23,9 +23,9 @@ const ingredientesFitness = [
 
 // Contenedores (Elementos del DOM)
 const contenedores = {
-    proteina: document.getElementById("proteina"),
-    carb: document.getElementById("carb"),
-    grasas: document.getElementById("grasas")
+    proteina: document.getElementById("Proteina"),
+    carb: document.getElementById("Carbohidratos"),
+    grasas: document.getElementById("Grasas")
 };
 
 // Objeto para mapear rápidamente Nombre del Ingrediente -> kcal/g
@@ -39,8 +39,8 @@ const caloriasMap = ingredientesFitness.reduce((map, item) => {
 // Objeto para almacenar todas las recetas por su ID.
 let recetasGuardadas = JSON.parse(localStorage.getItem('recetasGuardadas')) || {};
 
-// Variable para saber qué platillo estamos editando. Siempre inicia en 'btn-platillo-1'.
-let platilloActivoId = 'btn-platillo-1'; 
+// Variable para saber qué platillo estamos editando. Siempre inicia en 'BotonPlatillo1'.
+let platilloActivoId = 'BotonPlatillo1'; 
 
 
 // ----------------------------------------------------
@@ -53,9 +53,9 @@ let platilloActivoId = 'btn-platillo-1';
 function actualizarCaloriasActuales() {
     let caloriasTotales = 0;
     
-    document.querySelectorAll(".fila-input").forEach(fila => {
-        const nombre = fila.querySelector(".input-nombre").value;
-        const cantidadStr = fila.querySelector(".input-cantidad").value;
+    document.querySelectorAll(".fila-entrada").forEach(fila => {
+        const nombre = fila.querySelector(".entrada-nombre").value;
+        const cantidadStr = fila.querySelector(".entrada-cantidad").value;
         
         const cantidadGramos = parseInt(cantidadStr) || 0; 
 
@@ -65,7 +65,7 @@ function actualizarCaloriasActuales() {
     });
 
     // Actualiza el input "Actual" y lo redondea
-    document.getElementById("input-actual").value = Math.round(caloriasTotales) + " kcal";
+    document.getElementById("InputActual").value = Math.round(caloriasTotales) + " kcal";
 }
 
 /**
@@ -74,9 +74,9 @@ function actualizarCaloriasActuales() {
 function guardarPlatillo() {
     const ingredientesPlatillo = [];
 
-    document.querySelectorAll(".fila-input").forEach(fila => {
-        const nombre = fila.querySelector(".input-nombre").value;
-        const cantidad = fila.querySelector(".input-cantidad").value;
+    document.querySelectorAll(".fila-entrada").forEach(fila => {
+        const nombre = fila.querySelector(".entrada-nombre").value;
+        const cantidad = fila.querySelector(".entrada-cantidad").value;
         
         // Solo guarda si el ingrediente tiene un nombre
         if (nombre) {
@@ -101,14 +101,14 @@ function guardarPlatillo() {
 function cargarPlatillo(id) {
     // 1. Limpieza total y reinicio del DOM para el nuevo platillo
     document.querySelectorAll(".nutriente").forEach(nutriente => {
-        const filas = Array.from(nutriente.querySelectorAll(".fila-input"));
+        const filas = Array.from(nutriente.querySelectorAll(".fila-entrada"));
         
         // Mantiene solo la primera fila y la vacía
         filas.slice(1).forEach(fila => fila.remove());
         
         if (filas.length > 0) {
-            filas[0].querySelector(".input-nombre").value = "";
-            filas[0].querySelector(".input-cantidad").value = "";
+            filas[0].querySelector(".entrada-nombre").value = "";
+            filas[0].querySelector(".entrada-cantidad").value = "";
         }
     });
 
@@ -131,20 +131,20 @@ function cargarPlatillo(id) {
                 
                 // Si es el primer ingrediente de esta categoría, usamos la fila existente (que limpiamos)
                 if (inputContador[categoria] === 0) {
-                    filaTarget = nutrienteContenedor.querySelector(".fila-input");
+                    filaTarget = nutrienteContenedor.querySelector(".fila-entrada");
                 } else {
                     // Si no, clonamos una nueva fila
-                    const filaOriginal = nutrienteContenedor.querySelector(".fila-input");
+                    const filaOriginal = nutrienteContenedor.querySelector(".fila-entrada");
                     filaTarget = filaOriginal.cloneNode(true);
                     // Aseguramos que el clon tenga valores vacíos antes de rellenar si es necesario
-                    filaTarget.querySelector(".input-nombre").value = "";
-                    filaTarget.querySelector(".input-cantidad").value = "";
+                    filaTarget.querySelector(".entrada-nombre").value = "";
+                    filaTarget.querySelector(".entrada-cantidad").value = "";
                     nutrienteContenedor.appendChild(filaTarget);
                 }
                 
                 // Asignamos los valores
-                filaTarget.querySelector(".input-nombre").value = item.nombre;
-                filaTarget.querySelector(".input-cantidad").value = item.cantidad;
+                filaTarget.querySelector(".entrada-nombre").value = item.nombre;
+                filaTarget.querySelector(".entrada-cantidad").value = item.cantidad;
                 
                 inputContador[categoria]++;
             }
@@ -169,7 +169,7 @@ function cargarPlatillo(id) {
  * Carga el objetivo calórico de localStorage y añade listeners dinámicos.
  */
 function inicializarCalculoCalorias() {
-    const inputOptimo = document.getElementById('input-optimo');
+    const inputOptimo = document.getElementById('InputOptimo');
     const caloriasOptimas = localStorage.getItem('caloriasOptimas');
 
     if (inputOptimo) {
@@ -177,8 +177,8 @@ function inicializarCalculoCalorias() {
     }
 
     // Listener para el cálculo dinámico
-    document.querySelector(".down").addEventListener('input', (e) => {
-        if (e.target.classList.contains('input-cantidad')) {
+    document.querySelector(".abajo").addEventListener('input', (e) => {
+        if (e.target.classList.contains('entrada-cantidad')) {
             actualizarCaloriasActuales();
         }
     });
@@ -189,13 +189,13 @@ function inicializarCalculoCalorias() {
  */
 const manejarEliminacion = (fila) => {
     const contenedorNutriente = fila.closest(".nutriente");
-    const filasExistentes = contenedorNutriente.querySelectorAll(".fila-input");
+    const filasExistentes = contenedorNutriente.querySelectorAll(".fila-entrada");
 
     if (filasExistentes.length > 1) {
         fila.remove();
     } else {
-        fila.querySelector(".input-nombre").value = "";
-        fila.querySelector(".input-cantidad").value = "";
+        fila.querySelector(".entrada-nombre").value = "";
+        fila.querySelector(".entrada-cantidad").value = "";
     }
     
     actualizarCaloriasActuales(); 
@@ -218,14 +218,14 @@ function cargarIngredientes() {
 }
 
 // Event Listeners (Filtro, Búsqueda, Selección, Agregar, Limpiar, Eliminar, Guardar, Imprimir)
-document.getElementById("filtroCategoria").addEventListener("change", e => {
+document.getElementById("FiltroCategoria").addEventListener("change", e => {
     const cat = e.target.value;
     document.querySelectorAll(".ingrediente").forEach(div => {
         div.style.display = (cat === "todos" || div.dataset.cat === cat) ? "block" : "none";
     });
 });
 
-document.getElementById("busquedaIngrediente").addEventListener("input", e => {
+document.getElementById("BusquedaIngrediente").addEventListener("input", e => {
     const texto = e.target.value.toLowerCase();
     document.querySelectorAll(".ingrediente").forEach(div => {
         div.style.display = div.textContent.toLowerCase().includes(texto) ? "block" : "none";
@@ -244,7 +244,7 @@ document.addEventListener("click", e => {
     }
 });
 
-document.querySelector(".btn button").addEventListener("click", () => {
+document.querySelector(".boton button").addEventListener("click", () => {
     if (!ingredienteSeleccionado || !categoriaSeleccionada) {
         alert("Selecciona primero un ingrediente.");
         return;
@@ -258,22 +258,22 @@ document.querySelector(".btn button").addEventListener("click", () => {
             (categoriaSeleccionada === "carb" && h3.includes("carbohidrato")) ||
             (categoriaSeleccionada === "grasas" && h3.includes("grasa"))
         ) {
-            let inputTarget = Array.from(nutriente.querySelectorAll(".input-nombre"))
+            let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
                 .find(input => input.value === "");
 
             if (!inputTarget) {
-                const filaOriginal = nutriente.querySelector(".fila-input");
+                const filaOriginal = nutriente.querySelector(".fila-entrada");
                 const nuevaFila = filaOriginal.cloneNode(true);
                 
-                nuevaFila.querySelector(".input-nombre").value = "";
-                nuevaFila.querySelector(".input-cantidad").value = "";
+                nuevaFila.querySelector(".entrada-nombre").value = "";
+                nuevaFila.querySelector(".entrada-cantidad").value = "";
                 
                 nutriente.appendChild(nuevaFila);
-                inputTarget = nuevaFila.querySelector(".input-nombre");
+                inputTarget = nuevaFila.querySelector(".entrada-nombre");
             }
 
             inputTarget.value = ingredienteSeleccionado;
-            inputTarget.closest(".fila-input").querySelector(".input-cantidad").value = "0";
+            inputTarget.closest(".fila-entrada").querySelector(".entrada-cantidad").value = "0";
             
             actualizarCaloriasActuales(); 
         }
@@ -287,10 +287,10 @@ document.querySelector(".btn button").addEventListener("click", () => {
 // **********************************************
 // 🌟 CORRECCIÓN 1: Agregar guardarPlatillo() al limpiar
 // **********************************************
-document.getElementById("btnLimpiar").addEventListener("click", () => {
+document.getElementById("BotonLimpiar").addEventListener("click", () => {
     // Para limpiar, llamamos a manejarEliminacion en cada fila
     document.querySelectorAll(".nutriente").forEach(nutriente => {
-        Array.from(nutriente.querySelectorAll(".fila-input")).reverse().forEach(fila => {
+        Array.from(nutriente.querySelectorAll(".fila-entrada")).reverse().forEach(fila => {
             manejarEliminacion(fila);
         });
     });
@@ -300,22 +300,22 @@ document.getElementById("btnLimpiar").addEventListener("click", () => {
 });
 
 
-document.querySelector(".down").addEventListener('click', (e) => {
-    if (e.target.classList.contains('btn-x')) {
-        manejarEliminacion(e.target.closest(".fila-input"));
+document.querySelector(".abajo").addEventListener('click', (e) => {
+    if (e.target.classList.contains('boton-equis')) {
+        manejarEliminacion(e.target.closest(".fila-entrada"));
     }
 });
 
-document.getElementById("btnGuardar").addEventListener("click", () => {
+document.getElementById("BotonGuardar").addEventListener("click", () => {
     guardarPlatillo(); 
     
     // Lógica de impresión a consola (se mantiene)
     const datos = [];
     document.querySelectorAll(".nutriente").forEach(nutriente => {
-        const filas = nutriente.querySelectorAll(".fila-input");
+        const filas = nutriente.querySelectorAll(".fila-entrada");
         filas.forEach(fila => {
-            const ingrediente = fila.querySelector(".input-nombre").value;
-            const cantidad = fila.querySelector(".input-cantidad").value;
+            const ingrediente = fila.querySelector(".entrada-nombre").value;
+            const cantidad = fila.querySelector(".entrada-cantidad").value;
             if (ingrediente) { datos.push({ categoria: nutriente.querySelector("h3").textContent, ingrediente, cantidad }); }
         });
     });
@@ -323,7 +323,9 @@ document.getElementById("btnGuardar").addEventListener("click", () => {
     alert("¡Datos guardados en consola!");
 });
 
-
+document.getElementById("BotonImprimir").addEventListener("click", () => {
+    window.print();
+});
 
 
 // ----------------------------------------------------

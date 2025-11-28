@@ -7,14 +7,14 @@
     <title>Formulario Nutricional | Calcula tu IMC y Calorías Diarias</title>
     <meta name="description"
         content="Completa nuestro formulario nutricional y descubre tus calorías diarias, IMC y requerimientos según tu objetivo: bajar, mantener o subir de peso.">
-    <!-- Open Graph -->
+    
     <meta property="og:title" content="Planificador Nutricional | Calcula tu IMC y Calorías">
     <meta property="og:description" content="Descubre tu IMC, calorías diarias y plan nutricional personalizado.">
     <meta property="og:image" content="/img/preview.jpg">
     <meta property="og:url" content="https://tusitio.com/paginas/planificador-nutricional/">
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card -->
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Planificador Nutricional | Calcula tu IMC y Calorías">
     <meta name="twitter:description" content="Calcula tu IMC, metabolismo y requerimiento calórico diario.">
@@ -46,7 +46,7 @@
 </head>
 
 <body>
-    <div class="main-content">
+    <div class="contenido-principal">
 
         <!--HEADER-->
         <header>
@@ -64,14 +64,14 @@
         </header>
 
         <!-- Botón hamburguesa -->
-        <div class="menu-toggle" id="menu-toggle">
+        <div class="alternar-menu" id="AlternarMenu">
             &#9776; <!-- icono de 3 líneas -->
         </div>
 
         <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
+        <div class="barra-lateral" id="BarraLateral">
             <nav>
-                <a href="/" class="selected">
+                <a href="/" class="seleccionado">
                     <svg class="img" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                         stroke="#ffffff">
                         <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
@@ -80,13 +80,13 @@
                     <span>Conocenos</span>
                 </a>
 
-                <a href="/paginas/Planificador_Nutricional/" class="selected">
-                    <svg class="img" version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg"
+                <a href="/paginas/Planificador_Nutricional/" class="seleccionado">
+                    <svg class="img" version="1.1" id="CargadoEnSvgrepo" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve"
                         fill="#ffffff" stroke="#ffffff">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
+                        <g id="PortaFondoSvg" stroke-width="0"></g>
+                        <g id="PortaTrazadorSvg" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="PortaIconoSvg">
                             <style type="text/css">
                                 .blueprint_een {
                                     fill: #ffffff;
@@ -105,19 +105,19 @@
         <div class="contenedor-general">
             <form class="formulario">
 
-                <div class="form-group">
+                <div class="grupo-formulario">
                     <label>Peso (kg):</label>
                     <input type="text" maxlength="3" placeholder="Ejemplo: 70"
                         oninput="this.value = this.value.replace(/[^0-9]/g,'')">
                 </div>
 
-                <div class="form-group">
+                <div class="grupo-formulario">
                     <label>Altura (cm):</label>
                     <input type="text" maxlength="3" placeholder="Ejemplo: 175"
                         oninput="this.value = this.value.replace(/[^0-9]/g,'')">
                 </div>
 
-                <div class="form-group">
+                <div class="grupo-formulario">
                     <label>Nivel de actividad física:</label>
                     <select>
                         <option value="">Selecciona una opción</option>
@@ -129,7 +129,7 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="grupo-formulario">
                     <label>Objetivo Principal:</label>
                     <select>
                         <option value="">Selecciona una opción</option>
@@ -140,9 +140,9 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="grupo-formulario">
                     <label>Sexo:</label>
-                    <div class="radio-group">
+                    <div class="grupo-radio">
                         <label>
                             <input type="radio" name="sexo" value="hombre">
                             Hombre
@@ -155,42 +155,42 @@
                 </div>
 
 
-                <div class="btn"> <button type="submit">Enviar</button></div>
+                <div class="boton"> <button type="submit">Enviar</button></div>
             </form>
 
             <!-- Resultados -->
-            <div class="fondo-card">
+            <div class="fondo-tarjeta">
                 <div class="resultados">
                     <h2>Resultados</h2>
 
                     <!-- Esto es lo que se ve al inicio -->
-                    <div class="textoo" id="texto-inicial">
+                    <div class="texto" id="TextoInicial">
                         <p>Presione "Enviar" para obtener resultados</p>
                     </div>
 
-                    <div style="display: flex; justify-content: center;" id="btn-container">
+                    <div style="display: flex; justify-content: center;" id="ContenedorBoton">
                         <form action="/paginas/Seleccion_de_platillos/">
                             <br>
-                            <button type="submit" class="btn" id="btn-siguiente" disabled>Siguiente</button>
+                            <button type="submit" class="boton" id="BotonSiguiente" disabled>Siguiente</button>
                         </form>
                     </div>
 
 
                     <!-- Esto aparece solo después de enviar -->
-                    <div class="textoo" id="contenedor-resultados" style="display:none;">
-                        <div class="form-group">
+                    <div class="texto" id="ContenedorResultados" style="display:none;">
+                        <div class="grupo-formulario">
                             <label>Tasa Metabólica Basal (TMB):</label>
-                            <input type="text" id="tmb" readonly placeholder="—">
+                            <input type="text" id="Tmb" readonly placeholder="—">
                         </div>
 
-                        <div class="form-group">
+                        <div class="grupo-formulario">
                             <label>Calorías con Actividad Física:</label>
-                            <input type="text" id="caloriasActividad" readonly placeholder="—">
+                            <input type="text" id="CaloriasActividad" readonly placeholder="—">
                         </div>
 
-                        <div class="form-group">
+                        <div class="grupo-formulario">
                             <label>Calorías Recomendadas Según Objetivo:</label>
-                            <input type="text" id="caloriasObjetivo" readonly placeholder="—">
+                            <input type="text" id="CaloriasObjetivo" readonly placeholder="—">
                         </div>
                     </div>
 
@@ -200,10 +200,10 @@
         </div>
 
         <!--FOOTER-->
-        <footer class="footer">
-            <div class="fot-container">
+        <footer class="pie">
+            <div class="contenedor-pie">
                 
-                <div class="columm">
+                <div class="columna">
                     <h2>Planificación</h2>
                     <ul>
                         <li><a href="/">Conocenos</a></li>
@@ -215,7 +215,6 @@
         </footer>
     </div>
     <script src="/js/script.js"></script>
-    </div>
 </body>
 
 </html>

@@ -1,9 +1,9 @@
-const menuToggle = document.getElementById("menu-toggle");
-const sidebar = document.getElementById("sidebar");
+const AlternarMenu = document.getElementById("AlternarMenu");
+const BarraLateral = document.getElementById("BarraLateral");
 
-menuToggle.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-  menuToggle.classList.toggle("active"); 
+AlternarMenu.addEventListener("click", () => {
+  BarraLateral.classList.toggle("abierta");
+  AlternarMenu.classList.toggle("activo"); 
 });
 
 if (location.pathname.endsWith('/')) {
@@ -15,10 +15,10 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
     e.preventDefault(); 
 
     // Obtener valores
-    let peso = parseFloat(document.querySelectorAll(".form-group input")[0].value);
-    let altura = parseFloat(document.querySelectorAll(".form-group input")[1].value);
-    let actividad = document.querySelectorAll(".form-group select")[0].value;
-    let objetivo = document.querySelectorAll(".form-group select")[1].value;
+    let peso = parseFloat(document.querySelectorAll(".grupo-formulario input")[0].value);
+    let altura = parseFloat(document.querySelectorAll(".grupo-formulario input")[1].value);
+    let actividad = document.querySelectorAll(".grupo-formulario select")[0].value;
+    let objetivo = document.querySelectorAll(".grupo-formulario select")[1].value;
     let sexo = document.querySelector('input[name="sexo"]:checked');
 
     if (!peso || !altura || !actividad || !objetivo || !sexo) {
@@ -48,21 +48,22 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
         ? caloriasActividad + 300
         : caloriasActividad;
 
-    // resultados
-    document.getElementById("tmb").value = Math.round(tmb) + " kcal";
-    document.getElementById("caloriasActividad").value = Math.round(caloriasActividad) + " kcal";
-    document.getElementById("caloriasObjetivo").value = Math.round(caloriasObjetivo) + " kcal";
+    // Mostrar resultados
+    document.getElementById("Tmb").value = Math.round(tmb) + " kcal";
+    document.getElementById("CaloriasActividad").value = Math.round(caloriasActividad) + " kcal";
+    document.getElementById("CaloriasObjetivo").value = Math.round(caloriasObjetivo) + " kcal";
 
+    // Ocultar texto inicial
+    document.getElementById("TextoInicial").style.display = "none";
 
-    document.getElementById("texto-inicial").style.display = "none";
+    // Mostrar resultados
+    document.getElementById("ContenedorResultados").style.display = "block";
 
-    document.getElementById("contenedor-resultados").style.display = "block";
-
-    // boton
-    const boton = document.getElementById("btn-siguiente");
-    const contenedorBoton = document.getElementById("btn-container");
-    document.querySelector(".resultados").appendChild(contenedorBoton);
-    boton.disabled = false;
+    // Habilitar botón siguiente
+    const BotonSiguiente = document.getElementById("BotonSiguiente");
+    const ContenedorBoton = document.getElementById("ContenedorBoton");
+    document.querySelector(".resultados").appendChild(ContenedorBoton);
+    BotonSiguiente.disabled = false;
 
 });
 
