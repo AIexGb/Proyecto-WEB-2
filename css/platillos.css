@@ -1,60 +1,72 @@
-body {
-  background: #f9f9f9;
-  font-family: sans-serif;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
+/* Variables CSS para mantener consistencia */
+:root {
+  --primary-color: #e62e6b;
+  --secondary-color: #802b4a;
+  --light-bg: #f9f9f9;
+  --light-purple: #e3d5ed;
+  --light-pink: #f8eaf4;
+  --white: #FFFFFF;
+  --text-dark: #000000;
+  --border-radius: 8px;
+  --border-radius-lg: 20px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s ease;
 }
 
+/* Main content */
 main {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  margin-top: 80px;
+  flex: 1;
 }
 
 .contenedor-general {
   display: flex;
   flex-wrap: wrap;
-  width: 95%;
-  background-color: #e3d5ed;
-  padding: 20px;
-  border-radius: 8px;
-  gap: 30px;
-  margin-top: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: var(--light-purple);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  gap: 1.5rem;
 }
 
 .filtros {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 350px;
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  padding: 25px 50px;
-  gap: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  flex: 1 1 300px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  gap: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .filtros h2 {
-  color: #802b4a;
+  color: var(--secondary-color);
   margin-top: 0;
+  font-size: 1.5rem;
 }
 
 .filtros select,
 .filtros input[type="search"] {
-  width: auto;
+  width: 100%;
   border-radius: 50px;
-  padding: 10px 30px;
-  border: 2px solid #f8eaf4;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--light-pink);
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .ingredientes {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 14px;
-  height: 250px;
+  gap: 1rem;
+  max-height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -62,18 +74,18 @@ main {
 .categoria {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 0.5rem;
 }
 
 .ingrediente {
   width: 100%;
   border-radius: 10px;
-  border-left: 4px solid #e62e6b;
-  padding: 15px 60px;
-  background-color: #f8eaf4;
-  font-size: 18px; 
+  border-left: 4px solid var(--primary-color);
+  padding: 1rem 1.5rem;
+  background-color: var(--light-pink);
+  font-size: 1rem;
   font-weight: 600;
-  color: #000;
+  color: var(--text-dark);
 }
 
 .boton {
@@ -81,105 +93,125 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .boton button {
-  border-radius: 20px;
-  width: 200px;
+  border-radius: var(--border-radius-lg);
+  width: 100%;
+  max-width: 200px;
   height: 55px;
-  background-color: #e62e6b;
-  color: #FFFFFF;
+  background-color: var(--primary-color);
+  color: var(--white);
   border: none;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.boton button:hover {
+  background-color: #d41e5b;
 }
 
 .derecha {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 70%;
+  flex-direction: column;
+  flex: 2 1 600px;
+  gap: 1.5rem;
 }
 
 .platillos {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .boton-secundario button {
   border-radius: 50px;
-  padding: 5px 20px;
-  border: 2px solid #e62e6b;
-  background-color: #f8eaf4;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--primary-color);
+  background-color: var(--light-pink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.boton-secundario button:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 .abajo {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  height: 500px;
-  gap: 20px;
-  padding: 10px;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .izquierda {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  width: 60%;
-  height: 400px;
+  flex: 1 1 400px;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
-  gap: 10px;
-  padding: 10px;
-  box-sizing: border-box;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
 }
 
 .nutriente {
-  margin-bottom: 25px;
+  margin-bottom: 1.5rem;
 }
 
 .nutriente .fila-entrada {
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
 .fila-titulo {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .fila-entrada {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .entrada-nombre {
-  flex: 1;
-  padding: 8px;
+  flex: 1 1 200px;
+  padding: 0.75rem;
   border-radius: 10px;
-  width: 250px;
   border: none;
+  background: var(--light-pink);
+  font-family: inherit;
+  min-width: 150px;
 }
 
 .envoltorio-cantidad {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
+  flex: 1 1 200px;
+  min-width: 200px;
 }
 
 .entrada-cantidad {
-  padding: 8px;
+  padding: 0.75rem;
   border-radius: 10px;
-  width: 200px;
+  width: 100%;
   border: none;
+  background: var(--light-pink);
+  font-family: inherit;
+  min-width: 120px;
 }
 
 .boton-equis {
@@ -189,11 +221,13 @@ main {
   cursor: pointer;
   width: 40px;
   height: 40px;
-  background-color: rgba(228, 74, 130);
+  background-color: var(--primary-color);
   border: none;
   color: white;
   font-weight: bold;
   border-radius: 4px;
+  transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .boton-equis:hover {
@@ -203,22 +237,18 @@ main {
 .contenedor-derecha {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 50px;
-  width: 30%;
+  flex: 1 1 300px;
+  gap: 1.5rem;
 }
 
 .cuentas {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #f8eaf4;
-  border-radius: 8px;
-  padding: 20px 8px;
-  gap: 20px;
-  width: 370px;
+  background-color: var(--light-pink);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  gap: 1rem;
+  width: 100%;
 }
 
 .cuenta input {
@@ -227,37 +257,46 @@ main {
   border: none;
   outline: none;
   color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .dato {
-  width: 370px;
-  background-color: #f8eaf4;
-  border-radius: 8px;
-  padding: 25px;
+  width: 100%;
+  background-color: var(--light-pink);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--primary-color);
 }
 
 .dato h5 {
-  font-size: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 .acciones {
   display: flex;
-  width: 100%;
   justify-content: space-around;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
 }
 
 .acciones button {
-  background: #e62e6b;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--white);
   border: none;
-  padding: 14px 24px;
-  font-size: 22px;
-  margin: 0 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition);
+}
+
+.acciones button:hover {
+  background: #d41e5b;
 }
 
 .busqueda {
@@ -268,35 +307,254 @@ main {
 }
 
 .busqueda input {
-  width: 95%;
+  width: 100%;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 0.75rem 1.5rem;
   border: none;
+  font-family: inherit;
 }
 
 .platillos-nombres {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 100px;
-  width: 90%;
-  padding: 25px;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem;
 }
 
 .plato {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #802b4a;
-  width: 300px;
-  height: 100px;
+  background-color: var(--secondary-color);
+  flex: 1 1 250px;
+  min-height: 100px;
   border-radius: 10px;
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  color: var(--white);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  text-align: center;
 }
 
 
-/* Escalado para pantallas grandes de 1024px a 1440px */
+
+/* Tabletas Grandes (992px - 1200px) */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .contenedor-general {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+  
+  .filtros {
+    flex: 1 1 280px;
+    padding: 1.25rem;
+  }
+  
+  .derecha {
+    flex: 2 1 500px;
+  }
+  
+  .platillos {
+    gap: 0.75rem;
+  }
+  
+  .boton-secundario button {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .abajo {
+    gap: 1.25rem;
+  }
+  
+  .platillos-nombres {
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+}
+
+/* Tabletas (768px - 992px) - CORREGIDO */
+@media (max-width: 992px) and (min-width: 769px) {
+  main {
+    margin-top: 70px;
+    padding: 0.75rem;
+  }
+  
+  .contenedor-general {
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: row; /* Mantener lado a lado */
+  }
+  
+  .filtros {
+    flex: 1 1 250px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .derecha {
+    flex: 2 1 450px;
+    gap: 1rem;
+  }
+  
+  .platillos {
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .boton-secundario button {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  
+  .abajo {
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+  }
+  
+  .izquierda {
+    width: 100%;
+    height: 350px;
+    flex: none;
+  }
+  
+  .contenedor-derecha {
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .cuentas, .dato {
+    flex: 1 1 50%;
+    width: auto;
+  }
+  
+  .dato h5 {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .fila-titulo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .fila-entrada {
+    gap: 0.75rem;
+  }
+  
+  .entrada-nombre {
+    flex: 1 1 180px;
+    min-width: 140px;
+  }
+  
+  .envoltorio-cantidad {
+    flex: 1 1 180px;
+    min-width: 180px;
+  }
+  
+  .acciones {
+    gap: 0.75rem;
+  }
+  
+  .acciones button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .platillos-nombres {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .plato {
+    flex: 1 1 200px;
+    min-height: 80px;
+    padding: 0.75rem;
+  }
+  
+  .plato p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tabletas Pequeñas (768px) */
+@media (max-width: 768px) {
+  main {
+    margin-top: 70px;
+    padding: 0.5rem;
+  }
+  
+  .contenedor-general {
+    flex-direction: column;
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+  
+  .filtros, .derecha {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  
+  .platillos {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0.75rem;
+  }
+  
+  .boton-secundario {
+    flex-shrink: 0;
+  }
+  
+  .contenedor-derecha {
+    flex-direction: column;
+  }
+  
+  .cuentas, .dato {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  
+  .platillos-nombres {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
+
+/* Móviles (576px) */
+@media (max-width: 576px) {
+  main {
+    margin-top: 60px;
+    padding: 0.5rem;
+  }
+  
+  .contenedor-general {
+    padding: 1rem 0.5rem;
+  }
+  
+  .filtros, .izquierda, .contenedor-derecha, .cuentas, .dato {
+    padding: 1rem;
+  }
+  
+  .fila-entrada {
+    flex-direction: column;
+  }
+  
+  .envoltorio-cantidad {
+    width: 100%;
+  }
+  
+  .plato {
+    flex: 1 1 100%;
+  }
+}
+
+/* Mantener compatibilidad con tu media query existente */
 @media (max-width: 1440px) and (min-width: 1024px) {
   .contenedor-general {
     width: 90%;

@@ -1,239 +1,207 @@
+
+:root {
+  --primary-color: #e62e6b;
+  --secondary-color: #802b4a;
+  --light-bg: #f9f9f9;
+  --light-purple: #e3d5ed;
+  --light-pink: #f8eaf4;
+  --white: #FFFFFF;
+  --text-dark: #000000;
+  --border-radius: 8px;
+  --border-radius-lg: 20px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s ease;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 21px;
 }
- 
+
 body {
+  background: var(--light-bg);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.contenido-principal {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/*HEADER*/
+/* Header styles */
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #963661;
-  width: 100%;
-  margin: 0 auto;
   align-items: center;
-  height: 120px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem 5%;
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 500;
-}
-
-.logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  align-items: center;
-  margin-left: 40px;
-  object-fit: contain;
+  right: 0;
+  z-index: 1000;
 }
 
 .logo img {
-  width: 100%;
+  height: 50px;
+  width: auto;
+  max-width: 100%;
 }
 
 nav ul {
   display: flex;
-  gap: 20px;
   list-style: none;
+  gap: 2rem;
 }
 
-nav ul li a {
-  font-size: 21px;
+nav a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 500;
-  margin-right: 40px;
-  background-color: #f5f5f5;
-  border-radius: 20px;
-  padding: 8px 15px;
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
-nav ul li a:hover {
-  color: #6a5acd;
-  background-color: #eccceb;
+nav a:hover {
+  color: var(--primary-color);
 }
 
-.contenido-principal {
-  flex: 1;
+.alternar-menu {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1100;
+  background: var(--primary-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: var(--primary-color);
+  transition: var(--transition);
+  z-index: 1001;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  margin-top: 120px;
+  gap: 1rem;
 }
 
+.barra-lateral.activa {
+  right: 0;
+}
+
+.barra-lateral a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.barra-lateral a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.barra-lateral .img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Footer */
 .pie {
+  background-color: var(--white);
+  color: var(--text-dark);
+  padding: 2rem 5%;
   margin-top: auto;
-  color: black;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 40px 20px 20px;
-  font-family: "Segoe UI", sans-serif;
 }
 
 .contenedor-pie {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
-
 .columna h2 {
-  margin-bottom: 10px;
-  font-size: 25px;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
 .columna ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-.columna ul li {
-  margin-bottom: 8px;
+.columna li {
+  margin-bottom: 0.5rem;
 }
 
-.columna ul li a {
-  color: black;
+.columna a {
+  color: var(--text-dark);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: var(--transition);
 }
 
-.columna ul li a:hover {
-  color: #d81f7f;
+.columna a:hover {
+  text-decoration: underline;
 }
 
 .derechos {
   text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: black;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.iconos-sociales {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.iconos-sociales a {
-  color: black;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-
-.iconos-sociales a:hover {
-  color: #d81f7f;
-}
-
-/* Tablets y móviles */
-@media (max-width: 820px) {
-  body {
-    padding-top: 0;
-  }
-
-  .contenido-principal {
-    margin-top: 80px;
-  }
-
-  .logo {
+/* Media Queries para header y footer */
+@media (max-width: 768px) {
+  header nav ul {
     display: none;
   }
-
-  li {
-    display: none;
-  }
-
+  
   .alternar-menu {
-    display: block;
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    z-index: 600;
-    transition: color 0.3s ease;
-  }
-
-  .alternar-menu.activo {
-    color: #ffffff;
-  }
-
-  .barra-lateral {
-    display: block;
-    width: 0;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding-top: 3rem;
-    background-color: #963661;
-    overflow-x: hidden;
-    transition: width 0.3s ease;
-  }
-
-  .barra-lateral.abierta {
-    width: 14rem;
-  }
-
-  .barra-lateral nav a {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s;
-    margin-top: 40px;
   }
-
-  .barra-lateral nav a span {
-    display: none;
-  }
-
-  .barra-lateral.abierta nav a span {
-    display: inline;
-  }
-
-  .barra-lateral .img {
-    width: 1.6rem;
-    height: 1.6rem;
-  }
-
-  .seleccionado {
-    border: 3px solid white;
-  }
-
-  header {
-    height: 80px;
-    padding: 0 15px;
-  }
-
+  
   .pie {
-    display: none;
+    padding: 1.5rem 5%;
   }
 }
 
-@media (min-width: 821px) {
-  .alternar-menu {
-    display: none;
+@media (max-width: 576px) {
+  header {
+    padding: 0.75rem 5%;
   }
-
+  
+  .logo img {
+    height: 40px;
+  }
+  
   .barra-lateral {
-    display: none;
+    width: 250px;
+  }
+  
+  .pie {
+    padding: 1rem 5%;
   }
 }

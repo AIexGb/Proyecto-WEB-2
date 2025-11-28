@@ -1,14 +1,30 @@
-const AlternarMenu = document.getElementById("AlternarMenu");
-const BarraLateral = document.getElementById("BarraLateral");
+// menú móvil
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('AlternarMenu');
+  const sidebar = document.getElementById('BarraLateral');
+  
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      sidebar.classList.toggle('activa');
+    });
 
-AlternarMenu.addEventListener("click", () => {
-  BarraLateral.classList.toggle("abierta");
-  AlternarMenu.classList.toggle("activo"); 
+    document.addEventListener('click', function(e) {
+      if (sidebar.classList.contains('activa') && 
+          !sidebar.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('activa');
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && sidebar.classList.contains('activa')) {
+        sidebar.classList.remove('activa');
+      }
+    });
+  }
 });
 
-if (location.pathname.endsWith('/')) {
-    history.replaceState({}, '', location.pathname.slice(0, -1)); 
-}
 
 
 document.querySelector(".formulario").addEventListener("submit", function (e) {
@@ -26,7 +42,7 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
         return;
     }
 
-    altura /= 100; // m a cm
+    altura /= 100; // cm a m
 
    
     let tmb = (sexo.value === "hombre")
@@ -52,6 +68,9 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
     document.getElementById("Tmb").value = Math.round(tmb) + " kcal";
     document.getElementById("CaloriasActividad").value = Math.round(caloriasActividad) + " kcal";
     document.getElementById("CaloriasObjetivo").value = Math.round(caloriasObjetivo) + " kcal";
+
+    // Guardar calorías óptimas en localStorage para la siguiente página
+    localStorage.setItem('caloriasOptimas', Math.round(caloriasObjetivo));
 
     // Ocultar texto inicial
     document.getElementById("TextoInicial").style.display = "none";
