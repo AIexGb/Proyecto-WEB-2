@@ -337,7 +337,60 @@ main {
   text-align: center;
 }
 
+/*Menu inferior*/
+.tabs {
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    padding: 8px 10px;
+    justify-content: center;
+    align-items: center;
+    background: #8d6e97;
+    border: 1px solid rgba(75, 23, 42, 0.12);
+    z-index: 160;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+  }
 
+  .tabs::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .tabs::-webkit-scrollbar-thumb {
+    background: rgba(128, 43, 74, 0.12);
+    border-radius: 6px;
+  }
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 48px;
+    max-width: 220px;
+    padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.5vw, 16px);
+    font-size: clamp(12px, 1.6vw, 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 999px;
+    background: #f8eaf4;
+    color:#3a2e3d;
+    font-weight: 600;
+    text-align: center;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    border: 2px solid #e62e6b;
+    font-size: 21px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tab .tab-short {
+        color: #4f3e56;
+        display: inline;
+  }
 
 /* Tabletas Grandes (992px - 1200px) */
 @media (max-width: 1200px) and (min-width: 993px) {
@@ -557,6 +610,12 @@ main {
   .plato {
     flex: 1 1 100%;
   }
+  .platillos{
+    visibility: hidden;
+  }
+  .tabs{
+    visibility: visible;
+  }
 }
 
 @media (max-width: 1440px) and (min-width: 1024px) {
@@ -606,5 +665,13 @@ main {
 
   .platillos-nombres {
     gap: 80px;
+  }
+}
+  
+@media (max-width: 480px) {
+  .tabs {
+    bottom: 0;
+    gap: 6px;
+    padding: 6px 8px;
   }
 }
