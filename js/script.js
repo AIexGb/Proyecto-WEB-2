@@ -1,31 +1,11 @@
 // menú móvil
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('AlternarMenu');
-  const sidebar = document.getElementById('BarraLateral');
-  
-  if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      sidebar.classList.toggle('activa');
-    });
+  const menuToggle = document.getElementById("mobile-menu");
+  const nav = document.querySelector("nav");
 
-    document.addEventListener('click', function(e) {
-      if (sidebar.classList.contains('activa') && 
-          !sidebar.contains(e.target) && 
-          !menuToggle.contains(e.target)) {
-        sidebar.classList.remove('activa');
-      }
-    });
-
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768 && sidebar.classList.contains('activa')) {
-        sidebar.classList.remove('activa');
-      }
-    });
-  }
-});
-
-
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
 
 document.querySelector(".formulario").addEventListener("submit", function (e) {
     e.preventDefault(); 
