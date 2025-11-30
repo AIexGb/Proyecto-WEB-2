@@ -76,13 +76,18 @@ nav ul li a {
   transition: 0.3s;
 }
 
+nav ul li a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
 .logo-toggle {
   display: none;
 }
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
   width: 30px;
   height: 21px;
   cursor: pointer;
