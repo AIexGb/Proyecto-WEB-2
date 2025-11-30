@@ -76,6 +76,11 @@ nav ul li a {
   transition: 0.3s;
 }
 
+nav ul li a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
 .logo-toggle {
   display: none;
 }
