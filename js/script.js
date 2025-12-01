@@ -97,7 +97,7 @@ if (campoAgua !== null) {
     const ContenedorBoton = document.getElementById("ContenedorBoton");
     document.querySelector(".resultados").appendChild(ContenedorBoton);
     BotonSiguiente.disabled = false;
-
+ //borrar comentario pruebae
 });
 
 
