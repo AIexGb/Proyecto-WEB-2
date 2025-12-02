@@ -65,7 +65,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1100px) {
+@media screen and (max-width: 1100px) {
   .contenedor-superior {
     width: 100%;
     margin-top: 11%;
@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 820px) {
+@media screen and (max-width: 820px) {
 
   .contenedor-superior {
     display: flex;
@@ -109,7 +109,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .nutricion {
     padding-bottom: 90px;
     position: relative;

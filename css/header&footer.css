@@ -41,6 +41,7 @@ header {
   background-color: #963661;
   position: fixed;
   padding: 0 2%;
+  z-index: 1001;
 }
 
 .logo {
@@ -166,7 +167,7 @@ nav ul li a:hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .menu-toggle {
     display: flex;

@@ -401,7 +401,7 @@ main {
     display:none;
   }
 /* Tabletas Grandes (992px - 1200px) */
-@media (max-width: 1200px) and (min-width: 993px) {
+@media screen and (max-width: 1200px) and (min-width: 993px) {
   .contenedor-general {
     padding: 1.25rem;
     gap: 1.25rem;
@@ -436,7 +436,7 @@ main {
 }
 
 /* Tabletas (768px - 992px)*/
-@media (max-width: 992px) and (min-width: 769px) {
+@media screen and (max-width: 992px) and (min-width: 769px) {
   main {
     margin-top: 70px;
     padding: 0.75rem;
@@ -544,7 +544,7 @@ main {
 }
 
 /* Tabletas Pequeñas (768px) */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   main {
     margin-top: 70px;
     padding: 0.5rem;
@@ -623,7 +623,7 @@ main {
 
 
 /* Móviles (576px) */
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
   main {
     margin-top: 60px;
     padding: 0.5rem;
@@ -650,7 +650,7 @@ main {
   }
 }
 
-@media (max-width: 1440px) and (min-width: 1024px) {
+@media screen and (max-width: 1440px) and (min-width: 1024px) {
   .contenedor-general {
     width: 90%;
     gap: 20px;
@@ -700,7 +700,7 @@ main {
   }
 }
   
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .tabs {
     bottom: 0;
     gap: 6px;
@@ -714,12 +714,12 @@ main {
   }
 }
 
-@media (max-width: 320px){
+@media screen and (max-width: 320px){
   .ingredientes{
     margin: 0 30px;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .izquierda {
     max-height: none !important;
     overflow-y: visible !important;
