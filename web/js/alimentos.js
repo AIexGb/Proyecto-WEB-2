@@ -29,7 +29,6 @@ caloriasMap = {};
 
 
 
-// 🚨 CORRECCIÓN CLAVE: Inicialización para CARGAR, no para borrar (como hacía alimentos2.js)
 let recetasGuardadas = JSON.parse(localStorage.getItem('recetasGuardadas')) || {};
 let platilloActivoId = 'BotonPlatillo1';
 let platillosGuardadosParaMostrar = JSON.parse(localStorage.getItem('platillosGuardadosParaMostrar')) || []; 
