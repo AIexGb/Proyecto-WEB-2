@@ -21,7 +21,7 @@
     { nombre: "Pollo", cat: "proteina", kcal_por_gramo: 1.6 }
 ];*/
 ingredientesFitness = [];
-// Contenedores (Se inicializarán en DOMContentLoaded para evitar errores)
+// Contenedores (Se inicializarán e
 let contenedores = {}; 
 
 
