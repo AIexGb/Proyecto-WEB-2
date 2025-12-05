@@ -9,6 +9,8 @@ namespace NutriApi.Business.Services
 {
 	public interface IPlatilloService
 	{
-		
+        Task<PlatilloDTO> GetByNameAsync(string name);
+        Task<List<PlatilloDTO>> GetAllWithIngredientesAsync();
+        Task<PlatilloDTO> CreatePlatilloAsync(PlatilloCreateDTO dto);
     }
 }

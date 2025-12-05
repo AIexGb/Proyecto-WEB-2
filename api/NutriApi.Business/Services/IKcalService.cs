@@ -8,6 +8,6 @@ namespace NutriApi.Business.Services
 {
 	public interface IKcalService
 	{
-
-	}
+        Task<double> CalcularKcalPlatilloAsync(int platilloId);
+    }
 }
