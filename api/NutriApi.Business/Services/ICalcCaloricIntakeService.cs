@@ -9,6 +9,6 @@ namespace NutriApi.Business.Services
 {
 	public interface ICalcCaloricIntakeService
 	{
-		
-	}
+        Task<CalculoResponseDTO> CalcCaloricIntakeAsync(bool gender, double weight, int height, double activity, int objective);
+    }
 }

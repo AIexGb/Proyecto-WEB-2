@@ -10,6 +10,8 @@ namespace NutriApi.Business.Services
 	where TEntity : class
 	where TDto : class
 	{
-		
-	}
+        Task AddAsync(TDto dto);
+        Task DeleteByIdAsync(int id);
+        Task UpdateAsync(TDto dto);
+    }
 }
