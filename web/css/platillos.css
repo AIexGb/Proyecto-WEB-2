@@ -63,6 +63,7 @@ main {
   gap: 0.5rem;
 }
 
+
 .ingrediente {
   width: 100%;
   border-radius: 10px;
@@ -73,6 +74,7 @@ main {
   font-weight: 600;
   color: #000000;
 }
+
 
 .boton {
   display: flex;
