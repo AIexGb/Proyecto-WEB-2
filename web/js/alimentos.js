@@ -35,7 +35,7 @@ let platilloActivoId = 'BotonPlatillo1';
 let platillosGuardadosParaMostrar = JSON.parse(localStorage.getItem('platillosGuardadosParaMostrar')) || []; 
 
 
-// ----------------------------------------------------
+
 // FUNCIONES DE CÁLCULO Y GESTIÓN DE ESTADO
 
 
