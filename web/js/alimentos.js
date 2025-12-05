@@ -35,7 +35,7 @@ let platillosGuardadosParaMostrar = JSON.parse(localStorage.getItem('platillosGu
 
 
 
-// FUNCIONES DE CÁLCULO Y GESTIÓN DE ESTADO
+
 
 
 function cargarIngredientesDelAPI(){
