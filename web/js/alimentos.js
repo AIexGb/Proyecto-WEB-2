@@ -24,7 +24,7 @@ ingredientesFitness = [];
 // Contenedores (Se inicializarán en DOMContentLoaded para evitar errores)
 let contenedores = {}; 
 
-// Objeto para mapear rápidamente Nombre del Ingrediente -> kcal/g
+
 caloriasMap = {};
 
 
