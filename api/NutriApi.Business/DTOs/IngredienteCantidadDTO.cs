@@ -8,6 +8,7 @@ namespace NutriApi.Business.DTOs
 {
     public class IngredienteCantidadDTO
     {
-   
+        public int IngredienteId { get; set; }
+        public double Cantidad { get; set; }
     }
 }
