@@ -34,6 +34,7 @@ let recetasGuardadas = JSON.parse(localStorage.getItem('recetasGuardadas')) || {
 let platilloActivoId = 'BotonPlatillo1';
 let platillosGuardadosParaMostrar = JSON.parse(localStorage.getItem('platillosGuardadosParaMostrar')) || []; 
 
+
 // ----------------------------------------------------
 // FUNCIONES DE CÁLCULO Y GESTIÓN DE ESTADO
 // ----------------------------------------------------
@@ -59,6 +60,7 @@ function cargarIngredientesDelAPI(){
         });
     });
 
+        
     ingredientesFitness.forEach(i => {
         const div = document.createElement("div");
         div.classList.add("ingrediente");
