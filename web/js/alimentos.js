@@ -75,6 +75,7 @@ function cargarIngredientesDelAPI(){
     }, {});
 })();
 
+    
 }
 
 function actualizarCaloriasActuales() {
