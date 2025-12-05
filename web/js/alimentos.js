@@ -27,7 +27,7 @@ let contenedores = {};
 // Objeto para mapear rápidamente Nombre del Ingrediente -> kcal/g
 caloriasMap = {};
 
-// --- GESTIÓN DE PLATILLOS (Variables Globales) ---
+
 
 // 🚨 CORRECCIÓN CLAVE: Inicialización para CARGAR, no para borrar (como hacía alimentos2.js)
 let recetasGuardadas = JSON.parse(localStorage.getItem('recetasGuardadas')) || {};
