@@ -8,6 +8,7 @@ namespace NutriApi.Business.DTOs
 {
 	public class PlatilloIngredienteDTO
 	{
-
+		public string IngredienteNombre {  get; set; }
+		public double Cantidad { get; set; }
 	}
 }
