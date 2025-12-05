@@ -1,0 +1,731 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\platilloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\platilloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\controllers\\platilloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\controllers\\platilloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\controllers\\calccaloricintakecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\controllers\\calccaloricintakecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\repositories\\platillorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\repositories\\platillorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\iplatilloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\iplatilloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\interfaces\\iplatillorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\interfaces\\iplatillorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\kcalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\kcalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\genericserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\genericserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\ingredientecantidaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\ingredientecantidaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\platillocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\platillocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\controllers\\ingredientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\controllers\\ingredientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\platillodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\platillodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\platilloingredientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\platilloingredientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\ikcalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\ikcalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\ingredientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\ingredientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\models\\ingrediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\models\\ingrediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\fluentconfiguration\\ingredienteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\fluentconfiguration\\ingredienteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\calculoresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\calculoresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\models\\platillo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\models\\platillo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\models\\platilloingrediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\models\\platilloingrediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\repositories\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\repositories\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\nutridbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\nutridbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\nutriapi.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\nutriapi.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.api\\nutriapi.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0B7DFC86-A560-464C-868A-0F02B301FEFB}|NutriApi.API\\NutriApi.API.csproj|solutionrelative:nutriapi.api\\nutriapi.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\fluentconfiguration\\platilloingredienteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\fluentconfiguration\\platilloingredienteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\nutriapi.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\nutriapi.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\dtos\\kcalrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\dtos\\kcalrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\models\\logactividad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\models\\logactividad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\fluentconfiguration\\platilloconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\fluentconfiguration\\platilloconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\fluentconfiguration\\logactividadconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\fluentconfiguration\\logactividadconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\ireadserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\ireadserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\igenericserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\igenericserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.dataaccess\\interfaces\\ilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38995267-2BC9-4259-89D7-31DBD6314E3D}|NutriApi.DataAccess\\NutriApi.DataAccess.csproj|solutionrelative:nutriapi.dataaccess\\interfaces\\ilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\nutriapi.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\nutriapi.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\readserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\readserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|c:\\users\\hmunoz\\desktop\\programacion web\\nutriapi.api\\nutriapi.business\\services\\icalccaloricintakeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE24001-C461-4DEA-8CC4-B06BCF62F733}|NutriApi.Business\\NutriApi.Business.csproj|solutionrelative:nutriapi.business\\services\\icalccaloricintakeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 32,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CalcCaloricIntakeController.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\CalcCaloricIntakeController.cs",
+              "RelativeDocumentMoniker": "NutriApi.API\\Controllers\\CalcCaloricIntakeController.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\CalcCaloricIntakeController.cs",
+              "RelativeToolTip": "NutriApi.API\\Controllers\\CalcCaloricIntakeController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T20:13:27.24Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{26341fe2-71dd-46fd-bb1b-2e51a92a0d64}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KcalService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\KcalService.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\KcalService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\KcalService.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\KcalService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:50:31.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IPlatilloRepository.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\IPlatilloRepository.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Interfaces\\IPlatilloRepository.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\IPlatilloRepository.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Interfaces\\IPlatilloRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:54:42.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlatillosController.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\PlatillosController.cs",
+              "RelativeDocumentMoniker": "NutriApi.API\\Controllers\\PlatillosController.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\PlatillosController.cs",
+              "RelativeToolTip": "NutriApi.API\\Controllers\\PlatillosController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T20:04:39.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IPlatilloService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IPlatilloService.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\IPlatilloService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IPlatilloService.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\IPlatilloService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T02:49:05.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Repositories\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:53:11.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IngredienteCantidadDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\IngredienteCantidadDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\IngredienteCantidadDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\IngredienteCantidadDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\IngredienteCantidadDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T19:10:49.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlatilloService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\PlatilloService.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\PlatilloService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\PlatilloService.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\PlatilloService.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAFoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T02:50:08.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GenericServiceAsync.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\GenericServiceAsync.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\GenericServiceAsync.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\GenericServiceAsync.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\GenericServiceAsync.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:45:19.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlatilloRepository.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\PlatilloRepository.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Repositories\\PlatilloRepository.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\PlatilloRepository.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Repositories\\PlatilloRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:56:52.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlatilloCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloCreateDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\PlatilloCreateDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloCreateDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\PlatilloCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T19:09:41.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlatilloDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\PlatilloDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\PlatilloDTO.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvxIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:37:36.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PlatilloIngredienteDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloIngredienteDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\PlatilloIngredienteDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\PlatilloIngredienteDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\PlatilloIngredienteDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:37:55.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IngredienteController.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\IngredienteController.cs",
+              "RelativeDocumentMoniker": "NutriApi.API\\Controllers\\IngredienteController.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Controllers\\IngredienteController.cs",
+              "RelativeToolTip": "NutriApi.API\\Controllers\\IngredienteController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T05:46:56.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IKcalService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IKcalService.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\IKcalService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IKcalService.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\IKcalService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:49:29.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IngredienteDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\IngredienteDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\IngredienteDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\IngredienteDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\IngredienteDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:36:47.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Ingrediente.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\Ingrediente.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Models\\Ingrediente.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\Ingrediente.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Models\\Ingrediente.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:35:51.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IngredienteConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\IngredienteConfiguration.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\FluentConfiguration\\IngredienteConfiguration.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\IngredienteConfiguration.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\FluentConfiguration\\IngredienteConfiguration.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowCsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:39:34.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CalculoResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\CalculoResponseDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\CalculoResponseDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\CalculoResponseDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\CalculoResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T03:20:25.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Platillo.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\Platillo.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Models\\Platillo.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\Platillo.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Models\\Platillo.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:36:41.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PlatilloIngrediente.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\PlatilloIngrediente.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Models\\PlatilloIngrediente.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\PlatilloIngrediente.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Models\\PlatilloIngrediente.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:37:16.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LogService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\LogService.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Repositories\\LogService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Repositories\\LogService.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Repositories\\LogService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAwwBoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:57:24.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Mappings\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "NutriApi.Business\\Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvxcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:39:10.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "NutriDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\NutriDbContext.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\NutriDbContext.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\NutriDbContext.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\NutriDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T05:53:08.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\appsettings.json",
+              "RelativeDocumentMoniker": "NutriApi.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\appsettings.json",
+              "RelativeToolTip": "NutriApi.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-17T19:58:15.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Program.cs",
+              "RelativeDocumentMoniker": "NutriApi.API\\Program.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\Program.cs",
+              "RelativeToolTip": "NutriApi.API\\Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAiwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:52:23.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "NutriApi.API.http",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\NutriApi.API.http",
+              "RelativeDocumentMoniker": "NutriApi.API\\NutriApi.API.http",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\NutriApi.API.http",
+              "RelativeToolTip": "NutriApi.API\\NutriApi.API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-11-21T06:32:29.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "NutriApi.API.csproj",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\NutriApi.API.csproj",
+              "RelativeDocumentMoniker": "NutriApi.API\\NutriApi.API.csproj",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.API\\NutriApi.API.csproj",
+              "RelativeToolTip": "NutriApi.API\\NutriApi.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-21T06:34:12.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PlatilloIngredienteConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\PlatilloIngredienteConfiguration.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\FluentConfiguration\\PlatilloIngredienteConfiguration.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\PlatilloIngredienteConfiguration.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\FluentConfiguration\\PlatilloIngredienteConfiguration.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAADwvyMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:51:05.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "NutriApi.DataAccess.csproj",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\NutriApi.DataAccess.csproj",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\NutriApi.DataAccess.csproj",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\NutriApi.DataAccess.csproj",
+              "RelativeToolTip": "NutriApi.DataAccess\\NutriApi.DataAccess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-24T02:02:12.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "KcalRequestDTO.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\KcalRequestDTO.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\DTOs\\KcalRequestDTO.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\DTOs\\KcalRequestDTO.cs",
+              "RelativeToolTip": "NutriApi.Business\\DTOs\\KcalRequestDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:38:25.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "LogActividad.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\LogActividad.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Models\\LogActividad.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Models\\LogActividad.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Models\\LogActividad.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:38:54.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Interfaces\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\IGenericRepository.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Interfaces\\IGenericRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAwwAwAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:52:20.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "PlatilloConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\PlatilloConfiguration.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\FluentConfiguration\\PlatilloConfiguration.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\PlatilloConfiguration.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\FluentConfiguration\\PlatilloConfiguration.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwB4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:44:25.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "LogActividadConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\LogActividadConfiguration.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\FluentConfiguration\\LogActividadConfiguration.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\FluentConfiguration\\LogActividadConfiguration.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\FluentConfiguration\\LogActividadConfiguration.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowCQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:51:55.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IReadServiceAsync.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IReadServiceAsync.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\IReadServiceAsync.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IReadServiceAsync.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\IReadServiceAsync.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:43:06.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IGenericServiceAsync.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IGenericServiceAsync.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\IGenericServiceAsync.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\IGenericServiceAsync.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\IGenericServiceAsync.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:43:36.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ILogService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\ILogService.cs",
+              "RelativeDocumentMoniker": "NutriApi.DataAccess\\Interfaces\\ILogService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.DataAccess\\Interfaces\\ILogService.cs",
+              "RelativeToolTip": "NutriApi.DataAccess\\Interfaces\\ILogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T17:55:32.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "NutriApi.Business.csproj",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\NutriApi.Business.csproj",
+              "RelativeDocumentMoniker": "NutriApi.Business\\NutriApi.Business.csproj",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\NutriApi.Business.csproj",
+              "RelativeToolTip": "NutriApi.Business\\NutriApi.Business.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-24T02:01:12.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ReadServiceAsync.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\ReadServiceAsync.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\ReadServiceAsync.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\ReadServiceAsync.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\ReadServiceAsync.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAUwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:44:14.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ICalcCaloricIntakeService.cs",
+              "DocumentMoniker": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\ICalcCaloricIntakeService.cs",
+              "RelativeDocumentMoniker": "NutriApi.Business\\Services\\ICalcCaloricIntakeService.cs",
+              "ToolTip": "C:\\Users\\hmunoz\\Desktop\\Programacion WEB\\NutriApi.API\\NutriApi.Business\\Services\\ICalcCaloricIntakeService.cs",
+              "RelativeToolTip": "NutriApi.Business\\Services\\ICalcCaloricIntakeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T19:50:00.562Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 368,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

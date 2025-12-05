@@ -1,0 +1,15 @@
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\bin\Release\net8.0\NutriApi.Business.deps.json
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\bin\Release\net8.0\NutriApi.Business.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\bin\Release\net8.0\NutriApi.Business.pdb
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\bin\Release\net8.0\NutriApi.DataAccess.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\bin\Release\net8.0\NutriApi.DataAccess.pdb
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.csproj.AssemblyReference.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.AssemblyInfoInputs.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.AssemblyInfo.cs
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.csproj.CoreCompileInputs.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.7E11E38E.Up2Date
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\refint\NutriApi.Business.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\NutriApi.Business.pdb
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.Business\obj\Release\net8.0\ref\NutriApi.Business.dll

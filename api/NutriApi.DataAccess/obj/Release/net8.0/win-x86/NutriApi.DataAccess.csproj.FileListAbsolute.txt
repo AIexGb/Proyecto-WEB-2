@@ -1,0 +1,12 @@
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\bin\Release\net8.0\win-x86\NutriApi.DataAccess.deps.json
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\bin\Release\net8.0\win-x86\NutriApi.DataAccess.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\bin\Release\net8.0\win-x86\NutriApi.DataAccess.pdb
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.csproj.AssemblyReference.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.AssemblyInfoInputs.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.AssemblyInfo.cs
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.csproj.CoreCompileInputs.cache
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\refint\NutriApi.DataAccess.dll
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\NutriApi.DataAccess.pdb
+D:\Escuela\VSC Proyectos\NutriApi.API\NutriApi.DataAccess\obj\Release\net8.0\win-x86\ref\NutriApi.DataAccess.dll
