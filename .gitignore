@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/api/.vs/NutriApi.API/CopilotIndices/17.13.433.20974/CodeChunks.db-shm
+/api/.vs/NutriApi.API/CopilotIndices/17.13.433.20974/CodeChunks.db-wal
+/api/.vs/NutriApi.API/CopilotIndices/17.13.433.20974/SemanticSymbols.db
+/api/.vs/NutriApi.API/CopilotIndices/17.13.433.20974/SemanticSymbols.db-shm
+/api/.vs/NutriApi.API/CopilotIndices/17.13.433.20974/SemanticSymbols.db-wal
+/api/.vs/NutriApi.API/FileContentIndex/da6854a2-4c78-4b0d-9f2b-1d0b7aa4097d.vsidx
+/api/.vs/NutriApi.API/FileContentIndex/f066c332-e655-485b-bc15-78b2c1a684c0.vsidx
+/api/.vs/ProjectEvaluation/nutriapi.api.metadata.v9.bin
+/api/.vs/ProjectEvaluation/nutriapi.api.projects.v9.bin
+/api/NutriApi.API/obj/Debug/net8.0/NutriApi.API.sourcelink.json
+/api/NutriApi.Business/obj/Debug/net8.0/NutriApi.Business.sourcelink.json
