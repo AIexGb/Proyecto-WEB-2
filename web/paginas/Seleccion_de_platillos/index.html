@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/header&footer.css" />
   <link rel="stylesheet" href="/css/platillos.css">
 </head>
-  
+
 <body>
   <div class="contenido-principal">
     <header>
@@ -31,7 +31,7 @@
             <span></span>
         </button>
     </header>
-    
+
     <main>
       <div class="contenedor-general">
         <div class="filtros">
@@ -79,6 +79,7 @@
                     <input type="text" class="entrada-cantidad">
                     <button class="boton-equis">X</button>
                   </div>
+                  <label class = "etiqueta-macros">macros p/c 100g []</label>
                 </div>
               </div>
 
@@ -95,6 +96,7 @@
                     <input type="text" class="entrada-cantidad">
                     <button class="boton-equis">X</button>
                   </div>
+                  <label class = "etiqueta-macros">macros p/c 100g []</label>
                 </div>
               </div>
 
@@ -111,6 +113,7 @@
                     <input type="text" class="entrada-cantidad">
                     <button class="boton-equis">X</button>
                   </div>
+                  <label class = "etiqueta-macros">macros p/c 100g []</label>
                 </div>
               </div>
               <div class="frase-motivacional-print" style="display: none;"></div>
@@ -121,6 +124,10 @@
               <div class="cuentas">
                 <div class="cuenta">
                   <p>Optima (KCal): <input type="text" name="caloriasOptimas" id="InputOptimo" readonly></p>
+                </div>
+
+                <div class="cuenta">
+                  <p>Optima por platillo (KCal): <input type="text" name="caloriasOptimasPP" id="InputOptimoPP" readonly></p>
                 </div>
 
                 <div class="cuenta">
@@ -148,12 +155,12 @@
         </div>
 
         <div class="busqueda">
-          <input type="search" placeholder="Búsqueda por nombre del platillo">
+          <input type="search" placeholder="Búsqueda por nombre del platillo" id="BusquedaPlatillo">
         </div>
       </div>
 
       <div class="platillos-nombres">
-        <div class="plato">
+        <!--<div class="plato">
           <p>Nombre de Platillo</p>
         </div>
         <div class="plato">
@@ -164,7 +171,7 @@
         </div>
         <div class="plato">
           <p>Nombre de Platillo</p>
-        </div>
+        </div>-->
       </div>
     </main>
     <footer class="pie">
@@ -195,9 +202,17 @@
                 <span class="tab-short">P5*</span>
               </div>
     </div>
-    <script src="/js/alimentos.js"></script>
+    <div class="contenido">
+            <h3> Ingresa nombre del platillo: </h3>
+            <input type="text" class="nombre" placeholder="Nombre">
+            <button id="btnGuardar">Guardar</button>
+        </div>
+    <!--<script src="/js/alimentos.js"></script>-->
+    <script src="/js/alimentos3.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/index.js"></script>
+
+<!-- para que lo del agua sirva -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

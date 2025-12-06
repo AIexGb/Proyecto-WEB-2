@@ -6,7 +6,7 @@ main {
   padding: 1rem;
   margin-top: 80px;
   flex: 1;
-} /**/
+}
 
 .contenedor-general {
   display: flex;
@@ -38,8 +38,6 @@ main {
   font-size: 1.5rem;
 }
 
-
-
 .filtros select,
 .filtros input[type="search"] {
   width: 100%;
@@ -49,8 +47,6 @@ main {
   font-family: inherit;
   font-size: 1rem;
 }
-
-
 
 .ingredientes {
   display: flex;
@@ -67,7 +63,6 @@ main {
   gap: 0.5rem;
 }
 
-
 .ingrediente {
   width: 100%;
   border-radius: 10px;
@@ -78,7 +73,6 @@ main {
   font-weight: 600;
   color: #000000;
 }
-
 
 .boton {
   display: flex;
@@ -327,6 +321,10 @@ main {
   text-align: center;
 }
 
+.etiqueta-macros{
+    font-size: small;
+  }
+
 /*CHECAR QUEES ESTO*/
 .tabs {
     visibility: hidden;
@@ -391,6 +389,44 @@ main {
 .label-oculto{
     display:none;
   }
+
+.contenido {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #f0f0f0; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000; 
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    display: none;
+}
+
+
+.nombre {
+  padding: 0.75rem;
+  border-radius: 10px;
+  width: 80%;
+  border: none;
+  background: #f8eaf4;
+}
+
+#btnGuardar {
+  background: #e62e6b;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 3rem;
+}
 
 @media screen and (max-width: 1200px) and (min-width: 993px) {
   .contenedor-general {
@@ -722,105 +758,83 @@ main {
 }
 
 @media print {
+    /* 1. OCULTAR TODO EL CONTENIDO DE LA PÁGINA POR DEFECTO */
+    body * {
+        visibility: hidden;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* 2. FORZAR LA VISIBILIDAD DE SOLO EL CONTENEDOR GENERADO POR JS */
+    /* Este contenedor se deja en el flujo normal (static) para permitir saltos de página automáticos */
+    #ContenidoImprimible,
+    #ContenidoImprimible * {
+        visibility: visible !important; 
+        display: block !important; 
+        position: static !important; 
+        width: 100% !important;
+        padding: 0 20px !important; 
+        margin: 0 auto !important; 
+        box-sizing: border-box !important; /* Importante para el cálculo del padding */
+    }
+    
+    /* 3. OCULTAR TODOS LOS CONTENEDORES PRINCIPALES DE LA INTERFAZ (¡ESTO ES LA CLAVE!) */
+    .contenido-principal, /* <-- Contenedor raíz de toda la app */
+    main,                 /* <-- Contenedor de la sección principal */
+    .contenedor-general,  /* <-- Contenedor del formulario */
+    .tabs,                /* <-- Pestañas de P1-P5 */
+    .contenido,           /* <-- Modal de Guardar Platillo */
+    header, 
+    footer, 
+    .filtros, 
+    .platillos, 
+    .contenedor-derecha, 
+    .acciones, 
+    .busqueda, 
+    .platillos-nombres,
+    .derecha > .platillos,
+    .derecha > .acciones,
+    .derecha > .busqueda,
+    .boton-equis {
+        /* CLAVE: display: none elimina el elemento del flujo y el espacio que ocupa */
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* 4. ESTILOS DE FORMATO */
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        position: static !important;
+        min-height: auto !important;
+    }
+    
+    .izquierda {
+        /* Debe estar aquí para no interferir con la impresión, pero ya está oculto su contenido */
+        position: static !important;
+        width: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: block !important; 
+    }
+    
+    /* Otros estilos de formato se mantienen */
+    .nutriente {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
 
-  body * {
-    visibility: hidden;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  .contenedor-general,
-  .contenedor-general * {
-    visibility: visible;
-  }
-  
-  
-  header, 
-  footer, 
-  .filtros, 
-  .platillos, 
-  .contenedor-derecha, 
-  .acciones, 
-  .busqueda, 
-  .platillos-nombres,
-  .tabs,
-  .derecha > .platillos,
-  .derecha > .acciones,
-  .derecha > .busqueda {
-    display: none !important;
-    visibility: hidden !important;
-  }
-  
-
-  .izquierda {
-    position: static !important;
-    width: 100% !important;
-    max-height: none !important;
-    overflow: visible !important;
-    background: white !important;
-    padding: 20px !important;
-    margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    display: flex !important;
-    gap: 10px !important;
-    visibility: visible !important;
-  }
-  
-
-  .nutriente {
-    display: block !important;
-    visibility: visible !important;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    margin-bottom: 20px;
-  }
-
-  .frase-motivacional-print {
-    display: block !important;
-    visibility: visible !important;
-    margin-top: 30px !important;  
-    padding: 15px  !important;
-    background-color: #f8eaf4 !important;
-    border: 1px solid #e62e6b !important;
-    border-radius: 10px;
-    font-style: italic;
-    font-size: 14px;
-    line-height: 1.4;
-    page-break-inside: avoid;
-    color: black !important;
-  }
-
-  .boton-equis {
-    display: none !important;
-  }
-  
-
-  body {
-    background: white !important;
-    color: black !important;
-    font-size: 12pt;
-  }
-  
-  .contenedor-general {
-    background: white !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-  }
-  
-  .derecha {
-    display: block !important;
-    visibility: visible !important;
-    width: 100% !important;
-  }
-  
-  .abajo {
-    display: block !important;
-    visibility: visible !important;
-    width: 100% !important;
-    flex-direction: column !important;
-  }
+    .frase-motivacional-print {
+        page-break-inside: avoid;
+    }
 }
