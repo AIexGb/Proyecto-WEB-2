@@ -19,15 +19,20 @@ const btnGuardarNombre = document.getElementById('btnGuardar');
 function recopilarIngredientes() {
     const ingredientesPlatillo = [];
 
-    document.querySelectorAll(".fila-entrada").forEach(fila => {
+    document.querySelectorAll(".nutriente").forEach(nutriente => {
+        const fila = nutriente.querySelector(".fila-entrada");
         const nombre = fila.querySelector(".entrada-nombre").value.trim();
         const cantidad = fila.querySelector(".entrada-cantidad").value.trim();
+        const categoria = nutriente.querySelector("h3").textContent.toLowerCase();
         
         // Solo guarda si ambos campos tienen valor
         if (nombre !== '' && cantidad !== '') {
             ingredientesPlatillo.push({
                 nombre: nombre,
-                cantidad: cantidad 
+                cantidad: cantidad,
+                cat: categoria.includes("proteína") ? "proteina" :
+                     categoria.includes("carbohidrato") ? "carb" :
+                     categoria.includes("grasa") ? "grasas" : "otro"
             });
         }
     });
@@ -90,19 +95,46 @@ function cargarPlatillo(id) {
             primerNombreInput.value = primerIngrediente.nombre;
             primerCantidadInput.value = primerIngrediente.cantidad;
         }*/
-        const nombresInputs = document.querySelectorAll(".entrada-nombre");
-        const cantidadInputs = document.querySelectorAll(".entrada-cantidad");
-        receta.forEach((ingrediente, index) => {
-            if (nombresInputs[index] && cantidadInputs[index]) {
-                nombresInputs[index].value = ingrediente.nombre;
-                cantidadInputs[index].value = ingrediente.cantidad;
-            }
-        });
+       cargarIngredientesAlDom(receta);
     }
+        
     
     console.log(`Cargado Platillo "${id}".`);
 }
 
+function cargarIngredientesAlDom(array) {
+    array.forEach((ingrediente) => {
+            /*nombresInputs[index].value = ingrediente.nombre;
+            cantidadInputs[index].value = ingrediente.cantidad;*/
+            document.querySelectorAll(".nutriente").forEach(nutriente => {
+                const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
+                if (
+                    (ingrediente.cat === "proteina" && h3.includes("proteína")) ||
+                    (ingrediente.cat === "carb" && h3.includes("carbohidrato")) ||
+                    (ingrediente.cat === "grasas" && h3.includes("grasa"))
+                ) {
+                    let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
+                        .find(input => input.value === "");
+
+                    if (!inputTarget) {
+                        const filaOriginal = nutriente.querySelector(".fila-entrada");
+                        const nuevaFila = filaOriginal.cloneNode(true);
+
+                        nuevaFila.querySelector(".entrada-nombre").value = ingrediente.nombre;
+                        nuevaFila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+
+                        nutriente.appendChild(nuevaFila);
+                        inputTarget = nuevaFila.querySelector(".entrada-nombre");
+                    }else{
+                        const filaOriginal = nutriente.querySelector(".fila-entrada");
+
+                        filaOriginal.querySelector(".entrada-nombre").value = ingrediente.nombre;
+                        filaOriginal.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+                    }
+                }
+            });
+    });
+}
 
 function actualizarClaseActivoTabs(id) {
     document.querySelectorAll('.platillos .boton-secundario').forEach(div => div.classList.remove('activo'));
