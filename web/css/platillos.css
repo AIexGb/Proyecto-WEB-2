@@ -1,4 +1,3 @@
-
 main {
   display: flex;
   flex-direction: column;
@@ -29,11 +28,11 @@ main {
   border-radius: 8px;
   padding: 1.5rem;
   gap: 1.5rem;
-  box-shadow:  0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .filtros h2 {
-  color:  #802b4a;
+  color: #802b4a;
   margin-top: 0;
   font-size: 1.5rem;
 }
@@ -72,17 +71,6 @@ main {
   font-size: 1rem;
   font-weight: 600;
   color: #000000;
-}
-
-.ingrediente.seleccionado {
-  background-color: #ffd4e6;
-  border-left-color: 4px #ff2f87; 
-  
-}
-
-.ingrediente:hover {
-  cursor: pointer; 
-  background-color: #ffd4e6;
 }
 
 .boton {
@@ -332,170 +320,154 @@ main {
   text-align: center;
 }
 
-.etiqueta-macros{
-    font-size: small;
-  }
+.etiqueta-macros {
+  font-size: small;
+}
 
 /*CHECAR QUEES ESTO*/
 .tabs {
-    visibility: hidden;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    padding: 8px 10px;
-    justify-content: center;
-    align-items: center;
-    background: #8d6e97;
-    border: 1px solid rgba(75, 23, 42, 0.12);
-    z-index: 160;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap: 10px;
-  }
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 8px 10px;
+  justify-content: center;
+  align-items: center;
+  background: #8d6e97;
+  border: 1px solid rgba(75, 23, 42, 0.12);
+  z-index: 160;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+}
 
-  .tabs::-webkit-scrollbar {
-    height: 6px;
-  }
+.tabs::-webkit-scrollbar {
+  height: 6px;
+}
 
-  .tabs::-webkit-scrollbar-thumb {
-    background: rgba(128, 43, 74, 0.12);
-    border-radius: 6px;
-  }
+.tabs::-webkit-scrollbar-thumb {
+  background: rgba(128, 43, 74, 0.12);
+  border-radius: 6px;
+}
+
 .tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1 1 auto;
-    min-width: 48px;
-    max-width: 220px;
-    padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.5vw, 16px);
-    font-size: clamp(12px, 1.6vw, 16px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-radius: 999px;
-    background: #f8eaf4;
-    color:#3a2e3d;
-    font-weight: 600;
-    text-align: center;
-    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-    border: 2px solid #e62e6b;
-    font-size: 21px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.tab .tab-short {
-        color: #4f3e56;
-        display: inline;
-  }
-
-.tab:hover{
-    background-color: #e62e6b; 
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-  }
-
-.label-oculto{
-    display:none;
-  }
-
-.contenido {
-    position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: #f0f0f0; 
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    z-index: 1000; 
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    display: none;
-}
-
-
-.nombre {
-  padding: 0.75rem;
-  border-radius: 10px;
-  width: 80%;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 48px;
+  max-width: 220px;
+  padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.5vw, 16px);
+  font-size: clamp(12px, 1.6vw, 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 999px;
   background: #f8eaf4;
-}
-
-#btnGuardar {
-  background: #e62e6b;
-  color: #FFFFFF;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 25px;
+  color: #3a2e3d;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 3rem;
+  text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  border: 2px solid #e62e6b;
+  font-size: 21px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#btnCerrar {
-  background: #e62e6b;
-  color: #FFFFFF;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 3rem;
+.tab .tab-short {
+  color: #4f3e56;
+  display: inline;
 }
 
-button:active {
-  transform: scale(0.50);
-} 
+.tab:hover {
+  background-color: #e62e6b;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
 
-.plato:active, .ingrediente:active {
-  transition: all 0.1s ease;
-  transform: scale(0.90);
-} 
+.label-oculto {
+  display: none;
+}
+
+.burbuja {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  background-color: rgb(101, 199, 255);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+}
+
+.burbuja-texto {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(51, 51, 51, 0.5);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 120%;
+  z-index: 1;
+  transition: opacity 0.2s;
+  white-space: normal;
+  width: 250px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.burbuja:hover .burbuja-texto {
+  visibility: visible;
+  opacity: 1;
+}
 
 
-
-@media screen and (max-width: 1200px) and (min-width: 993px) {
+@media screen and (max-width: 1024px) and (min-width: 993px) {
   .contenedor-general {
     padding: 1.25rem;
     gap: 1.25rem;
   }
-  
+
   .filtros {
     flex: 1 1 280px;
     padding: 1.25rem;
   }
-  
+
   .derecha {
     flex: 2 1 500px;
   }
-  
+
   .platillos {
     gap: 0.75rem;
   }
-  
+
   .boton-secundario button {
     padding: 0.5rem 1.25rem;
     font-size: 0.85rem;
   }
-  
+
   .abajo {
     gap: 1.25rem;
   }
-  
+
   .platillos-nombres {
     gap: 1.25rem;
     padding: 1.25rem;
   }
+
+  .burbuja-texto {
+    left: auto;
+    right: 120%;
+  }
 }
+
+
 
 
 @media screen and (max-width: 992px) and (min-width: 769px) {
@@ -503,107 +475,115 @@ button:active {
     margin-top: 70px;
     padding: 0.75rem;
   }
-  
+
   .contenedor-general {
     padding: 1rem;
     gap: 1rem;
-    flex-direction: row; 
+    flex-direction: row;
   }
-  
+
   .filtros {
     flex: 1 1 250px;
     padding: 1rem;
     gap: 1rem;
   }
-  
+
   .derecha {
     flex: 2 1 450px;
     gap: 1rem;
   }
-  
+
   .platillos {
     justify-content: space-between;
     gap: 0.5rem;
   }
-  
+
   .boton-secundario button {
     padding: 0.4rem 1rem;
     font-size: 0.8rem;
     white-space: nowrap;
   }
-  
+
   .abajo {
     flex-direction: column;
     gap: 1rem;
     height: auto;
   }
-  
+
   .izquierda {
     width: 100%;
     height: 350px;
     flex: none;
   }
-  
+
   .contenedor-derecha {
     flex-direction: row;
     width: 100%;
     gap: 1rem;
   }
-  
-  .cuentas, .dato {
+
+  .cuentas,
+  .dato {
     flex: 1 1 50%;
     width: auto;
   }
-  
+
   .dato h5 {
     font-size: 0.9rem;
     line-height: 1.4;
   }
-  
+
   .fila-titulo {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
   }
-  
+
   .fila-entrada {
     gap: 0.75rem;
   }
-  
+
   .entrada-nombre {
     flex: 1 1 180px;
     min-width: 140px;
   }
-  
+
   .envoltorio-cantidad {
     min-width: 180px;
   }
-  
+
   .acciones {
     gap: 0.75rem;
   }
-  
+
   .acciones button {
     padding: 0.6rem 1.25rem;
     font-size: 0.9rem;
   }
-  
+
   .platillos-nombres {
     gap: 1rem;
     padding: 1rem;
   }
-  
+
   .plato {
     flex: 1 1 200px;
     min-height: 80px;
     padding: 0.75rem;
   }
-  
+
   .plato p {
     font-size: 0.9rem;
   }
 
+  .burbuja-texto {
+    left: auto;
+    right: 120%;
+  }
+
 }
+
+
 
 
 @media screen and (max-width: 768px) {
@@ -611,18 +591,19 @@ button:active {
     margin-top: 70px;
     padding: 0.5rem;
   }
-  
+
   .contenedor-general {
     flex-direction: column;
     padding: 1rem 0.75rem;
     gap: 1rem;
   }
-  
-  .filtros, .derecha {
+
+  .filtros,
+  .derecha {
     flex: 1 1 100%;
     width: 100%;
   }
-  
+
   .platillos {
     justify-content: flex-start;
     overflow-x: auto;
@@ -630,37 +611,45 @@ button:active {
     gap: 0.75rem;
     display: none;
   }
-  
+
   .boton-secundario {
     flex-shrink: 0;
   }
-  
+
   .contenedor-derecha {
     flex-direction: column;
   }
-  
-  .cuentas, .dato {
+
+  .cuentas,
+  .dato {
     flex: 1 1 100%;
     width: 100%;
   }
-  
+
   .platillos-nombres {
     padding: 1rem;
     gap: 0.75rem;
   }
 
-  .ingredientes{
+  .ingredientes {
     margin: 0 100px;
   }
 
-    .platillos{
+  .platillos {
     visibility: hidden;
   }
-  .tabs{
+
+  .tabs {
     visibility: visible;
   }
-  .contenedor-pie{
+
+  .contenedor-pie {
     padding-bottom: 50px;
+  }
+
+  .burbuja-texto {
+    left: auto;
+    right: 120%;
   }
 }
 
@@ -670,18 +659,20 @@ button:active {
 }
 
 .ingredientes::-webkit-scrollbar-track {
-  background: #f0f0f0; 
+  background: #f0f0f0;
   border-radius: 15px;
 }
 
 .ingredientes::-webkit-scrollbar-thumb {
-  background: #969696; 
-  border-radius: 15px; 
+  background: #969696;
+  border-radius: 15px;
 }
 
 .ingredientes::-webkit-scrollbar-thumb:hover {
-  background: #969696; 
+  background: #969696;
 }
+
+
 
 
 
@@ -690,27 +681,42 @@ button:active {
     margin-top: 60px;
     padding: 0.5rem;
   }
-  
+
   .contenedor-general {
     padding: 1rem 0.5rem;
   }
-  
-  .filtros, .izquierda, .contenedor-derecha, .cuentas, .dato {
+
+  .filtros,
+  .izquierda,
+  .contenedor-derecha,
+  .cuentas,
+  .dato {
     padding: 1rem;
   }
-  
+
   .fila-entrada {
     flex-direction: column;
   }
-  
+
   .envoltorio-cantidad {
     width: 100%;
   }
-  
+
   .plato {
     flex: 1 1 100%;
   }
+
+  .burbuja-texto {
+    top: 0;
+    left: 120%;
+    width: 200px;
+    max-width: 300px;
+  }
+
 }
+
+
+
 
 @media screen and (max-width: 1440px) and (min-width: 1024px) {
   .contenedor-general {
@@ -760,29 +766,41 @@ button:active {
   .platillos-nombres {
     gap: 80px;
   }
+
+  .burbuja-texto {
+    left: auto;
+    right: 120%;
+  }
 }
-  
+
+
+
+
+
+
 @media screen and (max-width: 480px) {
   .tabs {
     bottom: 0;
     gap: 6px;
     padding: 6px 8px;
   }
-  .label-visible{
+
+  .label-visible {
     display: none;
   }
-  .label-oculto{
-    display:initial;
+
+  .label-oculto {
+    display: initial;
   }
 
- .izquierda {
+  .izquierda {
     max-height: none !important;
     overflow-y: visible !important;
   }
 }
 
-@media screen and (max-width: 320px){
-  .ingredientes{
+@media screen and (max-width: 320px) {
+  .ingredientes {
     margin: 0 30px;
   }
 }
@@ -793,120 +811,107 @@ button:active {
 }
 
 @media print {
-    /* 1. OCULTAR TODO EL CONTENIDO DE LA PÁGINA POR DEFECTO */
-    body * {
-        visibility: hidden;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    /* 2. FORZAR LA VISIBILIDAD DE SOLO EL CONTENEDOR GENERADO POR JS */
-    /* Este contenedor se deja en el flujo normal (static) para permitir saltos de página automáticos */
-    #ContenidoImprimible,
-    #ContenidoImprimible * {
-        visibility: visible !important; 
-        display: block !important; 
-        position: static !important; 
-        width: 100% !important;
-        padding: 0 20px !important; 
-        margin: 0 auto !important; 
-        box-sizing: border-box !important; /* Importante para el cálculo del padding */
-    }
-    
-    /* 3. OCULTAR TODOS LOS CONTENEDORES PRINCIPALES DE LA INTERFAZ (¡ESTO ES LA CLAVE!) */
-    .contenido-principal, /* <-- Contenedor raíz de toda la app */
-    main,                 /* <-- Contenedor de la sección principal */
-    .contenedor-general,  /* <-- Contenedor del formulario */
-    .tabs,                /* <-- Pestañas de P1-P5 */
-    .contenido,           /* <-- Modal de Guardar Platillo */
-    header, 
-    footer, 
-    .filtros, 
-    .platillos, 
-    .contenedor-derecha, 
-    .acciones, 
-    .busqueda, 
-    .platillos-nombres,
-    .derecha > .platillos,
-    .derecha > .acciones,
-    .derecha > .busqueda,
-    .boton-equis {
-        /* CLAVE: display: none elimina el elemento del flujo y el espacio que ocupa */
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        overflow: hidden !important;
-    }
-    
-    /* 4. ESTILOS DE FORMATO */
-    
-    body {
-        background: white !important;
-        color: black !important;
-        font-size: 12pt;
-        position: static !important;
-        min-height: auto !important;
-    }
-    
-    .izquierda {
-        /* Debe estar aquí para no interferir con la impresión, pero ya está oculto su contenido */
-        position: static !important;
-        width: 100% !important;
-        max-height: none !important;
-        overflow: visible !important;
-        background: white !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        display: block !important; 
-    }
-    
-    /* Otros estilos de formato se mantienen */
-    .nutriente {
-        page-break-inside: avoid;
-        break-inside: avoid;
-        margin-bottom: 20px;
-    }
 
-    .frase-motivacional-print {
-        page-break-inside: avoid;
-    }
-}
+  body * {
+    visibility: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .contenedor-general,
+  .contenedor-general * {
+    visibility: visible;
+  }
 
 
-.burbuja {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: 10px;
-  background-color: rgb(101, 199, 255);
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  text-align: center;
-}
+  header,
+  footer,
+  .filtros,
+  .platillos,
+  .contenedor-derecha,
+  .acciones,
+  .busqueda,
+  .platillos-nombres,
+  .tabs,
+  .derecha>.platillos,
+  .derecha>.acciones,
+  .derecha>.busqueda {
+    display: none !important;
+    visibility: hidden !important;
+  }
 
-.burbuja-texto {
-  visibility: hidden;
-  opacity: 0;
-  background-color: #333;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 120%; 
-  z-index: 10;
-  transition: opacity 0.2s;
-  white-space: normal; 
-  width: 250px; 
-  max-width: 300px; 
-  word-wrap: break-word; 
-}
 
-.burbuja:hover .burbuja-texto {
-  visibility: visible;
-  opacity:1;
+  .izquierda {
+    position: static !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: white !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    gap: 10px !important;
+    visibility: visible !important;
+  }
+
+
+  .nutriente {
+    display: block !important;
+    visibility: visible !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .frase-motivacional-print {
+    display: block !important;
+    visibility: visible !important;
+    margin-top: 30px !important;
+    padding: 15px !important;
+    background-color: #f8eaf4 !important;
+    border: 1px solid #e62e6b !important;
+    border-radius: 10px;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    page-break-inside: avoid;
+    color: black !important;
+  }
+
+  .boton-equis {
+    display: none !important;
+  }
+
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .contenedor-general {
+    background: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .derecha {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+  }
+
+  .abajo {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+
+
 }
