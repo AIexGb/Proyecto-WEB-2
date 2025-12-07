@@ -74,15 +74,34 @@
 
                 <div class="grupo-formulario">
                     <label>Peso (kg):</label>
-                    <input type="text" maxlength="3" placeholder="Ejemplo: 70"
-                        oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                    <input 
+                        type="text" 
+                        maxlength="3" 
+                        placeholder="Ejemplo: 70"
+                        oninput="
+                        
+                        this.value = this.value.replace(/[^0-9]/g,'');   
+                        
+                        if (this.value !== '' && (this.value < 30 || this.value > 200)) {
+                        this.setCustomValidity('El peso debe estar entre 30 kg y 200 kg');
+                        } else {
+                        this.setCustomValidity('');
+                         }
+                        ">
                 </div>
 
-                <div class="grupo-formulario">
+               <div class="grupo-formulario">
                     <label>Altura (cm):</label>
                     <input type="text" maxlength="3" placeholder="Ejemplo: 175"
-                        oninput="this.value = this.value.replace(/[^0-9]/g,'')">
-                </div>
+                        oninput="this.value = this.value.replace(/[^0-9]/g,'')
+                           
+                        if (this.value !== '' && (this.value < 100 || this.value > 220)) {
+                        this.setCustomValidity('La altura debe de estar entre 100 cm y 220 cm');
+                        } else {
+                        this.setCustomValidity('');
+                         }
+                        ">
+                </div>  
 
                 <div class="grupo-formulario">
                     <label>Nivel de actividad física:</label>
