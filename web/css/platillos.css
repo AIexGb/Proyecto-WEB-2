@@ -880,12 +880,11 @@ button:active {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 30px;
+  margin-left: 10px;
   background-color: rgb(101, 199, 255);
   border-radius: 50%;
   height: 20px;
   width: 20px;
-  justify-content: center;
   text-align: center;
 }
 
@@ -897,15 +896,17 @@ button:active {
   padding: 8px 12px;
   border-radius: 10px;
   position: absolute;
+  top: 0;
+  left: 120%; 
   z-index: 10;
-  top: 120%;
-  left: 70%;
-  transform: translateX(-50%);
   transition: opacity 0.2s;
-  white-space: nowrap;
+  white-space: normal; 
+  width: 250px; 
+  max-width: 300px; 
+  word-wrap: break-word; 
 }
 
 .burbuja:hover .burbuja-texto {
   visibility: visible;
-  opacity: 1;
+  opacity:1;
 }

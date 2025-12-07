@@ -103,6 +103,7 @@ function cargarIngredientesDelPlatillo(platillo) {
         .forEach(input => {
             input.addEventListener("input", e => {
             e.target.value = e.target.value.replace(/\D/g, '');
+            
         });
     });
     
@@ -224,19 +225,28 @@ function cargarIngredientesAlDom(array) {
             if (inputTarget) {
                 const fila = inputTarget.closest(".fila-entrada");
                 fila.querySelector(".entrada-nombre").value = ingrediente.nombre;
-                fila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+                const cantidadInput = fila.querySelector(".entrada-cantidad");
+                cantidadInput.value = ingrediente.cantidad;
+                // Disparar 'input' para que los listeners reaccionen igual que si el usuario tipeara
+                cantidadInput.dispatchEvent(new Event('input', { bubbles: true }));
 
             } else {
                 const filaOriginal = nutriente.querySelector(".fila-entrada:last-of-type");
                 const nuevaFila = filaOriginal.cloneNode(true);
 
                 nuevaFila.querySelector(".entrada-nombre").value = ingrediente.nombre;
-                nuevaFila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
-
+                const nuevaCantidadInput = nuevaFila.querySelector(".entrada-cantidad");
+                nuevaCantidadInput.value = ingrediente.cantidad;
                 nutriente.appendChild(nuevaFila);
+                // Disparar 'input' en la nueva fila para activar delegados
+                nuevaCantidadInput.dispatchEvent(new Event('input', { bubbles: true }));
             }
         });
     });
+    // Después de insertar/actualizar valores por código, asegurarnos de recalcular
+    // las calorías y actualizar los contadores en la UI.
+    
+    actualizarCaloriasActuales();
 }
 
 
@@ -288,7 +298,7 @@ function inicializarManejoPlatillos() {
             }
         });
     });
-
+    
     actualizarCaloriasActuales();
     // Carga inicial
     cargarPlatillo(platilloActivoId); 
@@ -539,6 +549,10 @@ document.getElementById("BotonImprimir").addEventListener("click", () => {
                 actualizarCaloriasActuales();
             }
         }
+
+        // Recalcular totales después de agregar programáticamente el ingrediente
+        
+
     });
 });*/
 
@@ -630,7 +644,10 @@ document.addEventListener('input', (e) => {
     if (!e.target) return;
     const target = e.target;
     if (target.classList && target.classList.contains('entrada-cantidad')) {
+        // Log de depuración para confirmar que el handler recibe el evento
+        console.log('[input handler] entrada-cantidad changed ->', target.value);
         actualizarCaloriasActuales();
+        
     }
 });
 
@@ -674,7 +691,10 @@ document.querySelector("#botonAgregar").addEventListener("click", () => {
 
             inputTarget.value = ingredienteSeleccionado.nombre;
             const fila = inputTarget.closest(".fila-entrada");
-            fila.querySelector(".entrada-cantidad").value = "0";
+            const cantidadInput = fila.querySelector(".entrada-cantidad");
+            cantidadInput.value = "0";
+            // Disparar evento 'input' tras asignar por código
+            cantidadInput.dispatchEvent(new Event('input', { bubbles: true }));
 
             const datos = ingredientesFitness.find(x => x.nombre === ingredienteSeleccionado);
             /*actualizarBurbuja(fila, datos);
