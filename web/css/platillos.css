@@ -130,6 +130,28 @@ main {
   transform: scale(1.1);
 }
 
+#btnCerrar {
+  background: #e62e6b;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 3rem;
+}
+
+button:active {
+  transform: scale(0.50);
+} 
+
+.plato:active, .ingrediente:active {
+  transition: all 0.1s ease;
+  transform: scale(0.90);
+} 
+
 .abajo {
   display: flex;
   flex-wrap: wrap;
