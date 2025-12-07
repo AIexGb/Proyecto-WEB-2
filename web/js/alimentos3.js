@@ -6,12 +6,14 @@ let recetasGuardadas = {
     'BotonPlatillo4': [],
     'BotonPlatillo5': []
 };
+
 let platilloActivoId = 'BotonPlatillo1';
 let AguaRecomendada = localStorage.getItem("aguaRecomendada") || 0;
 console.log("Agua Recomendada cargada:", AguaRecomendada, localStorage.getItem("aguaRecomendada"));
 let CaloriasOptimas = localStorage.getItem("caloriasOptimas") || 0;
 let platillosGuardadosParaMostrar = []; 
 let ingredientesFitness = [];
+let ingredientesTotales = [];
 let contenedores = {}; 
 let caloriasMap = {};
 let mensajeMotivacional
@@ -102,6 +104,7 @@ function cargarIngredientesDelPlatillo(platillo) {
     Array.from(document.getElementsByClassName("entrada-cantidad"))
         .forEach(input => {
             input.addEventListener("input", e => {
+            
             e.target.value = e.target.value.replace(/\D/g, '');
             
         });
@@ -125,16 +128,68 @@ function actualizarPlatillosGuardadosUI() {
 }
 
 function actualizarCaloriasActuales() {
+    // Siempre reinicia totales dentro de la función
     let caloriasTotales = 0;
-    document.querySelectorAll(".fila-entrada").forEach(fila => {
-        const nombre = fila.querySelector(".entrada-nombre").value;
-        const cantidadGramos = parseInt(fila.querySelector(".entrada-cantidad").value) || 0;
-        if (nombre && caloriasMap[nombre]) {
-            caloriasTotales += caloriasMap[nombre] * cantidadGramos;
+    kcalTot = 0;
+    let proTot = 0;
+    let carbTot = 0;
+    let grasTot = 0;
+
+    // 1) Filas actuales
+    console.log("Recetas guardadas actuales:", recetasGuardadas[platilloActivoId]);
+        document.querySelectorAll(".fila-entrada").forEach(fila => {
+            const nombre = fila.querySelector(".entrada-nombre").value.trim();
+            const cantidadGramos = parseFloat(fila.querySelector(".entrada-cantidad").value) || 0;
+
+            if (!nombre || cantidadGramos <= 0) return;
+
+            // Calorías
+            if (caloriasMap[nombre]) {
+                caloriasTotales += caloriasMap[nombre] * cantidadGramos;
+            }
+
+            // Macros
+            const datos = ingredientesFitness.find(i => i.nombre === nombre);
+            if (datos) {
+                const factor = cantidadGramos / 100; // porque tus macros están por 100g
+                proTot  += (Number(datos.proteinaG) || 0) * factor;
+                carbTot += (Number(datos.carbosG)   || 0) * factor;
+                grasTot += (Number(datos.grasasG)   || 0) * factor;
+            }
+        });
+
+    // 2) Recetas guardadas (si quieres que también cuenten)
+    for (let i = 1; i <= 5; i++) {
+        const platillo = recetasGuardadas[`BotonPlatillo${i}`] || [];
+        if(`BotonPlatillo${i}` !== platilloActivoId){
+            platillo.forEach(ingrediente => {
+                const nombre = ingrediente.nombre;
+                const cantidad = parseFloat(ingrediente.cantidad) || 0;
+                if (!nombre || cantidad <= 0) return;
+
+                const datos = ingredientesFitness.find(it => it.nombre === nombre);
+                if (datos) {
+                    const factor = cantidad / 100;
+                    proTot  += (Number(datos.proteinaG) || 0) * factor;
+                    carbTot += (Number(datos.carbosG)   || 0) * factor;
+                    grasTot += (Number(datos.grasasG)   || 0) * factor;
+                }
+            });
         }
-    });
-    document.getElementById("InputActual").value = Math.round(caloriasTotales)+"kcal";
+        
+    }
+    kCalTotal = (proTot * 4) + (carbTot * 4) + (grasTot * 9);
+
+    console.log("Totales calculados - Proteínas:", proTot, "Carbohidratos:", carbTot, "Grasas:", grasTot);
+
+    // 3) Reflejar en inputs
+    document.getElementById("InputActual").value            = Math.round(caloriasTotales) + "kcal";
+    document.getElementById("InputProteinasTotales").value  = Math.round(proTot);
+    document.getElementById("InputCarbosTotales").value     = Math.round(carbTot);
+    document.getElementById("InputGrasasTotales").value     = Math.round(grasTot);
+    document.getElementById("InputKcalTotales").value      = Math.round(kCalTotal) + "kcal";
 }
+
 
 function actualizarCaloriasActualesCambioPlatillo(id) {
     let caloriasTotales = 0;
@@ -162,15 +217,29 @@ function limpiarFormulario() {
     console.log(`Limpiando nutriente ${idx}:`, nutri);
 
     fila.forEach(f => {
+        const itemsAEliminar = Array.from(f.querySelectorAll(".entrada-nombre")).map((input, i) => {
+            const cantidad = f.querySelectorAll(".entrada-cantidad")[i].value;
+            return {
+                nombre: input.value,
+                cantidad: cantidad
+            };
+        });
+
+        ingredientesTotales = ingredientesTotales.filter(ing =>
+            !itemsAEliminar.some(item =>
+                item.nombre === ing.nombre && item.cantidad == ing.cantidad
+            )
+        );
+
         f.querySelectorAll(".entrada-nombre").forEach(input => input.value = "");
         f.querySelectorAll(".entrada-cantidad").forEach(input => input.value = "");
     });
+
 
     fila.forEach((f, i) => {
         if (i > 0) f.remove();
     });
 });
-
 }
 
 function cargarPlatillo(id) {
@@ -208,6 +277,8 @@ function cargarPlatillo(id) {
 
 
 function cargarIngredientesAlDom(array) {
+    // Resetear ingredientesTotales antes de poblar, evitar acumulaciones entre cargas
+    ingredientesTotales = [];
     array.forEach((ingrediente) => {
         document.querySelectorAll(".nutriente").forEach(nutriente => {
             const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
@@ -242,10 +313,10 @@ function cargarIngredientesAlDom(array) {
                 nuevaCantidadInput.dispatchEvent(new Event('input', { bubbles: true }));
             }
         });
+        //ingredientesTotales.push(ingrediente);
     });
     // Después de insertar/actualizar valores por código, asegurarnos de recalcular
     // las calorías y actualizar los contadores en la UI.
-    
     actualizarCaloriasActuales();
 }
 
@@ -321,8 +392,8 @@ function prepararEImprimirPlatillosConDiccionario() {
     }
 
     // Obtener mensaje del localStorage (única fuente de verdad)
-    
-    console.log("Mensaje motivacional para imprimir:", localStorage.getItem('mensajeMotivacional'));
+    const mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
+    const actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
 
     let htmlContent = `
         <div style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
@@ -492,6 +563,7 @@ function guardadoDePlatillosEnApi(nombrePlatillo) {
 // Lógica del Botón Limpiar
 document.getElementById("BotonLimpiar").addEventListener("click", () => {
     limpiarFormulario();
+    actualizarCaloriasActuales();
     guardarPlatilloActual(); // Guarda el platillo activo como vacío
 });
 
@@ -690,6 +762,7 @@ document.querySelector("#botonAgregar").addEventListener("click", () => {
             }
 
             inputTarget.value = ingredienteSeleccionado.nombre;
+            ingredientesTotales.push(ingredientesFitness.find(x => x.nombre === ingredienteSeleccionado.nombre));
             const fila = inputTarget.closest(".fila-entrada");
             const cantidadInput = fila.querySelector(".entrada-cantidad");
             cantidadInput.value = "0";
@@ -731,13 +804,14 @@ function actualizarBurbuja(fila) {
     }
 
     const kcalTotales = Math.round(datos.kcal_por_gramo * cantidad);
-    burbuja.textContent = `Proteína: ${datos.proteinaG}g | Carbos: ${datos.carbosG}g | Grasas: ${datos.grasasG}g | Kcal: ${kcalTotales}`;
+    burbuja.textContent = `Proteína: ${datos.proteinaG * (cantidad/100)}g | Carbos: ${datos.carbosG * (cantidad/100)}g | Grasas: ${datos.grasasG * (cantidad/100)}g | Kcal: ${kcalTotales}`;
 }
 
 // Actualiza la burbuja al cambiar la cantidad
 document.addEventListener('input', e => {
     if (e.target.classList.contains('entrada-cantidad')) {
         e.target.value = e.target.value.replace(/\D/g,'');
+        
         const fila = e.target.closest('.fila-entrada');
         actualizarBurbuja(fila);
     }

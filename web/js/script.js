@@ -25,11 +25,11 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
     }
 
     const factorActividad = {
-        sedentario: 1.2,
-        ligero: 1.375,
-        moderado: 1.55,
-        intenso: 1.725,
-        muy_intenso: 1.9
+        sedentario: 1.35,
+        ligero: 1.55,
+        moderado: 1.65,
+        intenso: 1.825,
+        muy_intenso: 2.1
     };
 
     const factorObjetivo = {
