@@ -1,332 +1,265 @@
-// ===========================
-// VARIABLES GLOBALES
-// ===========================
+// -----------------------------
+// 1. VARIABLES GLOBALES
+// -----------------------------
+let recetasGuardadas = {
+    'BotonPlatillo1': [],
+    'BotonPlatillo2': [],
+    'BotonPlatillo3': [],
+    'BotonPlatillo4': [],
+    'BotonPlatillo5': []
+};
+let platilloActivoId = 'BotonPlatillo1';
+let platillosGuardadosParaMostrar = [];
 let ingredientesFitness = [];
 let contenedores = {};
-let caloriasMap = {};
-let recetasGuardadas = JSON.parse(sessionStorage.getItem('recetasGuardadas')) || {};
-let platilloActivoId = 'BotonPlatillo1';
-let platosCreados = [];
-let platillosGuardadosParaMostrar = [];
-let platillosGuardadosUsuario = [];
+const modalGuardar = document.querySelector('.contenido');
+const btnGuardarNombre = document.getElementById('btnGuardar');
 
 let ingredienteSeleccionado = null;
 let categoriaSeleccionada = null;
 
-// ===========================
-// FUNCIONES DE CARGA
-// ===========================
-
-function actualizarPlatillosGuardadosUI() {
-    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
-    
-    contenedorPlatos.forEach((plato, index) => {
-        if (platillosGuardadosParaMostrar[index]) {
-            const platilloData = platillosGuardadosParaMostrar[index];
-            plato.querySelector('p').textContent = platilloData.nombre;
-            plato.style.cursor = "pointer";
-            plato.style.opacity = "1";
-            
-            // Agregar evento click para mostrar el detalle
-            plato.onclick = () => mostrarDetallePlatillo(platilloData);
-        } else {
-            plato.querySelector('p').textContent = "Nombre de Platillo";
-            plato.style.cursor = "default";
-            plato.style.opacity = "0.5";
-            plato.onclick = null;
-        }
-    });
-}
-
-function cargarIngredientesDelAPI() {
-    (async () => {
-        const response = await apiGetIngredientes();
-
-        response.forEach(i => {
-            const kcal_por_gramo = ((i.proteinaG * 4) + (i.carbosG * 4) + (i.grasasG * 9)) / 100;
-            let t = i.tipo === "proteína" ? "proteina" :
-                    i.tipo === "carbohidrato" ? "carb" :
-                    i.tipo === "grasa" ? "grasas" :
-                    i.tipo;
-
-            ingredientesFitness.push({
-                ingredienteId: i.ingredienteId,
-                nombre: i.nombre,
-                cat: t,
-                kcal_por_gramo,
-                proteinaG: i.proteinaG,
-                carbosG: i.carbosG,
-                grasasG: i.grasasG
-            });
-        });
-
-        // Crear elementos en DOM
-        ingredientesFitness.forEach(i => {
-            const div = document.createElement("div");
-            div.classList.add("ingrediente");
-            div.textContent = i.nombre;
-            div.dataset.cat = i.cat;
-            contenedores[i.cat].appendChild(div);
-        });
-
-        // Map para cálculo rápido de calorías
-        caloriasMap = ingredientesFitness.reduce((map, item) => {
-            map[item.nombre] = item.kcal_por_gramo;
-            return map;
-        }, {});
-    })();
-}
-
-function cargarPlatillosDelApi() {
-    (async () => {
-        const response = await apiGetPlatillos();
-
-        response.forEach(i => {
-            platillosGuardadosParaMostrar.push({
-                nombre: i.nombre,
-                kCalTotal: i.kCalTotal,
-                platilloIngredientes: i.platilloIngredientes
-            });
-        });
-
-        actualizarPlatillosGuardadosUI();
-    })();
-}
-
-// ===========================
-// FUNCIONES DE CALCULO
-// ===========================
-
-function actualizarCaloriasActuales() {
-    let caloriasTotales = 0;
-    document.querySelectorAll(".fila-entrada").forEach(fila => {
-        const nombre = fila.querySelector(".entrada-nombre").value;
-        const cantidadGramos = parseInt(fila.querySelector(".entrada-cantidad").value) || 0;
-        if (nombre && caloriasMap[nombre]) {
-            caloriasTotales += caloriasMap[nombre] * cantidadGramos;
-        }
-    });
-    document.getElementById("InputActual").value = Math.round(caloriasTotales) + " kcal";
-}
-
-function actualizarBurbuja(fila, datos) {
-    let burbuja = fila.querySelector(".burbuja-texto");
-    if (!burbuja) {
-        burbuja = document.createElement("div");
-        burbuja.classList.add("burbuja-texto");
-        fila.appendChild(burbuja);
-    }
-
-    const cantidad = parseInt(fila.querySelector(".entrada-cantidad").value) || 0;
-    const calorias = ((datos.proteinaG * 4) + (datos.carbosG * 4) + (datos.grasasG * 9)) * (cantidad / 100);
-
-    burbuja.textContent =
-        `Proteína: ${datos.proteinaG}g | Carbos: ${datos.carbosG}g | Grasas: ${datos.grasasG}g | Kcal: ${calorias.toFixed(1)} kcal`;
-}
-
-// ===========================
-// FUNCIONES DE GESTIÓN DE PLATILLOS
-// ===========================
-
-function guardarPlatilloActual() {
+// -----------------------------
+// 2. FUNCIONES DE RECOPILACIÓN
+// -----------------------------
+function recopilarIngredientes() {
     const ingredientesPlatillo = [];
-
-    document.querySelectorAll(".fila-entrada").forEach(fila => {
-        const nombre = fila.querySelector(".entrada-nombre").value;
-        const cantidad = fila.querySelector(".entrada-cantidad").value;
-        if (nombre && cantidad) {
-            ingredientesPlatillo.push({ nombre, cantidad });
-        }
+    document.querySelectorAll(".nutriente").forEach(nutriente => {
+        const filas = nutriente.querySelectorAll(".fila-entrada");
+        filas.forEach(fila => {
+            const nombre = fila.querySelector(".entrada-nombre").value.trim();
+            const cantidad = fila.querySelector(".entrada-cantidad").value.trim();
+            const categoria = nutriente.querySelector("h3").textContent.toLowerCase();
+            if (nombre !== '' && cantidad !== '') {
+                ingredientesPlatillo.push({
+                    nombre: nombre,
+                    cantidad: cantidad,
+                    cat: categoria.includes("proteína") ? "proteina" :
+                        categoria.includes("carbohidrato") ? "carb" :
+                            categoria.includes("grasa") ? "grasas" : "otro"
+                });
+            }
+        });
     });
+    return ingredientesPlatillo;
+}
 
-    if (!platosCreados.find(p => p.platoId === platilloActivoId) && ingredientesPlatillo.length > 0) {
-        platosCreados.push({ platoId: platilloActivoId, ingredientes: ingredientesPlatillo });
-    }
-
-    const OptimoPP = platosCreados.length > 3 ?
-        Number(sessionStorage.getItem("caloriasOptimas")) / platosCreados.length :
-        Number(sessionStorage.getItem("caloriasOptimas")) / 3;
-
-    document.getElementById("InputOptimoPP").value = Math.round(OptimoPP) + " kcal";
-
-    alert(`Platillo "${platilloActivoId}" guardado con ${ingredientesPlatillo.length} ingredientes.`);
+// -----------------------------
+// 3. GUARDADO DE PLATILLO
+// -----------------------------
+function guardarPlatilloActual() {
+    const ingredientesPlatillo = recopilarIngredientes();
     recetasGuardadas[platilloActivoId] = ingredientesPlatillo;
-    sessionStorage.setItem('recetasGuardadas', JSON.stringify(recetasGuardadas));
+    console.log(`Platillo "${platilloActivoId}" actualizado en recetasGuardadas.`);
+}
+
+// -----------------------------
+// 4. LIMPIEZA Y CARGA
+// -----------------------------
+function limpiarFormulario() {
+    document.querySelectorAll(".entrada-nombre").forEach(input => input.value = "");
+    document.querySelectorAll(".entrada-cantidad").forEach(input => input.value = "");
+    document.querySelectorAll(".burbuja-texto").forEach(b => b.remove());
 }
 
 function cargarPlatillo(id) {
-    // Limpiar filas existentes
-    document.querySelectorAll(".nutriente").forEach(nutriente => {
-        const filas = Array.from(nutriente.querySelectorAll(".fila-entrada"));
-        filas.slice(1).forEach(fila => fila.remove());
-        if (filas.length > 0) {
-            filas[0].querySelector(".entrada-nombre").value = "";
-            filas[0].querySelector(".entrada-cantidad").value = "";
-            const burbuja = filas[0].querySelector(".burbuja-texto");
-            if (burbuja) burbuja.textContent = "macros p/c 100g []";
-        }
-    });
-
+    limpiarFormulario();
     platilloActivoId = id;
     actualizarClaseActivoTabs(id);
-
     const receta = recetasGuardadas[id] || [];
-    const inputContador = { 'proteina': 0, 'carb': 0, 'grasas': 0 };
+    if (receta.length > 0) {
+        cargarIngredientesAlDom(receta);
+    }
+    console.log(`Cargado Platillo "${id}".`);
+    calcularKcalTotales(); // recalcula al cargar
+}
 
-    receta.forEach((item) => {
-        const ingredienteData = ingredientesFitness.find(i => i.nombre === item.nombre);
-        if (!ingredienteData) return;
+function cargarIngredientesAlDom(array) {
+    array.forEach(ingrediente => {
+        document.querySelectorAll(".nutriente").forEach(nutriente => {
+            const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
+            if (
+                (ingrediente.cat === "proteina" && h3.includes("proteína")) ||
+                (ingrediente.cat === "carb" && h3.includes("carbohidrato")) ||
+                (ingrediente.cat === "grasas" && h3.includes("grasa"))
+            ) {
+                let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
+                    .find(input => input.value === "");
 
-        const categoria = ingredienteData.cat;
-        let nutrienteContenedor = null;
-
-        document.querySelectorAll('.nutriente').forEach(nutriente => {
-            const titulo = nutriente.querySelector('h3')?.textContent.toLowerCase();
-            if (!titulo) return;
-            if ((categoria === 'proteina' && titulo.includes('proteína')) ||
-                (categoria === 'carb' && titulo.includes('carbohidrato')) ||
-                (categoria === 'grasas' && titulo.includes('grasa'))) {
-                nutrienteContenedor = nutriente;
+                if (!inputTarget) {
+                    const filaOriginal = nutriente.querySelector(".fila-entrada");
+                    const nuevaFila = filaOriginal.cloneNode(true);
+                    nuevaFila.querySelector(".entrada-nombre").value = ingrediente.nombre;
+                    nuevaFila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+                    nutriente.appendChild(nuevaFila);
+                    inputTarget = nuevaFila.querySelector(".entrada-nombre");
+                    actualizarBurbuja(nuevaFila);
+                } else {
+                    const fila = inputTarget.closest('.fila-entrada');
+                    inputTarget.value = ingrediente.nombre;
+                    fila.querySelector('.entrada-cantidad').value = ingrediente.cantidad;
+                    actualizarBurbuja(fila);
+                }
             }
         });
-
-        if (nutrienteContenedor) {
-            let filaTarget = inputContador[categoria] === 0 ?
-                nutrienteContenedor.querySelector(".fila-entrada") :
-                nutrienteContenedor.querySelector(".fila-entrada").cloneNode(true);
-
-            if (inputContador[categoria] !== 0) {
-                filaTarget.querySelector(".entrada-nombre").value = "";
-                filaTarget.querySelector(".entrada-cantidad").value = "";
-                nutrienteContenedor.appendChild(filaTarget);
-            }
-
-            filaTarget.querySelector(".entrada-nombre").value = item.nombre;
-            filaTarget.querySelector(".entrada-cantidad").value = item.cantidad;
-
-            actualizarBurbuja(filaTarget, ingredienteData);
-
-            filaTarget.querySelector(".entrada-cantidad").addEventListener("input", () => {
-                actualizarBurbuja(filaTarget, ingredienteData);
-                actualizarCaloriasActuales();
-            });
-
-            inputContador[categoria]++;
-        }
     });
-
-    actualizarCaloriasActuales();
 }
 
 function actualizarClaseActivoTabs(id) {
     document.querySelectorAll('.platillos .boton-secundario').forEach(div => div.classList.remove('activo'));
-    document.getElementById(id)?.classList.add('activo');
+    const divActivoPC = document.getElementById(id);
+    if (divActivoPC) divActivoPC.classList.add('activo');
 
+    const tabs = document.querySelectorAll('.tabs .tab');
     const numeroPlatillo = parseInt(id.replace('BotonPlatillo', ''));
-    document.querySelectorAll('.tabs .tab').forEach((tab, index) => {
-        tab.classList.toggle('activo', index === numeroPlatillo - 1);
+    const indexActivo = numeroPlatillo - 1;
+    tabs.forEach((tab, index) => {
+        tab.classList.remove('activo');
+        if (index === indexActivo) tab.classList.add('activo');
     });
 }
 
-// ===========================
-// INICIALIZACIÓN Y EVENTOS
-// ===========================
+// -----------------------------
+// 5. FUNCIONES DE BURBUJAS
+// -----------------------------
+function actualizarBurbuja(fila) {
+    const nombre = fila.querySelector('.entrada-nombre').value;
+    const cantidad = parseInt(fila.querySelector('.entrada-cantidad').value) || 0;
+    const datos = ingredientesFitness.find(i => i.nombre === nombre);
+    if (!datos) return;
 
-function inicializarCalculoCalorias() {
-    const inputOptimo = document.getElementById('InputOptimo');
-    const caloriasOptimas = sessionStorage.getItem('caloriasOptimas');
-    if (inputOptimo) inputOptimo.value = caloriasOptimas ? caloriasOptimas + " kcal" : "N/D";
+    let burbuja = fila.querySelector('.burbuja-texto');
+    if (!burbuja) {
+        burbuja = document.createElement('div');
+        burbuja.classList.add('burbuja-texto');
+        fila.appendChild(burbuja);
+    }
 
-    document.querySelector(".abajo").addEventListener('input', (e) => {
-        if (e.target.classList.contains('entrada-cantidad')) actualizarCaloriasActuales();
-    });
+    const kcalTotales = Math.round(datos.kcal_por_gramo * cantidad);
+    burbuja.textContent = `Proteína: ${datos.proteinaG}g | Carbos: ${datos.carbosG}g | Grasas: ${datos.grasasG}g | Kcal: ${kcalTotales}`;
 }
 
-function inicializarBotonesPlatillos() {
-    const elementosNavegacion = document.querySelectorAll('.platillos button, .tabs .tab');
-    elementosNavegacion.forEach(elemento => {
-        elemento.addEventListener('click', () => {
-            let idParaCargar;
-            if (elemento.closest('.platillos')) {
-                idParaCargar = elemento.closest('.boton-secundario')?.id;
-            } else if (elemento.closest('.tabs')) {
-                const tabs = Array.from(document.querySelectorAll('.tabs .tab'));
-                const index = tabs.indexOf(elemento);
-                idParaCargar = `BotonPlatillo${index + 1}`;
-            }
-            if (idParaCargar && idParaCargar !== platilloActivoId) {
-                guardarPlatilloActual();
-                cargarPlatillo(idParaCargar);
-            }
-        });
-    });
-    cargarPlatillo(platilloActivoId);
-}
+// Actualiza la burbuja al cambiar la cantidad
+document.addEventListener('input', e => {
+    if (e.target.classList.contains('entrada-cantidad')) {
+        e.target.value = e.target.value.replace(/\D/g, '');
+        const fila = e.target.closest('.fila-entrada');
+        actualizarBurbuja(fila);
+    }
+});
 
-// ===========================
-// MANEJO DE INGREDIENTES
-// ===========================
+// -----------------------------
+// 6. MANEJO DE INGREDIENTES SELECCIONADOS
+// -----------------------------
+document.addEventListener('click', e => {
+    if (e.target.classList.contains('ingrediente')) {
+        document.querySelectorAll('.ingrediente').forEach(d => d.classList.remove('seleccionado'));
+        e.target.classList.add('seleccionado');
 
-document.addEventListener("click", e => {
-    if (e.target.classList.contains("ingrediente")) {
-        document.querySelectorAll(".ingrediente").forEach(d => d.classList.remove("seleccionado"));
-        e.target.classList.add("seleccionado");
         ingredienteSeleccionado = e.target.textContent;
         categoriaSeleccionada = e.target.dataset.cat;
     }
 });
 
+// Agregar ingrediente al platillo
 document.querySelector(".boton button").addEventListener("click", () => {
-    if (!ingredienteSeleccionado || !categoriaSeleccionada) return alert("Selecciona primero un ingrediente.");
+    if (!ingredienteSeleccionado || !categoriaSeleccionada) {
+        alert("Selecciona primero un ingrediente.");
+        return;
+    }
 
     document.querySelectorAll(".nutriente").forEach(nutriente => {
-        const h3 = nutriente.querySelector("h3")?.textContent.toLowerCase();
-        if (!h3) return;
-
-        if ((categoriaSeleccionada === "proteina" && h3.includes("proteína")) ||
+        const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
+        if (
+            (categoriaSeleccionada === "proteina" && h3.includes("proteína")) ||
             (categoriaSeleccionada === "carb" && h3.includes("carbohidrato")) ||
-            (categoriaSeleccionada === "grasas" && h3.includes("grasa"))) {
-
-            let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre")).find(input => input.value === "");
+            (categoriaSeleccionada === "grasas" && h3.includes("grasa"))
+        ) {
+            let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
+                .find(input => input.value === "");
 
             if (!inputTarget) {
                 const filaOriginal = nutriente.querySelector(".fila-entrada");
                 const nuevaFila = filaOriginal.cloneNode(true);
-                nuevaFila.querySelector(".entrada-nombre").value = "";
-                nuevaFila.querySelector(".entrada-cantidad").value = "";
+                nuevaFila.querySelector(".entrada-nombre").value = ingredienteSeleccionado;
+                nuevaFila.querySelector(".entrada-cantidad").value = "0";
                 nutriente.appendChild(nuevaFila);
-                inputTarget = nuevaFila.querySelector(".entrada-nombre");
+                actualizarBurbuja(nuevaFila);
+            } else {
+                const fila = inputTarget.closest('.fila-entrada');
+                inputTarget.value = ingredienteSeleccionado;
+                fila.querySelector('.entrada-cantidad').value = "0";
+                actualizarBurbuja(fila);
             }
-
-            inputTarget.value = ingredienteSeleccionado;
-            const fila = inputTarget.closest(".fila-entrada");
-            fila.querySelector(".entrada-cantidad").value = "0";
-
-            const datos = ingredientesFitness.find(x => x.nombre === ingredienteSeleccionado);
-            actualizarBurbuja(fila, datos);
-
-            fila.querySelector(".entrada-cantidad").addEventListener("input", () => {
-                actualizarBurbuja(fila, datos);
-                actualizarCaloriasActuales();
-            });
-
-            actualizarCaloriasActuales();
         }
     });
 
     document.querySelectorAll(".ingrediente").forEach(d => d.classList.remove("seleccionado"));
     ingredienteSeleccionado = null;
     categoriaSeleccionada = null;
+
+    setTimeout(calcularKcalTotales, 50); // recalcular kcal al agregar
 });
 
-document.querySelector(".abajo").addEventListener('click', (e) => {
-    if (e.target.classList.contains('boton-equis')) manejarEliminacion(e.target.closest(".fila-entrada"));
+// -----------------------------
+// 7. FILTROS POR CATEGORÍA Y BÚSQUEDA
+// -----------------------------
+document.getElementById("FiltroCategoria").addEventListener('change', () => {
+    const valor = document.getElementById("FiltroCategoria").value;
+    document.querySelectorAll('.ingrediente').forEach(i => {
+        i.style.display = (valor === "todos" || i.dataset.cat === valor) ? "block" : "none";
+    });
 });
 
-// ===========================
-// EVENTO DOM CONTENT LOADED
-// ===========================
+document.getElementById("BusquedaIngrediente").addEventListener('input', () => {
+    const valor = document.getElementById("BusquedaIngrediente").value.toLowerCase();
+    document.querySelectorAll('.ingrediente').forEach(i => {
+        i.style.display = i.textContent.toLowerCase().includes(valor) ? "block" : "none";
+    });
+});
 
+// -----------------------------
+// 8. BOTONES ACCIÓN (Guardar, Limpiar, Imprimir)
+// -----------------------------
+document.getElementById("BotonLimpiar").addEventListener("click", () => {
+    limpiarFormulario();
+    guardarPlatilloActual();
+    alert("Platillo limpiado.");
+});
+
+document.getElementById("BotonGuardar").addEventListener("click", () => {
+    guardarPlatilloActual();
+    if (recetasGuardadas[platilloActivoId].length === 0) {
+        alert("No hay ingredientes para guardar en este platillo. Por favor, agrega al menos un ingrediente.");
+        return;
+    }
+    if (modalGuardar) modalGuardar.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
+
+document.getElementById("BotonImprimir").addEventListener("click", () => {
+    prepararEImprimirPlatillosConDiccionario();
+});
+
+btnGuardarNombre.addEventListener("click", () => {
+    const nombreInput = modalGuardar.querySelector('.nombre');
+    const nombrePlatillo = nombreInput.value.trim();
+    if (nombrePlatillo) {
+        const datosPlatillo = {
+            nombre: nombrePlatillo,
+            ingredientes: recetasGuardadas[platilloActivoId]
+        };
+        platillosGuardadosParaMostrar.push(datosPlatillo);
+        nombreInput.value = '';
+        modalGuardar.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    } else {
+        alert("Por favor, ingresa un nombre para el platillo.");
+    }
+});
+
+// -----------------------------
+// 9. INICIALIZACIÓN
+// -----------------------------
 document.addEventListener('DOMContentLoaded', () => {
     contenedores = {
         proteina: document.getElementById("Proteina"),
@@ -334,12 +267,136 @@ document.addEventListener('DOMContentLoaded', () => {
         grasas: document.getElementById("Grasas")
     };
 
+    inicializarManejoPlatillos();
     cargarIngredientesDelAPI();
-    inicializarCalculoCalorias();
-    inicializarBotonesPlatillos();
-    actualizarPlatillosGuardadosUI();
     cargarPlatillosDelApi();
-    guardarPlatilloActual();
+});
 
-    window.addEventListener('beforeunload', () => guardarPlatilloActual());
+// -----------------------------
+// 10. CÁLCULOS DE KCAL Y OPTIMO POR PLATILLO
+// -----------------------------
+function calcularKcalTotales() {
+    let kcalTotales = 0;
+    let proteinasTotales = 0;
+    let grasasTotales = 0;
+    let carbosTotales = 0;
+    let numPlatillosActivos = 0;
+
+    // Recorre los 5 posibles platillos
+    for (let i = 1; i <= 5; i++) {
+        const platilloId = `BotonPlatillo${i}`;
+        const platillo = recetasGuardadas[platilloId];
+
+        if (platillo && platillo.length > 0) {
+            numPlatillosActivos++;
+
+            platillo.forEach(ingrediente => {
+                const datos = ingredientesFitness.find(i => i.nombre === ingrediente.nombre);
+                if (datos) {
+                    const cantidad = parseFloat(ingrediente.cantidad) || 0;
+                    kcalTotales += datos.kcal_por_gramo * cantidad;
+                    proteinasTotales += datos.proteinaG * cantidad;
+                    grasasTotales += datos.grasasG * cantidad;
+                    carbosTotales += datos.carbosG * cantidad;
+                }
+            });
+        }
+    }
+
+    // Actualizar campos en el DOM
+    const inputActual = document.getElementById("InputActual");
+    if (inputActual) inputActual.value = Math.round(kcalTotales);
+
+    const inputProteinas = document.getElementById("InputProteinasTotales");
+    if (inputProteinas) inputProteinas.value = Math.round(proteinasTotales);
+
+    const inputGrasas = document.getElementById("InputGrasasTotales");
+    if (inputGrasas) inputGrasas.value = Math.round(grasasTotales);
+
+    const inputCarbos = document.getElementById("InputCarbosTotales");
+    if (inputCarbos) inputCarbos.value = Math.round(carbosTotales);
+
+    const caloriasOptimas = parseFloat(sessionStorage.getItem('caloriasOptimas')) || 0;
+    const inputOptimoPP = document.getElementById("InputOptimoPP");
+    if (inputOptimoPP) {
+        let divisor = Math.max(3, numPlatillosActivos); // mínimo 3, si hay más platillos se divide entre su número
+        inputOptimoPP.value = Math.round(caloriasOptimas / divisor);
+    }
+
+    const inputOptimo = document.getElementById("InputOptimo");
+    if (inputOptimo) inputOptimo.value = Math.round(caloriasOptimas);
+
+    const inputKcalTotales = document.getElementById("InputKcalTotales");
+    if (inputKcalTotales) inputKcalTotales.value = Math.round(kcalTotales);
+}
+
+
+// -----------------------------
+// 11. CÁLCULO DE CALORÍAS REALISTA
+// -----------------------------
+function calcularCaloriasRealistas({ pesoKg, alturaM, sexo, actividad, objetivo }) {
+    const alturaPulgadas = alturaM / 0.0254;
+    let pesoIdeal;
+    if (sexo === "hombre") {
+        pesoIdeal = 50 + 2.3 * (alturaPulgadas - 60);
+    } else {
+        pesoIdeal = 45.5 + 2.3 * (alturaPulgadas - 60);
+    }
+
+    const pesoAjustado = (pesoKg - pesoIdeal) * 0.25 + pesoIdeal;
+    const ger = 25 * pesoAjustado;
+
+    const factoresActividad = {
+        sedentario: 1.35,
+        ligero: 1.55,
+        moderado: 1.65,
+        intenso: 1.8,
+        muy_intenso: 2.1
+    };
+    const fa = factoresActividad[actividad] || 1.5;
+    const tdee = ger * fa;
+
+    let caloriasObjetivo;
+    if (objetivo === "bajar") caloriasObjetivo = tdee * 0.8;
+    else if (objetivo === "subir") caloriasObjetivo = tdee * 1.15;
+    else caloriasObjetivo = tdee;
+
+    return {
+        ger: Math.round(ger),
+        tdee: Math.round(tdee),
+        caloriasObjetivo: Math.round(caloriasObjetivo)
+    };
+}
+
+function actualizarCaloriasPlanificador() {
+    const peso = parseFloat(document.querySelectorAll(".grupo-formulario input")[0].value);
+    const altura = parseFloat(document.querySelectorAll(".grupo-formulario input")[1].value);
+    const actividad = document.querySelectorAll(".grupo-formulario select")[0].value;
+    const objetivo = document.querySelectorAll(".grupo-formulario select")[1].value;
+    const sexoInput = document.querySelector('input[name="sexo"]:checked');
+    if (!peso || !altura || !actividad || !objetivo || !sexoInput) return;
+    const sexo = sexoInput.value;
+
+    const { caloriasObjetivo } = calcularCaloriasRealistas({ pesoKg: peso, alturaM: altura, sexo, actividad, objetivo });
+    sessionStorage.setItem('caloriasOptimas', caloriasObjetivo);
+
+    calcularKcalTotales();
+
+    const campoAgua = document.getElementById("InputAgua");
+    if (campoAgua) {
+        const aguaLitros = (peso * 0.035).toFixed(2);
+        campoAgua.value = aguaLitros + " L";
+        sessionStorage.setItem("AguaRecomendada", aguaLitros);
+    }
+}
+
+// -----------------------------
+// 12. CONECTAR AL FORMULARIO
+// -----------------------------
+document.querySelector(".formulario").addEventListener("submit", function (e) {
+    e.preventDefault();
+    actualizarCaloriasPlanificador();
+
+    document.getElementById("TextoInicial").style.display = "none";
+    document.getElementById("ContenedorResultados").style.display = "block";
 });
