@@ -63,12 +63,12 @@ async function apiGetIngredientes() {
  
 // platillos 
 async function apiGetPlatillos() { 
-    return await api.get("/platillos"); 
+    return await api.get("platillos"); 
 } 
  
 // Guardar platillo (según el PDF) 
 async function apiPostPlatillo(nombre, ingredientesArray) { 
-    return await api.post("/platillos", { 
+    return await api.post("platillos", { 
         nombre: nombre, 
         ingredientes: ingredientesArray 
     }); 
@@ -76,16 +76,16 @@ async function apiPostPlatillo(nombre, ingredientesArray) {
  
 // buscar por nombre 
 async function apiBuscarPlatillo(nombre) { 
-    return await api.get(`/platillos/byname?name=${encodeURIComponent(nombre)}`); 
+    return await api.get(`platillos/byname?name=${encodeURIComponent(nombre)}`); 
 } 
  
 // calcular kcal 
 async function apiCalcularKcal(id) { 
-    return await api.post(`/platillos/${id}/calcular-kcal`); 
+    return await api.post(`platillos/${id}/calcular-kcal`); 
 } 
  
 async function apiCalcularIntake(data) { 
-    return await api.post("/calcular-kcal-intake", data); 
+    return await api.post("calcular-kcal-intake", data); 
 }
 
 async function apiCalcularIntakeGET({ peso, altura, sexo, actividad, objetivo }) {

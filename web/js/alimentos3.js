@@ -8,6 +8,8 @@ let recetasGuardadas = {
 };
 let platilloActivoId = 'BotonPlatillo1';
 let platillosGuardadosParaMostrar = []; 
+let ingredientesFitness = [];
+let contenedores = {}; 
 const modalGuardar = document.querySelector('.contenido');
 const btnGuardarNombre = document.getElementById('btnGuardar');
 
@@ -152,6 +154,27 @@ function actualizarClaseActivoTabs(id) {
         tab.classList.remove('activo');
         if (index === indexActivo) {
             tab.classList.add('activo');
+        }
+    });
+}
+
+function actualizarPlatillosGuardadosUI() {
+    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
+    
+    contenedorPlatos.forEach((plato, index) => {
+        if (platillosGuardadosParaMostrar[index]) {
+            const platilloData = platillosGuardadosParaMostrar[index];
+            plato.querySelector('p').textContent = platilloData.nombre;
+            plato.style.cursor = "pointer";
+            plato.style.opacity = "1";
+            
+            // Agregar evento click para mostrar el detalle
+            plato.onclick = () => mostrarDetallePlatillo(platilloData);
+        } else {
+            plato.querySelector('p').textContent = "Nombre de Platillo";
+            plato.style.cursor = "default";
+            plato.style.opacity = "0.5";
+            plato.onclick = null;
         }
     });
 }
@@ -317,26 +340,37 @@ function cargarIngredientesDelAPI(){
     })();
 }
 
-function cargarPlatillosDelApi(){
-    
+function cargarIngredientesDelAPI(){
     (async () => {
-    const response = await apiGetPlatillos();
-    console.log("Platillos desde API:", response);
+    const response = await apiGetIngredientes();
+    console.log("Ingredientes desde API:", response);
 
     response.forEach(i => {
-        platillosGuardadosParaMostrar.push({
+        const kcal_por_gramo = ((i.proteinaG * 4) + (i.carbosG * 4) + (i.grasasG * 9)) / 100;
+        let t;
+        if (i.tipo === "proteína") t = "proteina";
+        else if (i.tipo === "carbohidrato") t = "carb";
+        else if (i.tipo === "grasa") t = "grasas";
+        else t = t.tipo;
+        console.log({ nombre: i.nombre, cat: t, kcal_por_gramo });
+
+        ingredientesFitness.push({
             nombre: i.nombre,
-            kCalTotal: i.kCalTotal,
-            platilloIngredientes: i.platilloIngredientes
+            cat: t,
+            kcal_por_gramo
         });
     });
 
-    platillosGuardadosParaMostrar.forEach((platillo, index) => {
-        console.log(`Platillo ${index + 1}:`, platillo);
+        
+    ingredientesFitness.forEach(i => {
+        const div = document.createElement("div");
+        div.classList.add("ingrediente");
+        div.textContent = i.nombre;
+        div.dataset.cat = i.cat;
+        contenedores[i.cat].appendChild(div);
     });
 
-    actualizarPlatillosGuardadosUI();
-    })();
+})();
 }
     
 // --------------------------------------------------------------------------------------
@@ -416,6 +450,12 @@ btnGuardarNombre.addEventListener("click", () => {
 // --------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
+    contenedores = {
+        proteina: document.getElementById("Proteina"),
+        carb: document.getElementById("Carbohidratos"),
+        grasas: document.getElementById("Grasas")
+    };
+
     inicializarManejoPlatillos();
     cargarIngredientesDelAPI();
     cargarPlatillosDelApi();
