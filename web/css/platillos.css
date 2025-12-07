@@ -933,3 +933,12 @@ button:active{
         page-break-inside: avoid;
     }
 }
+
+@media screen and (min-width: 784px) and (max-width: 846px) {
+  .burbuja-texto {
+    left: 120%;
+    width: 250px;
+    max-width: 300px;
+  }
+}
+
