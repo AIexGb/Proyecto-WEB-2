@@ -460,7 +460,7 @@ function prepararEImprimirPlatillosConDiccionario() {
 
     htmlContent += `
         <br>
-        <div style="background: #f8eaf4; border-radius: 8px; padding: 20px; margin-top: 30px;">
+        <div style="page-break-before: always; background: #f8eaf4; border-radius: 8px; padding: 20px; margin-top: 30px;">
             <h3 style="color: #802b4a; margin-top: 0; border-bottom: 2px solid #e62e6b; padding-bottom: 10px; font-size: 18px;">Resumen Nutricional</h3>
             <br>
             
