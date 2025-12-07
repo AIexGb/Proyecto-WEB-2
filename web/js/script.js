@@ -68,7 +68,7 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
         }
 
           // localStorage para usarlo en otra página
-          localStorage.setItem("AguaRecomendada", aguaLitros.toFixed(2));
+          localStorage.setItem("aguaRecomendada", aguaLitros.toFixed(2));
 
 
             //localStorage para la siguiente página

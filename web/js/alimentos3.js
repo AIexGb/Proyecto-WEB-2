@@ -8,11 +8,14 @@ let recetasGuardadas = {
 };
 let platilloActivoId = 'BotonPlatillo1';
 let AguaRecomendada = localStorage.getItem("aguaRecomendada") || 0;
+console.log("Agua Recomendada cargada:", AguaRecomendada, localStorage.getItem("aguaRecomendada"));
 let CaloriasOptimas = localStorage.getItem("caloriasOptimas") || 0;
 let platillosGuardadosParaMostrar = []; 
 let ingredientesFitness = [];
 let contenedores = {}; 
 let caloriasMap = {};
+let mensajeMotivacional
+let actividadLabel
 let ingredienteSeleccionado = {
     nombre: '',
     cat: '',
@@ -21,6 +24,7 @@ let ingredienteSeleccionado = {
 
 const modalGuardar = document.querySelector('.contenido');
 const btnGuardarNombre = document.getElementById('btnGuardar');
+const btnCancelarNombre = document.getElementById('btnCerrar');
 
 
 // --------------------------------------------------------------------------------------
@@ -81,6 +85,7 @@ function cargarIngredientesDelPlatillo(platillo) {
         platillo.platilloIngredientes.forEach(platilloIng => {
             if (platilloIng.ingredienteNombre === i.nombre) {
                 ing.push({
+                    ingredienteId: i.ingredienteId,
                     nombre: platilloIng.ingredienteNombre,
                     cat: i.cat,
                     cantidad: platilloIng.cantidad
@@ -303,8 +308,8 @@ function prepararEImprimirPlatillosConDiccionario() {
     }
 
     // Obtener mensaje del localStorage (única fuente de verdad)
-    const mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
-    const actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
+    
+    console.log("Mensaje motivacional para imprimir:", localStorage.getItem('mensajeMotivacional'));
 
     let htmlContent = `
         <div style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
@@ -394,6 +399,7 @@ function cargarIngredientesDelAPI(){
         console.log({ nombre: i.nombre, cat: t, kcal_por_gramo });
 
         ingredientesFitness.push({
+            ingredienteId: i.ingredienteId,
             nombre: i.nombre,
             cat: t,
             kcal_por_gramo
@@ -431,6 +437,38 @@ function cargarPlatillosDelApi() {
         actualizarPlatillosGuardadosUI();
     })();
 }
+
+function guardadoDePlatillosEnApi(nombrePlatillo) {
+     let ingredientesPorCategoria = [];
+
+    document.querySelectorAll(".fila-entrada").forEach(fila => {
+        const nombre = fila.querySelector(".entrada-nombre").value;
+        const cantidad = fila.querySelector(".entrada-cantidad").value;
+        if (nombre && cantidad) {
+            var id = ingredientesFitness.find(i=>i.nombre === nombre).ingredienteId
+            ingredientesPorCategoria.push({ ingredienteId:id, Cantidad:cantidad });
+        }
+    });
+    console.log("Ingredientes para guardar en API:", ingredientesPorCategoria);
+
+    // Crear objeto del platillo guardado
+        var Nombre= nombrePlatillo.trim();
+        var ingredientes= ingredientesPorCategoria;
+        console.log(Nombre, ingredientes);
+    
+    (async () => {
+        var response = await apiPostPlatillo(Nombre, ingredientes);
+        console.log("Respuesta del guardado en API:", response);
+        if (response.message === "Platillo created successfully") {
+            alert("Platillo guardado exitosamente en el servidor.");
+            cargarPlatillosDelApi();
+            return true;
+        } else {
+            alert("Error al guardar el platillo en el servidor.");
+            return false;
+        }
+    })();
+}
 // --------------------------------------------------------------------------------------
 // 6. MANEJO DE BOTONES DE ACCIÓN (Simple)
 // --------------------------------------------------------------------------------------
@@ -439,7 +477,6 @@ function cargarPlatillosDelApi() {
 document.getElementById("BotonLimpiar").addEventListener("click", () => {
     limpiarFormulario();
     guardarPlatilloActual(); // Guarda el platillo activo como vacío
-    alert("Platillo limpiado.");
 });
 
 document.getElementById("BotonGuardar").addEventListener("click", () => {
@@ -455,6 +492,16 @@ document.getElementById("BotonGuardar").addEventListener("click", () => {
     }
 
     document.body.style.overflow = 'hidden';
+});
+
+document.getElementById("btnGuardar").addEventListener("click", () => {
+    const nombreP = modalGuardar.querySelector('.nombre').value.trim();
+    
+    if (guardadoDePlatillosEnApi(nombreP)) {
+        modalGuardar.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
 });
 
 // Lógica del Botón Imprimir (Simple placeholder)
@@ -510,6 +557,13 @@ document.addEventListener('click', (e) => {
         
         actualizarCaloriasActuales();
     }
+});
+
+btnCancelarNombre.addEventListener("click", () => {
+    const nombreInput = modalGuardar.querySelector('.nombre');
+    nombreInput.value = '';
+    modalGuardar.style.display = 'none';
+    document.body.style.overflow = 'auto';
 });
 
 btnGuardarNombre.addEventListener("click", () => {
@@ -639,6 +693,8 @@ function inicializarLabels(){
     document.getElementById("InputOptimo").value = Math.round(CaloriasOptimas) + " kcal";
     document.getElementById("InputOptimoPP").value = Math.round(CaloriasOptimas / 3) + " kcal";
     document.getElementById("InputAgua").value = AguaRecomendada + " litros";
+    mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
+    actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
     localStorage.clear();
 }
 
