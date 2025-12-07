@@ -7,6 +7,8 @@ let recetasGuardadas = {
     'BotonPlatillo5': []
 };
 let platilloActivoId = 'BotonPlatillo1';
+let AguaRecomendada = localStorage.getItem("aguaRecomendada") || 0;
+let CaloriasOptimas = localStorage.getItem("caloriasOptimas") || 0;
 let platillosGuardadosParaMostrar = []; 
 let ingredientesFitness = [];
 let contenedores = {}; 
@@ -70,11 +72,70 @@ function guardarPlatilloActual() {
 // 4. FUNCIÓN DE CARGA (Limpia DOM, Carga de diccionario y Estilo)
 // --------------------------------------------------------------------------------------
 
+function cargarIngredientesDelPlatillo(platillo) {
+    var btnLimpiar = document.getElementById("BotonLimpiar");
+    btnLimpiar.click(); // Simula clic en Limpiar para reiniciar
+
+    var ing = [];
+    ingredientesFitness.forEach(i => {
+        platillo.platilloIngredientes.forEach(platilloIng => {
+            if (platilloIng.ingredienteNombre === i.nombre) {
+                ing.push({
+                    nombre: platilloIng.ingredienteNombre,
+                    cat: i.cat,
+                    cantidad: platilloIng.cantidad
+                });
+            }
+        });
+    });
+
+    cargarIngredientesAlDom(ing);
+
+    Array.from(document.getElementsByClassName("entrada-cantidad"))
+        .forEach(input => {
+            input.addEventListener("input", e => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    });
+    
+}
+
+
+function actualizarPlatillosGuardadosUI() {
+    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
+    let papa = document.querySelector('.platillos-nombres');
+    platillosGuardadosParaMostrar.forEach((platillo) => {
+        var nuevoDiv = document.createElement("div");
+        nuevoDiv.classList.add("plato");
+        nuevoDiv.innerHTML = `<p>${platillo.nombre}</p>`;
+        nuevoDiv.style.cursor = "pointer";
+        nuevoDiv.style.opacity = "1";
+        nuevoDiv.onclick = () => cargarIngredientesDelPlatillo(platillo);
+        papa.appendChild(nuevoDiv);
+    });
+}
+
 function actualizarCaloriasActuales() {
     let caloriasTotales = 0;
     document.querySelectorAll(".fila-entrada").forEach(fila => {
         const nombre = fila.querySelector(".entrada-nombre").value;
         const cantidadGramos = parseInt(fila.querySelector(".entrada-cantidad").value) || 0;
+        if (nombre && caloriasMap[nombre]) {
+            caloriasTotales += caloriasMap[nombre] * cantidadGramos;
+        }
+    });
+    document.getElementById("InputActual").value = Math.round(caloriasTotales)+"kcal";
+}
+
+function actualizarCaloriasActualesCambioPlatillo(id) {
+    let caloriasTotales = 0;
+    console.log("Recetas guardadas actuales:", recetasGuardadas);
+    const receta = recetasGuardadas[id] || [];
+    console.log("Actualizando calorías para platillo ID:", id);
+    console.log("Calculando calorías para receta:", receta);
+    receta.forEach(ingrediente => {
+        const nombre = ingrediente.nombre;
+        const cantidadGramos = parseInt(ingrediente.cantidad) || 0;
         if (nombre && caloriasMap[nombre]) {
             caloriasTotales += caloriasMap[nombre] * cantidadGramos;
         }
@@ -189,27 +250,8 @@ function actualizarClaseActivoTabs(id) {
             tab.classList.add('activo');
         }
     });
-}
-
-function actualizarPlatillosGuardadosUI() {
-    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
-    
-    contenedorPlatos.forEach((plato, index) => {
-        if (platillosGuardadosParaMostrar[index]) {
-            const platilloData = platillosGuardadosParaMostrar[index];
-            plato.querySelector('p').textContent = platilloData.nombre;
-            plato.style.cursor = "pointer";
-            plato.style.opacity = "1";
-            
-            // Agregar evento click para mostrar el detalle
-            plato.onclick = () => mostrarDetallePlatillo(platilloData);
-        } else {
-            plato.querySelector('p').textContent = "Nombre de Platillo";
-            plato.style.cursor = "default";
-            plato.style.opacity = "0.5";
-            plato.onclick = null;
-        }
-    });
+    console.log("platillo id: " + id);
+    actualizarCaloriasActualesCambioPlatillo(id);
 }
 
 // --------------------------------------------------------------------------------------
@@ -239,50 +281,18 @@ function inicializarManejoPlatillos() {
         });
     });
 
+    actualizarCaloriasActuales();
     // Carga inicial
     cargarPlatillo(platilloActivoId); 
-}
-
-
-function generarHTMLPlatillosParaImprimir(platillos) {
-    let html = '<h2>Plan Nutricional</h2>';
-    
-    // Simplificación de la lógica de la frase motivacional
-    const mensajeMotivacional = '¡Tu esfuerzo de planificación garantiza tu éxito!'; 
-    
-    // Estructura de la frase motivacional (similar a tu ejemplo)
-    html += `<div class="frase-motivacional-print">
-                <strong>Plan de comidas:</strong> ${mensajeMotivacional}
-            </div>`;
-
-    platillos.forEach((platillo, index) => {
-        html += `<div class="platillo-imprimible">`;
-        html += `<h3>Platillo ${index + 1}: ${platillo.nombre}</h3>`;
-        
-        if (platillo.ingredientes && platillo.ingredientes.length > 0) {
-            html += `<ul class="lista-ingredientes">`;
-            platillo.ingredientes.forEach(ingrediente => {
-                // Usamos el formato "Nombre: Cantidad g"
-                html += `<li>${ingrediente.nombre}: ${ingrediente.cantidad} g</li>`;
-            });
-            html += `</ul>`;
-        } else {
-            html += `<p>Este platillo fue guardado sin ingredientes.</p>`;
-        }
-        html += `</div>`;
-    });
-    
-    return html;
 }
 
 /**
  * Prepara el DOM para la impresión, inyecta el contenido y llama a window.print().
  */
+
 function prepararEImprimirPlatillosConDiccionario() {
     guardarPlatilloActual(); 
 
-    // 2. FILTRAR PLATILLOS ACTIVOS: Tomamos todos los 5 pares [ID, Array de Ingredientes] 
-    //    y mantenemos solo aquellos cuyo array de ingredientes NO está vacío.
     const platillosActivos = Object.entries(recetasGuardadas).filter(
         ([id, ingredientes]) => ingredientes.length > 0
     );
@@ -292,35 +302,60 @@ function prepararEImprimirPlatillosConDiccionario() {
         return;
     }
 
-    // --- Generación del Contenido HTML ---
-    let htmlContent = '<h2>Resumen de Platos del Día</h2>';
-    const mensajeMotivacional = '¡Tu planeación nutricional es clave para el éxito!'; 
-    
-    htmlContent += `<div class="frase-motivacional-print">
-                        <strong>Plan de comidas:</strong> ${mensajeMotivacional}
-                    </div>`;
+    // Obtener mensaje del localStorage (única fuente de verdad)
+    const mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
+    const actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
 
+    let htmlContent = `
+        <div style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
+            <h1 style="text-align: center; color: #2c3e50; margin-bottom: 10px;">Plan Nutricional del Día</h1>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
+                <p style="font-size: 16px; margin: 0; font-style: italic;">${mensajeMotivacional}</p>
+            </div>
 
-    // 3. ITERACIÓN SOBRE TODOS LOS PLATILLOS NO VACÍOS
-    // El forEach aquí itera sobre los resultados filtrados, que son todos los platillos con contenido.
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #667eea;">
+                <p style="margin: 0; font-size: 14px;"><strong>Nivel de Actividad:</strong> ${actividadLabel}</p>
+            </div>
+    `;
+
     platillosActivos.forEach(([id, ingredientes]) => {
-        // Formato el ID para que sea más legible (ej: 'BotonPlatillo1' -> 'Platillo 1')
-        const nombrePlatillo = id.replace('Boton', ' ').replace('Platillo', '');
+        const nombrePlatillo = id.replace('Boton', '').replace('Platillo', 'Platillo ');
         
-        htmlContent += `<div class="platillo-imprimible">`;
-        htmlContent += `<h3>${nombrePlatillo}</h3>`;
-        
-        if (ingredientes.length > 0) {
-            htmlContent += `<ul class="lista-ingredientes">`;
-            ingredientes.forEach(ingrediente => {
-                htmlContent += `<li>${ingrediente.nombre}: ${ingrediente.cantidad} g</li>`;
-            });
-            htmlContent += `</ul>`;
-        }
-        htmlContent += `</div>`;
+        htmlContent += `
+            <div style="background: white; border: 2px solid #667eea; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                <h2 style="color: #667eea; margin-top: 0; border-bottom: 2px solid #667eea; padding-bottom: 10px;">${nombrePlatillo}</h2>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background: #f0f0f0;">
+                            <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Ingrediente</th>
+                            <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Cantidad (g)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        ingredientes.forEach(ingrediente => {
+            htmlContent += `
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 10px;">${ingrediente.nombre}</td>
+                            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">${ingrediente.cantidad}</td>
+                        </tr>
+            `;
+        });
+
+        htmlContent += `
+                    </tbody>
+                </table>
+            </div>
+        `;
     });
 
-    // 4. Inyección y Llamada a Impresión (Mismo proceso de limpieza)
+    htmlContent += `
+        </div>
+    `;
+
     let printContainer = document.getElementById('ContenidoImprimible');
     if (!printContainer) {
         printContainer = document.createElement('div');
@@ -381,6 +416,21 @@ function cargarIngredientesDelAPI(){
 })();
 }
     
+function cargarPlatillosDelApi() {
+    (async () => {
+        const response = await apiGetPlatillos();
+
+        response.forEach(i => {
+            platillosGuardadosParaMostrar.push({
+                nombre: i.nombre,
+                kCalTotal: i.kCalTotal,
+                platilloIngredientes: i.platilloIngredientes
+            });
+        });
+        console.log("Platillos desde API:", platillosGuardadosParaMostrar);
+        actualizarPlatillosGuardadosUI();
+    })();
+}
 // --------------------------------------------------------------------------------------
 // 6. MANEJO DE BOTONES DE ACCIÓN (Simple)
 // --------------------------------------------------------------------------------------
@@ -514,17 +564,26 @@ document.getElementById('FiltroCategoria').addEventListener('change', (e) => {
     });
 });
 
-//actualizacion de calorias por inputs
-document.querySelectorAll(".entrada-cantidad").forEach(input => {
-    input.addEventListener("input", () => {
+// actualizacion de calorias por inputs (delegación para cubrir filas dinámicas)
+document.addEventListener('input', (e) => {
+    if (!e.target) return;
+    const target = e.target;
+    if (target.classList && target.classList.contains('entrada-cantidad')) {
         actualizarCaloriasActuales();
-    });
+    }
 });
 
 //buscador de ingredientes
 document.getElementById("BusquedaIngrediente").addEventListener('input', () => {
     const valor = document.getElementById("BusquedaIngrediente").value.toLowerCase();
     document.querySelectorAll('.ingrediente').forEach(i => {
+        i.style.display = i.textContent.toLowerCase().includes(valor) ? "block" : "none";
+    });
+});
+
+document.getElementById("BusquedaPlatillo").addEventListener('input', () => {
+    const valor = document.getElementById("BusquedaPlatillo").value.toLowerCase();
+    document.querySelectorAll('.plato').forEach(i => {
         i.style.display = i.textContent.toLowerCase().includes(valor) ? "block" : "none";
     });
 });
@@ -576,6 +635,13 @@ document.querySelector("#botonAgregar").addEventListener("click", () => {
 // --------------------------------------------------------------------------------------
 // 7. INICIALIZACIÓN DEL ARRANQUE
 // --------------------------------------------------------------------------------------
+function inicializarLabels(){
+    document.getElementById("InputOptimo").value = Math.round(CaloriasOptimas) + " kcal";
+    document.getElementById("InputOptimoPP").value = Math.round(CaloriasOptimas / 3) + " kcal";
+    document.getElementById("InputAgua").value = AguaRecomendada + " litros";
+    localStorage.clear();
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     contenedores = {
@@ -584,8 +650,9 @@ document.addEventListener('DOMContentLoaded', () => {
         grasas: document.getElementById("Grasas")
     };
 
+    inicializarLabels();
     inicializarManejoPlatillos();
     cargarIngredientesDelAPI();
-    cargarIngredientesDelAPI();
+    cargarPlatillosDelApi();
     actualizarPlatillosGuardadosUI();
 });
