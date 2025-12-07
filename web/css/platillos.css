@@ -934,7 +934,7 @@ button:active{
     }
 }
 
-@media screen and (min-width: 784px) and (max-width: 846px) {
+@media screen and (min-width: 784px) and (max-width: 848px) {
   .burbuja-texto {
     left: 120%;
     width: 250px;
