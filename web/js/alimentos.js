@@ -17,6 +17,27 @@ let categoriaSeleccionada = null;
 // FUNCIONES DE CARGA
 // ===========================
 
+function actualizarPlatillosGuardadosUI() {
+    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
+    
+    contenedorPlatos.forEach((plato, index) => {
+        if (platillosGuardadosParaMostrar[index]) {
+            const platilloData = platillosGuardadosParaMostrar[index];
+            plato.querySelector('p').textContent = platilloData.nombre;
+            plato.style.cursor = "pointer";
+            plato.style.opacity = "1";
+            
+            // Agregar evento click para mostrar el detalle
+            plato.onclick = () => mostrarDetallePlatillo(platilloData);
+        } else {
+            plato.querySelector('p').textContent = "Nombre de Platillo";
+            plato.style.cursor = "default";
+            plato.style.opacity = "0.5";
+            plato.onclick = null;
+        }
+    });
+}
+
 function cargarIngredientesDelAPI() {
     (async () => {
         const response = await apiGetIngredientes();

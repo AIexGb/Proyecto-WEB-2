@@ -49,8 +49,6 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
         var act = factorActividad[actividad]
         var obj = factorObjetivo[objetivo]
         const response = await apiCalcularIntakeGET({ peso, altura, sexo:sexoBool, actividad:act, objetivo:obj });
-        console.log("Respuesta de la API:", response);
-        alert("Respuesta de la API:", response);
 
         let tmb = response.ger;
         let caloriasActividad = response.tdee;

@@ -10,6 +10,13 @@ let platilloActivoId = 'BotonPlatillo1';
 let platillosGuardadosParaMostrar = []; 
 let ingredientesFitness = [];
 let contenedores = {}; 
+let caloriasMap = {};
+let ingredienteSeleccionado = {
+    nombre: '',
+    cat: '',
+    kcal_por_gramo: 0
+};
+
 const modalGuardar = document.querySelector('.contenido');
 const btnGuardarNombre = document.getElementById('btnGuardar');
 
@@ -19,25 +26,27 @@ const btnGuardarNombre = document.getElementById('btnGuardar');
 // --------------------------------------------------------------------------------------
 
 function recopilarIngredientes() {
-    const ingredientesPlatillo = [];
+    let ingredientesPlatillo = [];
 
     document.querySelectorAll(".nutriente").forEach(nutriente => {
-        const fila = nutriente.querySelector(".fila-entrada");
-        const nombre = fila.querySelector(".entrada-nombre").value.trim();
-        const cantidad = fila.querySelector(".entrada-cantidad").value.trim();
-        const categoria = nutriente.querySelector("h3").textContent.toLowerCase();
-        
-        // Solo guarda si ambos campos tienen valor
-        if (nombre !== '' && cantidad !== '') {
-            ingredientesPlatillo.push({
-                nombre: nombre,
-                cantidad: cantidad,
-                cat: categoria.includes("proteína") ? "proteina" :
-                     categoria.includes("carbohidrato") ? "carb" :
-                     categoria.includes("grasa") ? "grasas" : "otro"
-            });
-        }
+        nutriente.querySelectorAll(".fila-entrada").forEach(fila => {
+            const nombre = fila.querySelector(".entrada-nombre").value.trim();
+            const cantidad = fila.querySelector(".entrada-cantidad").value.trim();
+            const categoria = nutriente.querySelector("h3").textContent.toLowerCase();
+            
+            // Solo guarda si ambos campos tienen valor
+            if (nombre !== '' && cantidad !== '' && !isNaN(cantidad) && Number(cantidad) > 0) {
+                ingredientesPlatillo.push({
+                    nombre: nombre,
+                    cantidad: cantidad,
+                    cat: categoria.includes("proteína") ? "proteina" :
+                        categoria.includes("carbohidrato") ? "carb" :
+                        categoria.includes("grasa") ? "grasas" : "otro"
+                });
+            }
+        });
     });
+    console.log("Ingredientes recopilados:", ingredientesPlatillo);
     return ingredientesPlatillo;
 }
 
@@ -61,14 +70,37 @@ function guardarPlatilloActual() {
 // 4. FUNCIÓN DE CARGA (Limpia DOM, Carga de diccionario y Estilo)
 // --------------------------------------------------------------------------------------
 
+function actualizarCaloriasActuales() {
+    let caloriasTotales = 0;
+    document.querySelectorAll(".fila-entrada").forEach(fila => {
+        const nombre = fila.querySelector(".entrada-nombre").value;
+        const cantidadGramos = parseInt(fila.querySelector(".entrada-cantidad").value) || 0;
+        if (nombre && caloriasMap[nombre]) {
+            caloriasTotales += caloriasMap[nombre] * cantidadGramos;
+        }
+    });
+    document.getElementById("InputActual").value = Math.round(caloriasTotales) + " kcal";
+}
+
 function limpiarFormulario() {
     // Limpieza agresiva: busca todos los campos de nombre y cantidad
-    document.querySelectorAll(".entrada-nombre").forEach(input => input.value = "");
-    document.querySelectorAll(".entrada-cantidad").forEach(input => input.value = "");
+    let nutriente = Array.from(document.querySelectorAll(".nutriente"))
     
-    // (Opcional): Limpia las etiquetas de macros y elimina filas extra.
-    // Para la versión más simple, asumimos que solo limpiamos las 3 filas principales.
-    document.querySelectorAll(".etiqueta-macros").forEach(label => label.textContent = "macros p/c 100g []");
+
+    nutriente.forEach((nutri, idx) => {
+    let fila = nutri.querySelectorAll(".fila-entrada");
+    console.log(`Limpiando nutriente ${idx}:`, nutri);
+
+    fila.forEach(f => {
+        f.querySelectorAll(".entrada-nombre").forEach(input => input.value = "");
+        f.querySelectorAll(".entrada-cantidad").forEach(input => input.value = "");
+    });
+
+    fila.forEach((f, i) => {
+        if (i > 0) f.remove();
+    });
+});
+
 }
 
 function cargarPlatillo(id) {
@@ -104,39 +136,40 @@ function cargarPlatillo(id) {
     console.log(`Cargado Platillo "${id}".`);
 }
 
+
 function cargarIngredientesAlDom(array) {
     array.forEach((ingrediente) => {
-            /*nombresInputs[index].value = ingrediente.nombre;
-            cantidadInputs[index].value = ingrediente.cantidad;*/
-            document.querySelectorAll(".nutriente").forEach(nutriente => {
-                const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
-                if (
-                    (ingrediente.cat === "proteina" && h3.includes("proteína")) ||
-                    (ingrediente.cat === "carb" && h3.includes("carbohidrato")) ||
-                    (ingrediente.cat === "grasas" && h3.includes("grasa"))
-                ) {
-                    let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
-                        .find(input => input.value === "");
+        document.querySelectorAll(".nutriente").forEach(nutriente => {
+            const h3 = nutriente.querySelector("h3").textContent.toLowerCase();
 
-                    if (!inputTarget) {
-                        const filaOriginal = nutriente.querySelector(".fila-entrada");
-                        const nuevaFila = filaOriginal.cloneNode(true);
+            const categorias =
+                (ingrediente.cat === "proteina" && h3.includes("proteína")) ||
+                (ingrediente.cat === "carb" && h3.includes("carbohidrato")) ||
+                (ingrediente.cat === "grasas" && h3.includes("grasa"));
 
-                        nuevaFila.querySelector(".entrada-nombre").value = ingrediente.nombre;
-                        nuevaFila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+            if (!categorias) return;
 
-                        nutriente.appendChild(nuevaFila);
-                        inputTarget = nuevaFila.querySelector(".entrada-nombre");
-                    }else{
-                        const filaOriginal = nutriente.querySelector(".fila-entrada");
+            let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre"))
+                .find(input => input.value === "");
 
-                        filaOriginal.querySelector(".entrada-nombre").value = ingrediente.nombre;
-                        filaOriginal.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
-                    }
-                }
-            });
+            if (inputTarget) {
+                const fila = inputTarget.closest(".fila-entrada");
+                fila.querySelector(".entrada-nombre").value = ingrediente.nombre;
+                fila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+
+            } else {
+                const filaOriginal = nutriente.querySelector(".fila-entrada:last-of-type");
+                const nuevaFila = filaOriginal.cloneNode(true);
+
+                nuevaFila.querySelector(".entrada-nombre").value = ingrediente.nombre;
+                nuevaFila.querySelector(".entrada-cantidad").value = ingrediente.cantidad;
+
+                nutriente.appendChild(nuevaFila);
+            }
+        });
     });
 }
+
 
 function actualizarClaseActivoTabs(id) {
     document.querySelectorAll('.platillos .boton-secundario').forEach(div => div.classList.remove('activo'));
@@ -311,35 +344,6 @@ function prepararEImprimirPlatillosConDiccionario() {
 // Funciones del API
 // --------------------------------------------------------------------------------------
 
-
-function cargarIngredientesDelAPI(){
-    (async () => {
-    const response = await apiGetIngredientes();
-    //console.log("Ingredientes desde API:", response);
-
-    response.forEach(i => {
-        const kcal_por_gramo = ((i.proteinaG * 4) + (i.carbosG * 4) + (i.grasasG * 9)) / 100;
-        let t;
-        if (i.tipo === "proteína") t = "proteina";
-        else if (i.tipo === "carbohidrato") t = "carb";
-        else if (i.tipo === "grasa") t = "grasas";
-        else t = t.tipo;
-        //console.log({ nombre: i.nombre, cat: t, kcal_por_gramo });
-
-        ingredientesFitness.push({
-            ingredienteId: i.ingredienteId,
-            nombre: i.nombre,
-            cat: t,
-            kcal_por_gramo,
-            proteinaG: i.proteinaG,
-            carbosG: i.carbosG,
-            grasasG: i.grasasG
-        });
-        console.log(i);
-    });
-    })();
-}
-
 function cargarIngredientesDelAPI(){
     (async () => {
     const response = await apiGetIngredientes();
@@ -370,6 +374,10 @@ function cargarIngredientesDelAPI(){
         contenedores[i.cat].appendChild(div);
     });
 
+    caloriasMap = ingredientesFitness.reduce((map, item) => {
+            map[item.nombre] = item.kcal_por_gramo;
+            return map;
+        }, {});
 })();
 }
     
@@ -445,6 +453,94 @@ btnGuardarNombre.addEventListener("click", () => {
         alert("Por favor, ingresa un nombre para el platillo.");
     }
 });
+
+// obtener ingrediente de lista
+document.addEventListener("click", e => {
+    if (e.target.classList.contains("ingrediente")) {
+        document.querySelectorAll(".ingrediente").forEach(d => d.classList.remove("seleccionado"));
+        e.target.classList.add("seleccionado");
+        ingredienteSeleccionado = e.target.textContent;
+        categoriaSeleccionada = e.target.dataset.cat;
+        ingredienteSeleccionado = {
+            nombre: e.target.textContent,
+            cat: e.target.dataset.cat,
+            kcal_por_gramo: ingredientesFitness.find(i => i.nombre === e.target.textContent).kcal_por_gramo
+        }
+    }
+});
+
+//Filtro de categorias
+document.getElementById('FiltroCategoria').addEventListener('change', (e) => {
+    const categoria = e.target.value; // 'proteina', 'carb', o 'grasas'
+
+    document.querySelectorAll(".ingrediente").forEach(div => {
+        if (categoria === 'todos' || div.dataset.cat === categoria) {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    });
+});
+
+//actualizacion de calorias por inputs
+document.querySelectorAll(".entrada-cantidad").forEach(input => {
+    input.addEventListener("input", () => {
+        actualizarCaloriasActuales();
+    });
+});
+
+//buscador de ingredientes
+document.getElementById("BusquedaIngrediente").addEventListener('input', () => {
+    const valor = document.getElementById("BusquedaIngrediente").value.toLowerCase();
+    document.querySelectorAll('.ingrediente').forEach(i => {
+        i.style.display = i.textContent.toLowerCase().includes(valor) ? "block" : "none";
+    });
+});
+
+//cargar ingrediente de la lista
+document.querySelector("#botonAgregar").addEventListener("click", () => {
+    if (!ingredienteSeleccionado || !categoriaSeleccionada) return alert("Selecciona primero un ingrediente.");
+
+    document.querySelectorAll(".nutriente").forEach(nutriente => {
+        const h3 = nutriente.querySelector("h3")?.textContent.toLowerCase();
+        if (!h3) return;
+
+        if ((categoriaSeleccionada === "proteina" && h3.includes("proteína")) ||
+            (categoriaSeleccionada === "carb" && h3.includes("carbohidrato")) ||
+            (categoriaSeleccionada === "grasas" && h3.includes("grasa"))) {
+
+            let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre")).find(input => input.value === "");
+
+            if (!inputTarget) {
+                const filaOriginal = nutriente.querySelector(".fila-entrada");
+                const nuevaFila = filaOriginal.cloneNode(true);
+                nuevaFila.querySelector(".entrada-nombre").value = "";
+                nuevaFila.querySelector(".entrada-cantidad").value = "";
+                nutriente.appendChild(nuevaFila);
+                inputTarget = nuevaFila.querySelector(".entrada-nombre");
+            }
+
+            inputTarget.value = ingredienteSeleccionado.nombre;
+            const fila = inputTarget.closest(".fila-entrada");
+            fila.querySelector(".entrada-cantidad").value = "0";
+
+            const datos = ingredientesFitness.find(x => x.nombre === ingredienteSeleccionado);
+            /*actualizarBurbuja(fila, datos);
+
+            fila.querySelector(".entrada-cantidad").addEventListener("input", () => {
+                actualizarBurbuja(fila, datos);
+                actualizarCaloriasActuales();
+            });*/
+
+            actualizarCaloriasActuales();
+        }
+    });
+
+    document.querySelectorAll(".ingrediente").forEach(d => d.classList.remove("seleccionado"));
+    ingredienteSeleccionado = null;
+    categoriaSeleccionada = null;
+});
+
 // --------------------------------------------------------------------------------------
 // 7. INICIALIZACIÓN DEL ARRANQUE
 // --------------------------------------------------------------------------------------
@@ -458,5 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inicializarManejoPlatillos();
     cargarIngredientesDelAPI();
-    cargarPlatillosDelApi();
+    cargarIngredientesDelAPI();
+    actualizarPlatillosGuardadosUI();
 });
