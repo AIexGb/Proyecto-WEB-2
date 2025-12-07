@@ -849,3 +849,39 @@ main {
         page-break-inside: avoid;
     }
 }
+
+
+.burbuja {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 30px;
+  background-color: rgb(101, 199, 255);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+.burbuja-texto {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  top: 120%;
+  left: 70%;
+  transform: translateX(-50%);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.burbuja:hover .burbuja-texto {
+  visibility: visible;
+  opacity: 1;
+}
