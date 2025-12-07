@@ -9,7 +9,9 @@ let recetasGuardadas = {
 
 let platilloActivoId = 'BotonPlatillo1';
 let AguaRecomendada = localStorage.getItem("aguaRecomendada") || 0;
-console.log("Agua Recomendada cargada:", AguaRecomendada, localStorage.getItem("aguaRecomendada"));
+const mensajeGlobal = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
+const actividadGlobal = localStorage.getItem('actividadLabel') || 'Plan personalizado';
+
 let CaloriasOptimas = localStorage.getItem("caloriasOptimas") || 0;
 let platillosGuardadosParaMostrar = []; 
 let ingredientesFitness = [];
@@ -384,8 +386,8 @@ function prepararEImprimirPlatillosConDiccionario() {
         ([id, ingredientes]) => ingredientes.length > 0
     );
 
-    const mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
-    const actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
+    const mensajeMotivacional = mensajeGlobal;
+    const actividadLabel = actividadGlobal;
 
     const caloriasOptimas = document.getElementById("InputOptimo").value || "0 kcal";
     const caloriasOptimasPP = document.getElementById("InputOptimoPP").value || "0 kcal";
@@ -814,7 +816,12 @@ document.querySelector("#botonAgregar").addEventListener("click", () => {
         if ((categoriaSeleccionada === "proteina" && h3.includes("proteína")) ||
             (categoriaSeleccionada === "carb" && h3.includes("carbohidrato")) ||
             (categoriaSeleccionada === "grasas" && h3.includes("grasa"))) {
-
+            
+            let inputDuplicado = Array.from(nutriente.querySelectorAll(".entrada-nombre")).find(input => input.value === ingredienteSeleccionado.nombre);
+            if (inputDuplicado) {
+                return alert("El ingrediente ya ha sido agregado en este platillo.");
+            }
+            
             let inputTarget = Array.from(nutriente.querySelectorAll(".entrada-nombre")).find(input => input.value === "");
 
             if (!inputTarget) {
