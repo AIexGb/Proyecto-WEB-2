@@ -375,9 +375,7 @@ function inicializarManejoPlatillos() {
     cargarPlatillo(platilloActivoId); 
 }
 
-/**
- * Prepara el DOM para la impresión, inyecta el contenido y llama a window.print().
- */
+
 
 function prepararEImprimirPlatillosConDiccionario() {
     guardarPlatilloActual(); 
@@ -386,25 +384,28 @@ function prepararEImprimirPlatillosConDiccionario() {
         ([id, ingredientes]) => ingredientes.length > 0
     );
 
-    if (platillosActivos.length === 0) {
-        alert('No hay platillos con ingredientes guardados para imprimir. Por favor, agrega y guarda al menos un ingrediente en Platillo 1-5.');
-        return;
-    }
-
-    // Obtener mensaje del localStorage (única fuente de verdad)
     const mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
     const actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
 
+    const caloriasOptimas = document.getElementById("InputOptimo").value || "0 kcal";
+    const caloriasOptimasPP = document.getElementById("InputOptimoPP").value || "0 kcal";
+    const caloriasActual = document.getElementById("InputActual").value || "0 kcal";
+    const kcalTotales = document.getElementById("InputKcalTotales").value || "0 kcal";
+    const proteinasTotales = document.getElementById("InputProteinasTotales").value || "0";
+    const grasasTotales = document.getElementById("InputGrasasTotales").value || "0";
+    const carbosTotales = document.getElementById("InputCarbosTotales").value || "0";
+    const aguaDiaria = document.getElementById("InputAgua").value || "0 litros";
+
     let htmlContent = `
         <div style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
-            <h1 style="text-align: center; color: #2c3e50; margin-bottom: 10px;">Plan Nutricional del Día</h1>
+            <h1 style="text-align: center; color: #802b4a; margin-bottom: 10px; font-size: 28px; font-weight: bold;">Plan Nutricional del Día</h1>
             
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
+            <div style="background: #e62e6b; color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
                 <p style="font-size: 16px; margin: 0; font-style: italic;">${mensajeMotivacional}</p>
             </div>
 
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #667eea;">
-                <p style="margin: 0; font-size: 14px;"><strong>Nivel de Actividad:</strong> ${actividadLabel}</p>
+            <div style="background: #f8eaf4; padding: 15px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #e62e6b;">
+                <p style="margin: 0; font-size: 14px; color: #802b4a;"><strong>Nivel de Actividad:</strong> ${actividadLabel}</p>
             </div>
     `;
 
@@ -412,24 +413,40 @@ function prepararEImprimirPlatillosConDiccionario() {
         const nombrePlatillo = id.replace('Boton', '').replace('Platillo', 'Platillo ');
         
         htmlContent += `
-            <div style="background: white; border: 2px solid #667eea; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-                <h2 style="color: #667eea; margin-top: 0; border-bottom: 2px solid #667eea; padding-bottom: 10px;">${nombrePlatillo}</h2>
+            <div style="background: white; border: 2px solid #e62e6b; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                <h2 style="color: #e62e6b; margin-top: 0; border-bottom: 3px solid #e62e6b; padding-bottom: 10px; font-size: 20px;">${nombrePlatillo}</h2>
                 
                 <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                     <thead>
-                        <tr style="background: #f0f0f0;">
-                            <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Ingrediente</th>
-                            <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Cantidad (g)</th>
+                        <tr style="background: #f8eaf4;">
+                            <th style="border: 1px solid #e62e6b; padding: 12px; text-align: left; color: #802b4a; font-weight: bold;">Ingrediente</th>
+                            <th style="border: 1px solid #e62e6b; padding: 12px; text-align: center; color: #802b4a; font-weight: bold;">Cantidad (g)</th>
+                            <th style="border: 1px solid #e62e6b; padding: 12px; text-align: center; color: #802b4a; font-weight: bold;">Macros</th>
                         </tr>
                     </thead>
                     <tbody>
         `;
 
         ingredientes.forEach(ingrediente => {
+            const datosIngrediente = ingredientesFitness.find(i => i.nombre === ingrediente.nombre);
+            let macrosText = "N/A";
+            
+            if (datosIngrediente) {
+                const cantidad = parseFloat(ingrediente.cantidad) || 0;
+                const factor = cantidad / 100;
+                const proteina = Math.round((datosIngrediente.proteinaG || 0) * factor);
+                const carbos = Math.round((datosIngrediente.carbosG || 0) * factor);
+                const grasas = Math.round((datosIngrediente.grasasG || 0) * factor);
+                const kcal = Math.round(datosIngrediente.kcal_por_gramo * cantidad);
+                
+                macrosText = `P: ${proteina}g | C: ${carbos}g | G: ${grasas}g | Kcal: ${kcal}`;
+            }
+            
             htmlContent += `
                         <tr>
-                            <td style="border: 1px solid #ddd; padding: 10px;">${ingrediente.nombre}</td>
-                            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">${ingrediente.cantidad}</td>
+                            <td style="border: 1px solid #ddd; padding: 10px; color: #333;">${ingrediente.nombre}</td>
+                            <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #333;">${ingrediente.cantidad}</td>
+                            <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #555; font-size: 12px;">${macrosText}</td>
                         </tr>
             `;
         });
@@ -442,6 +459,54 @@ function prepararEImprimirPlatillosConDiccionario() {
     });
 
     htmlContent += `
+        <br>
+        <div style="background: #f8eaf4; border-radius: 8px; padding: 20px; margin-top: 30px;">
+            <h3 style="color: #802b4a; margin-top: 0; border-bottom: 2px solid #e62e6b; padding-bottom: 10px; font-size: 18px;">Resumen Nutricional</h3>
+            <br>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Calorías Óptimas (KCal):</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${caloriasOptimas}</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Calorías Óptimas por Platillo (KCal):</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${caloriasOptimasPP}</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Calorías Actuales (KCal):</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${caloriasActual}</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">KCal Totales:</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${kcalTotales}</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Proteínas Totales:</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${proteinasTotales}g</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Carbohidratos Totales:</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${carbosTotales}g</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Grasas Totales:</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${grasasTotales}g</p>
+                </div>
+                
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #e62e6b;">
+                    <p style="margin: 5px 0; color: #802b4a; font-weight: bold;">Agua (Diaria):</p>
+                    <p style="margin: 5px 0; color: #333; font-size: 16px;">${aguaDiaria}</p>
+                </div>
+            </div>
+        </div>
+        
         </div>
     `;
 
@@ -824,8 +889,6 @@ function inicializarLabels(){
     document.getElementById("InputOptimo").value = Math.round(CaloriasOptimas) + " kcal";
     document.getElementById("InputOptimoPP").value = Math.round(CaloriasOptimas / 3) + " kcal";
     document.getElementById("InputAgua").value = AguaRecomendada + " litros";
-    mensajeMotivacional = localStorage.getItem('mensajeMotivacional') || '¡Sigue adelante con tu plan nutricional!';
-    actividadLabel = localStorage.getItem('actividadLabel') || 'Plan personalizado';
     localStorage.clear();
 }
 
