@@ -143,6 +143,44 @@ main {
   margin-top: 3rem;
 }
 
+.contenido {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #f0f0f0; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000; 
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    display: none;
+}
+
+
+.nombre {
+  padding: 0.75rem;
+  border-radius: 10px;
+  width: 80%;
+  border: none;
+  background: #f8eaf4;
+}
+
+#btnGuardar {
+  background: #e62e6b;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 3rem;
+}
+
 button:active {
   transform: scale(0.50);
 } 

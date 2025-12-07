@@ -107,8 +107,8 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
             document.querySelector(".resultados").appendChild(ContenedorBoton);
             BotonSiguiente.disabled = false;
       } catch (error) {
-        console.error("Error al llamar a la API:", error.message);
-        alert("Error al llamar a la API:", error.message);
+        // API call failed; abort silently or handle in UI if desired
+        return;
       }
     })();
 

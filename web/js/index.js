@@ -90,7 +90,6 @@ async function apiCalcularIntake(data) {
 
 async function apiCalcularIntakeGET({ peso, altura, sexo, actividad, objetivo }) {
     const data = `?gender=${sexo}&weight=${peso}&height=${altura}&activity=${actividad}&objective=${objetivo}`; 
-    console.log(data);
     return await api.get(`CalcCaloricIntake/calcular-kcal-intake-GET${data}`); 
 }
 

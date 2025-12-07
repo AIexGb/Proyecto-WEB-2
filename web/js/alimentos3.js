@@ -56,7 +56,7 @@ function recopilarIngredientes() {
             }
         });
     });
-    console.log("Ingredientes recopilados:", ingredientesPlatillo);
+    
     return ingredientesPlatillo;
 }
 
@@ -72,7 +72,7 @@ function guardarPlatilloActual() {
     // 2. **ACCIÓN CLAVE:** Guarda o Sobreescribe el platillo activo en el diccionario.
     recetasGuardadas[platilloActivoId] = ingredientesPlatillo;
     
-    console.log(`Platillo "${platilloActivoId}" actualizado en recetasGuardadas.`);
+    
 }
 
 
@@ -138,7 +138,7 @@ function actualizarCaloriasActuales() {
     let grasTot = 0;
 
     // 1) Filas actuales
-    console.log("Recetas guardadas actuales:", recetasGuardadas[platilloActivoId]);
+    
         document.querySelectorAll(".fila-entrada").forEach(fila => {
             const nombre = fila.querySelector(".entrada-nombre").value.trim();
             const cantidadGramos = parseFloat(fila.querySelector(".entrada-cantidad").value) || 0;
@@ -182,7 +182,7 @@ function actualizarCaloriasActuales() {
     }
     kCalTotal = (proTot * 4) + (carbTot * 4) + (grasTot * 9);
 
-    console.log("Totales calculados - Proteínas:", proTot, "Carbohidratos:", carbTot, "Grasas:", grasTot);
+    
 
     // 3) Reflejar en inputs
     document.getElementById("InputActual").value            = Math.round(caloriasTotales) + "kcal";
@@ -195,10 +195,9 @@ function actualizarCaloriasActuales() {
 
 function actualizarCaloriasActualesCambioPlatillo(id) {
     let caloriasTotales = 0;
-    console.log("Recetas guardadas actuales:", recetasGuardadas);
+    
     const receta = recetasGuardadas[id] || [];
-    console.log("Actualizando calorías para platillo ID:", id);
-    console.log("Calculando calorías para receta:", receta);
+    
     receta.forEach(ingrediente => {
         const nombre = ingrediente.nombre;
         const cantidadGramos = parseInt(ingrediente.cantidad) || 0;
@@ -216,7 +215,7 @@ function limpiarFormulario() {
 
     nutriente.forEach((nutri, idx) => {
     let fila = nutri.querySelectorAll(".fila-entrada");
-    console.log(`Limpiando nutriente ${idx}:`, nutri);
+    
 
     fila.forEach(f => {
         const itemsAEliminar = Array.from(f.querySelectorAll(".entrada-nombre")).map((input, i) => {
@@ -274,7 +273,7 @@ function cargarPlatillo(id) {
     }
         
     
-    console.log(`Cargado Platillo "${id}".`);
+    
 }
 
 
@@ -341,7 +340,7 @@ function actualizarClaseActivoTabs(id) {
             tab.classList.add('activo');
         }
     });
-    console.log("platillo id: " + id);
+    
     actualizarCaloriasActualesCambioPlatillo(id);
 }
 
@@ -538,7 +537,6 @@ function prepararEImprimirPlatillosConDiccionario() {
 function cargarIngredientesDelAPI(){
     (async () => {
     const response = await apiGetIngredientes();
-    console.log("Ingredientes desde API:", response);
 
     response.forEach(i => {
         const kcal_por_gramo = ((i.proteinaG * 4) + (i.carbosG * 4) + (i.grasasG * 9)) / 100;
@@ -547,7 +545,7 @@ function cargarIngredientesDelAPI(){
         else if (i.tipo === "carbohidrato") t = "carb";
         else if (i.tipo === "grasa") t = "grasas";
         else t = t.tipo;
-        console.log({ nombre: i.nombre, cat: t, kcal_por_gramo });
+        
 
         ingredientesFitness.push({
             ingredienteId: i.ingredienteId,
@@ -587,7 +585,7 @@ function cargarPlatillosDelApi() {
                 platilloIngredientes: i.platilloIngredientes
             });
         });
-        console.log("Platillos desde API:", platillosGuardadosParaMostrar);
+        
         actualizarPlatillosGuardadosUI();
     })();
 }
@@ -603,16 +601,15 @@ function guardadoDePlatillosEnApi(nombrePlatillo) {
             ingredientesPorCategoria.push({ ingredienteId:id, Cantidad:cantidad });
         }
     });
-    console.log("Ingredientes para guardar en API:", ingredientesPorCategoria);
+    
 
     // Crear objeto del platillo guardado
         var Nombre= nombrePlatillo.trim();
         var ingredientes= ingredientesPorCategoria;
-        console.log(Nombre, ingredientes);
+        
     
     (async () => {
         var response = await apiPostPlatillo(Nombre, ingredientes);
-        console.log("Respuesta del guardado en API:", response);
         if (response.message === "Platillo created successfully") {
             alert("Platillo guardado exitosamente en el servidor.");
             cargarPlatillosDelApi();
@@ -664,7 +661,6 @@ document.getElementById("btnGuardar").addEventListener("click", () => {
 document.getElementById("BotonImprimir").addEventListener("click", () => {
     //guardarPlatilloActual(); // Asegura el guardado
     //const platilloGuardado = recetasGuardadas[platilloActivoId];
-    //alert(`Preparado para imprimir Platillo ${platilloActivoId} con ${platilloGuardado.length} ingredientes.`);
     // window.print(); // Descomentar al implementar
     prepararEImprimirPlatillosConDiccionario();
 });
@@ -679,7 +675,7 @@ document.getElementById("BotonImprimir").addEventListener("click", () => {
         // Cambia el valor al que necesites; por ahora usamos "Pollo Asado"
         /*nombreInput.value = 'Pollo Asado';
 
-        console.log('Entrada actualizada a "Pollo Asado" en la fila correspondiente');
+        
         
         if (e.target.classList.contains('boton-equis')) {
         const fila = e.target.closest('.fila-entrada');
@@ -739,7 +735,7 @@ btnGuardarNombre.addEventListener("click", () => {
         };
         platillosGuardadosParaMostrar.push(datosPlatillo);
         
-        console.log(`Guardado final: "${nombrePlatillo}" añadido al array.`);
+        
         
         // 3. Limpiar y ocultar el modal
         nombreInput.value = ''; // Limpiar el campo
@@ -783,8 +779,7 @@ document.addEventListener('input', (e) => {
     if (!e.target) return;
     const target = e.target;
     if (target.classList && target.classList.contains('entrada-cantidad')) {
-        // Log de depuración para confirmar que el handler recibe el evento
-        console.log('[input handler] entrada-cantidad changed ->', target.value);
+        
         actualizarCaloriasActuales();
         
     }
@@ -865,9 +860,7 @@ function actualizarBurbuja(fila) {
     const nombre = fila.querySelector('.entrada-nombre').value;
     const cantidad = parseInt(fila.querySelector('.entrada-cantidad').value) || 0;
     const datos = ingredientesFitness.find(i => i.nombre === nombre);
-    console.log("Datos encontrados para burbuja:", ingredientesFitness);
     if (!datos) return;
-    console.log("Actualizando burbuja para:", nombre, cantidad, datos);
     let burbuja = fila.querySelector('.burbuja-texto');
     if (!burbuja) {
         burbuja = document.createElement('div');

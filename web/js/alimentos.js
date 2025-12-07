@@ -49,7 +49,6 @@ function recopilarIngredientes() {
 function guardarPlatilloActual() {
     const ingredientesPlatillo = recopilarIngredientes();
     recetasGuardadas[platilloActivoId] = ingredientesPlatillo;
-    console.log(`Platillo "${platilloActivoId}" actualizado en recetasGuardadas.`);
 }
 
 // -----------------------------
@@ -69,7 +68,7 @@ function cargarPlatillo(id) {
     if (receta.length > 0) {
         cargarIngredientesAlDom(receta);
     }
-    console.log(`Cargado Platillo "${id}".`);
+    
     calcularKcalTotales(); // recalcula al cargar
 }
 
@@ -223,7 +222,6 @@ document.getElementById("BusquedaIngrediente").addEventListener('input', () => {
 document.getElementById("BotonLimpiar").addEventListener("click", () => {
     limpiarFormulario();
     guardarPlatilloActual();
-    alert("Platillo limpiado.");
 });
 
 document.getElementById("BotonGuardar").addEventListener("click", () => {
