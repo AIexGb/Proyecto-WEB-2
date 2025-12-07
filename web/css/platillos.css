@@ -470,7 +470,7 @@ button:active{
   background-color: #ffd4e6;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 993px) {
+@media screen and (max-width: 1087px) and (min-width: 993px) {
   .contenedor-general {
     padding: 1.25rem;
     gap: 1.25rem;
@@ -760,7 +760,7 @@ button:active{
 
 
 
-@media screen and (max-width: 1440px) and (min-width: 1024px) {
+@media screen and (max-width: 1440px) and (min-width:  1088px) {
   .contenedor-general {
     width: 90%;
     gap: 20px;
