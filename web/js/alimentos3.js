@@ -416,18 +416,50 @@ document.getElementById("BotonImprimir").addEventListener("click", () => {
     prepararEImprimirPlatillosConDiccionario();
 });
 
-document.querySelectorAll('.boton-equis').forEach(boton => {
+/*document.querySelectorAll('.boton-equis').forEach(boton => {
     boton.addEventListener('click', (e) => {
-        const fila = boton.closest('.fila-entrada');
+        /*const fila = boton.closest('.fila-entrada');
         if (!fila) return;
         const nombreInput = fila.querySelector('.entrada-nombre');
         if (!nombreInput) return;
 
         // Cambia el valor al que necesites; por ahora usamos "Pollo Asado"
-        nombreInput.value = 'Pollo Asado';
+        /*nombreInput.value = 'Pollo Asado';
 
         console.log('Entrada actualizada a "Pollo Asado" en la fila correspondiente');
+        
+        if (e.target.classList.contains('boton-equis')) {
+        const fila = e.target.closest('.fila-entrada');
+            if (fila) {
+                fila.remove();
+                actualizarCaloriasActuales();
+            }
+        }
     });
+});*/
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('boton-equis')) {
+        const fila = e.target.closest('.fila-entrada');
+        if (!fila) return;
+        
+        // Busca el contenedor padre (puede ser .nutriente o el contenedor general)
+        const contenedor = fila.closest('.nutriente') || fila.parentElement;
+        if (!contenedor) return;
+        
+        const totalFilas = contenedor.querySelectorAll('.fila-entrada').length;
+        
+        if (totalFilas === 1) {
+            // Si es la única fila, solo limpia los valores
+            fila.querySelector('.entrada-nombre').value = '';
+            fila.querySelector('.entrada-cantidad').value = '';
+        } else {
+            // Si hay más filas, elimina todo el div
+            fila.remove();
+        }
+        
+        actualizarCaloriasActuales();
+    }
 });
 
 btnGuardarNombre.addEventListener("click", () => {
@@ -478,8 +510,8 @@ document.getElementById('FiltroCategoria').addEventListener('change', (e) => {
             div.style.display = 'block';
         } else {
             div.style.display = 'none';
-        }
-    });
+     }
+    });
 });
 
 //actualizacion de calorias por inputs
@@ -494,7 +526,7 @@ document.getElementById("BusquedaIngrediente").addEventListener('input', () => {
     const valor = document.getElementById("BusquedaIngrediente").value.toLowerCase();
     document.querySelectorAll('.ingrediente').forEach(i => {
         i.style.display = i.textContent.toLowerCase().includes(valor) ? "block" : "none";
-    });
+    });
 });
 
 //cargar ingrediente de la lista
