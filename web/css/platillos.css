@@ -74,6 +74,17 @@ main {
   color: #000000;
 }
 
+.ingrediente.seleccionado {
+  background-color: #ffd4e6;
+  border-left-color: 4px #ff2f87; 
+  
+}
+
+.ingrediente:hover {
+  cursor: pointer; 
+  background-color: #ffd4e6;
+}
+
 .boton {
   display: flex;
   justify-content: center;
