@@ -1,25 +1,4 @@
-/*const ingredientesFitness = [
-    // Grasas (9 kcal/g)
-    { nombre: "Aceite de Oliva", cat: "grasas", kcal_por_gramo: 9.0 }, 
-    { nombre: "Aguacate", cat: "grasas", kcal_por_gramo: 1.6 },
-    { nombre: "Frutos Secos", cat: "grasas", kcal_por_gramo: 6.0 }, 
-    { nombre: "Salmón", cat: "grasas", kcal_por_gramo: 2.0 }, 
-    { nombre: "Semillas", cat: "grasas", kcal_por_gramo: 5.5 }, 
-    
-    // Carbohidratos (4 kcal/g)
-    { nombre: "Arroz", cat: "carb", kcal_por_gramo: 1.3 },
-    { nombre: "Avena", cat: "carb", kcal_por_gramo: 3.8 },
-    { nombre: "Camote", cat: "carb", kcal_por_gramo: 0.8 },
-    { nombre: "Quinoa", cat: "carb", kcal_por_gramo: 1.4 },
-    { nombre: "Pasta", cat: "carb", kcal_por_gramo: 1.5 },
-    
-    // Proteínas (4 kcal/g)
-    { nombre: "Carne Roja", cat: "proteina", kcal_por_gramo: 2.5 }, 
-    { nombre: "Huevo", cat: "proteina", kcal_por_gramo: 1.4 },
-    { nombre: "Legumbres", cat: "proteina", kcal_por_gramo: 1.1 },
-    { nombre: "Pescado", cat: "proteina", kcal_por_gramo: 1.0 },
-    { nombre: "Pollo", cat: "proteina", kcal_por_gramo: 1.6 }
-];*/
+
 ingredientesFitness = [];
 // Contenedores (Se inicializarán e
 let contenedores = {}; 
