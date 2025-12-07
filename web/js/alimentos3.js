@@ -88,7 +88,10 @@ function cargarIngredientesDelPlatillo(platillo) {
                     ingredienteId: i.ingredienteId,
                     nombre: platilloIng.ingredienteNombre,
                     cat: i.cat,
-                    cantidad: platilloIng.cantidad
+                    cantidad: platilloIng.cantidad,
+                    proteinaG: i.proteinaG,
+                    carbosG: i.carbosG,
+                    grasasG: i.grasasG
                 });
             }
         });
@@ -402,7 +405,10 @@ function cargarIngredientesDelAPI(){
             ingredienteId: i.ingredienteId,
             nombre: i.nombre,
             cat: t,
-            kcal_por_gramo
+            kcal_por_gramo,
+            proteinaG: i.proteinaG,
+            carbosG: i.carbosG,
+            grasasG: i.grasasG
         });
     });
 
@@ -489,6 +495,7 @@ document.getElementById("BotonGuardar").addEventListener("click", () => {
 
     if (modalGuardar) {
         modalGuardar.style.display = 'block';
+        document.querySelector('#nombrePlatilloDB').focus();
     }
 
     document.body.style.overflow = 'hidden';
@@ -687,7 +694,37 @@ document.querySelector("#botonAgregar").addEventListener("click", () => {
 });
 
 // --------------------------------------------------------------------------------------
-// 7. INICIALIZACIÓN DEL ARRANQUE
+// 7. FUNCIONES DE BURBUJAS
+// --------------------------------------------------------------------------------------
+function actualizarBurbuja(fila) {
+    const nombre = fila.querySelector('.entrada-nombre').value;
+    const cantidad = parseInt(fila.querySelector('.entrada-cantidad').value) || 0;
+    const datos = ingredientesFitness.find(i => i.nombre === nombre);
+    console.log("Datos encontrados para burbuja:", ingredientesFitness);
+    if (!datos) return;
+    console.log("Actualizando burbuja para:", nombre, cantidad, datos);
+    let burbuja = fila.querySelector('.burbuja-texto');
+    if (!burbuja) {
+        burbuja = document.createElement('div');
+        burbuja.classList.add('burbuja-texto');
+        fila.appendChild(burbuja);
+    }
+
+    const kcalTotales = Math.round(datos.kcal_por_gramo * cantidad);
+    burbuja.textContent = `Proteína: ${datos.proteinaG}g | Carbos: ${datos.carbosG}g | Grasas: ${datos.grasasG}g | Kcal: ${kcalTotales}`;
+}
+
+// Actualiza la burbuja al cambiar la cantidad
+document.addEventListener('input', e => {
+    if (e.target.classList.contains('entrada-cantidad')) {
+        e.target.value = e.target.value.replace(/\D/g,'');
+        const fila = e.target.closest('.fila-entrada');
+        actualizarBurbuja(fila);
+    }
+});
+
+// --------------------------------------------------------------------------------------
+// 8. INICIALIZACIÓN DEL ARRANQUE
 // --------------------------------------------------------------------------------------
 function inicializarLabels(){
     document.getElementById("InputOptimo").value = Math.round(CaloriasOptimas) + " kcal";
