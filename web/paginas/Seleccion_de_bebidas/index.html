@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/header&footer.css">
+    <link rel="stylesheet" href="/css/bebidas.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <div class="logo"><img src="/img/Logo-de-NutriLink.png" alt="Logo de la empresa de dietas" loading="lazy">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/">Conocenos <img class="logo-toggle" src="/img/Icon_home_NutriLink.png" alt=""></a></li>
+                <li><a href="/paginas/Planificador_Nutricional">Planificador Nutricional <img class="logo-toggle"
+                            src="/img/Icon_formulario_NutriLink.png" alt=""></a></li>
+                <li><a href="/paginas/Seleccion_de_platillos/">Platillos</a></li>
+                <li><a href="/paginas/Seleccion_de_bebidas/">Bebidas</a></li>
+            </ul>
+        </nav>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main>
+        <div class="contenedor-general">
+            <div class="filtros">
+                <label><input type="search" id="BusquedaIngrediente" placeholder="Buscar por ingrediente"></label>
+
+                <div class="boton"><button>Agregar</button></div>
+            </div>
+
+            <div class="derecha">
+
+
+
+                <div class="abajo">
+                    <div class="izquierda">
+                        <div class="nutriente">
+                            <div class="fila-titulo">
+                                <h3>Bebidas</h3>
+                                <label class="label-visible">Cantidad (gr)</label>
+                            </div>
+
+                            <div class="fila-entrada">
+                                <input type="text" class="entrada-nombre" placeholder="Proteína" readonly>
+                                <label class="label-oculto">Cantidad (gr)</label>
+                                <div class="envoltorio-cantidad">
+                                    <input type="text" class="entrada-cantidad">
+                                    <button class="boton-equis">X</button>
+                                </div>
+                                <label class="etiqueta-macros">
+                                    <span class="burbuja">ℹ<span class="burbuja-texto">Informacion de lo de las kcal</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <div class="frase-motivacional-print" style="display: none;"></div>
+                </div>
+
+                <div class="contenedor-derecha">
+
+                    <div class="cuentas">
+                        <div class="cuenta">
+                            <p>Optima (KCal): <input type="text" name="caloriasOptimas" id="InputOptimo" readonly></p>
+                        </div>
+
+                        <div class="cuenta">
+                            <p>Optima por platillo (KCal): <input type="text" name="caloriasOptimasPP"
+                                    id="InputOptimoPP" readonly></p>
+                        </div>
+
+                        <div class="cuenta">
+                            <p>Actual (KCal): <input type="text" name="caloriasActuales" id="InputActual" readonly></p>
+                        </div>
+                        <div class="cuenta">
+                            <p>Agua (Diaria): <input type="text" name="AguaRecomendada" id="InputAgua" readonly></p>
+                        </div>
+
+                    </div>
+
+                    <div class="dato">
+                        <h5>Todos los productos o alimentos liquidos deberan ser convertidos a su equivalente en gramos
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="acciones">
+                <button id="BotonLimpiar">Limpiar</button>
+                <button id="BotonImprimir">Imprimir</button>
+                <button id="BotonGuardar">Guardar</button>
+
+            </div>
+        </div>
+        </div>
+
+        <div class="platillos-nombres"> </div>
+    </main>
+
+
+    <footer class="pie">
+        <div class="contenedor-pie">
+
+            <div class="columna">
+                <h2>Planificación</h2>
+                <ul>
+                    <li><a href="/">Conocenos</a></li>
+                    <li><a href="">Planificador Nutricional</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/alimentos.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/index.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const campoAgua = document.getElementById("InputAgua");
+            const aguaGuardada = localStorage.getItem("AguaRecomendada");
+
+            if (campoAgua && aguaGuardada) {
+                campoAgua.value = aguaGuardada + " L";
+            }
+        });
+    </script>
+</body>
+
+</html>
