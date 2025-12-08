@@ -413,40 +413,20 @@ button:hover {
   }
 }
 
-@media (max-width: 320px) {
+@media screen and (max-width: 375px) and (min-width: 320px) {
+  .contenedor-general{
+    margin-top: 100px;
+    padding-bottom: 100px;
+  }
+  form.formulario,
+.fondo-tarjeta {
+    height: auto;
+  }
 
-    .contenedor-general {
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    form.formulario,
-    .fondo-card {
-        padding: 20px;
-        max-width: 100%;
-        height: auto;    
-    }
-
-    .resultados {
-        min-height: 1000px; 
-        padding: 15px;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 0.85rem;
-        padding: 10px;
-    }
-
-    button {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
-
-    h2 {
-        font-size: 1.1rem;
-    }
+  
+.resultados {
+  height: auto;
+}
 }
 
 
