@@ -116,7 +116,6 @@ function cargarIngredientesDelPlatillo(platillo) {
 
 
 function actualizarPlatillosGuardadosUI() {
-    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
     let papa = document.querySelector('.platillos-nombres');
     platillosGuardadosParaMostrar.forEach((platillo) => {
         var nuevoDiv = document.createElement("div");
@@ -127,6 +126,11 @@ function actualizarPlatillosGuardadosUI() {
         nuevoDiv.onclick = () => cargarIngredientesDelPlatillo(platillo);
         papa.appendChild(nuevoDiv);
     });
+}
+
+function limpiarPlatosDelUI() {
+    const contenedorPlatos = document.querySelectorAll('.platillos-nombres .plato');
+    contenedorPlatos.forEach(plato => plato.remove());
 }
 
 function actualizarCaloriasActuales() {
@@ -385,6 +389,11 @@ function prepararEImprimirPlatillosConDiccionario() {
         ([id, ingredientes]) => ingredientes.length > 0
     );
 
+    if( platillosActivos.length  < 3) {
+        alert("Debes tener al menos 3 platillos guardados para imprimir el plan nutricional.");
+        return;
+    }
+
     const mensajeMotivacional = mensajeGlobal;
     const actividadLabel = actividadGlobal;
 
@@ -578,6 +587,10 @@ function cargarPlatillosDelApi() {
     (async () => {
         const response = await apiGetPlatillos();
 
+        // Evitar duplicados: limpiar el array y la UI antes de poblar
+        platillosGuardadosParaMostrar = [];
+        limpiarPlatosDelUI();
+
         response.forEach(i => {
             platillosGuardadosParaMostrar.push({
                 nombre: i.nombre,
@@ -585,7 +598,7 @@ function cargarPlatillosDelApi() {
                 platilloIngredientes: i.platilloIngredientes
             });
         });
-        
+
         actualizarPlatillosGuardadosUI();
     })();
 }
@@ -616,6 +629,7 @@ function guardadoDePlatillosEnApi(nombrePlatillo) {
             return true;
         } else {
             alert("Error al guardar el platillo en el servidor.");
+            cargarPlatillosDelApi();
             return false;
         }
     })();
@@ -649,7 +663,7 @@ document.getElementById("BotonGuardar").addEventListener("click", () => {
 
 document.getElementById("btnGuardar").addEventListener("click", () => {
     const nombreP = modalGuardar.querySelector('.nombre').value.trim();
-    
+    limpiarPlatosDelUI();
     if (guardadoDePlatillosEnApi(nombreP)) {
         modalGuardar.style.display = 'none';
         document.body.style.overflow = 'auto';
