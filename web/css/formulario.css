@@ -111,12 +111,15 @@ form.formulario,
 }
 
 .resultados {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #eccceb;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ECCCEB;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+    min-height: 10px; 
+     height: auto;/* altura base /
+         / que pueda crecer automáticamente */
 }
 
 .texto p {
@@ -263,6 +266,11 @@ h2 {
   margin-bottom: 25px;
 }
 
+.fondo-tarjeta{
+    min-height: 10px;
+    height: auto;
+  }
+
 .grupo-formulario {
   display: flex;
   flex-direction: column;
@@ -351,8 +359,13 @@ button:hover {
         height: auto;
     }
 
+    .fondo-tarjeta{
+      min-height: 10px;
+      height: auto;
+    }
+
     .resultados {
-        min-height: 1000px; 
+        min-height: 10px; 
         padding: 15px;
     }
 
@@ -365,7 +378,6 @@ button:hover {
 
     button {
         font-size: 0.9rem;
-        padding: 10px;
     }
 
     h2 {
@@ -411,6 +423,11 @@ button:hover {
     margin-top: 100px;
     padding-bottom: 100px;
   }
+
+  .fondo-tarjeta{
+    min-height: 10px;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 375px) and (min-width: 320px) {
@@ -423,6 +440,10 @@ button:hover {
     height: auto;
   }
 
+  .fondo-tarjeta{
+    min-height: 10px;
+    height: auto;
+  }
   
 .resultados {
   height: auto;
