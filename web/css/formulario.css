@@ -194,20 +194,16 @@ textarea:focus {
   justify-content: center;
 }
 
-button {
+.boton button {
   background-color: #a93b82;
   color: white;
   padding: 14px;
   border: none;
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-}
-
-.boton button {
-  font-size: 1.3rem;
 }
 
 button:hover {
@@ -316,7 +312,7 @@ textarea:focus {
   justify-content: center;
 }
 
-button {
+.boton button{
   background-color: #a93b82;
   color: white;
   padding: 14px;
@@ -326,10 +322,6 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-}
-
-.boton button {
-  font-size: 1.3rem;
 }
 
 button:hover {
