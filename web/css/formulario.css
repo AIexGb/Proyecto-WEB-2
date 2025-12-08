@@ -40,12 +40,14 @@ form.formulario,
 }
 
 .resultados {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #eccceb;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ECCCEB;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    
+    min-height: 400px; /* altura base */
+    height: auto;      /* que pueda crecer automáticamente */
 }
 
 .texto p {
@@ -249,7 +251,7 @@ button:hover {
   }
 }
 
-@media screen and (max-width: 375px) and (min-width: 320px) {
+@media screen and (max-width: 375px) and (min-width: 319px) {
   .contenedor-general{
     margin-top: 100px;
     padding-bottom: 100px;
@@ -375,3 +377,41 @@ button:hover {
     padding-bottom: 100px;
   }
 }
+
+@media (max-width: 320px) {
+
+    .contenedor-general {
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    form.formulario,
+    .fondo-card {
+        padding: 20px;
+        max-width: 100%;
+        height: auto;    
+    }
+
+    .resultados {
+        min-height: 1000px; 
+        padding: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+}
+
+
