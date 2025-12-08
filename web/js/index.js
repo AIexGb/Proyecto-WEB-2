@@ -1,9 +1,9 @@
 
 //Codigo para busqueda de AJAX con las operaciones  
 //URL base 
-const API_BASE = "http://www.nutrilink.com/api"; 
+//const API_BASE = "https://www.nutrilink.com/"; 
 //URL FUNCIONAL PARA BACKEND
-//const API_BASE_LOCAL = "https://api.nutriweb.com/";
+const API_BASE = "https://api.nutriweb.com:448/";
 const API_BASE_LOCAL = "https://localhost:44386/"
  
 // utilidades 
@@ -14,7 +14,7 @@ function qsa(sel, parent = document) { return [...parent.querySelectorAll(sel)];
 async function apiRequest(endpoint, options = {}) { 
  
     //const url = `${API_BASE}${endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
-    const url = `${API_BASE_LOCAL}${!endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
+    const url = `${API_BASE}${!endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
  
     const config = { 
         method: options.method || "GET", 

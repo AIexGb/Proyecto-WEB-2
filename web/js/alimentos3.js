@@ -550,10 +550,10 @@ function cargarIngredientesDelAPI(){
     response.forEach(i => {
         const kcal_por_gramo = ((i.proteinaG * 4) + (i.carbosG * 4) + (i.grasasG * 9)) / 100;
         let t;
-        if (i.tipo === "proteína") t = "proteina";
-        else if (i.tipo === "carbohidrato") t = "carb";
-        else if (i.tipo === "grasa") t = "grasas";
-        else t = t.tipo;
+        if (i.tipo === "Proteína") t = "proteina";
+        else if (i.tipo === "Carbohidrato") t = "carb";
+        else if (i.tipo === "Grasa") t = "grasas";
+        else t = i.tipo;
         
 
         ingredientesFitness.push({
@@ -883,7 +883,7 @@ function actualizarBurbuja(fila) {
     }
 
     const kcalTotales = Math.round(datos.kcal_por_gramo * cantidad);
-    burbuja.textContent = `Proteína: ${datos.proteinaG * (cantidad/100)}g | Carbos: ${datos.carbosG * (cantidad/100)}g | Grasas: ${datos.grasasG * (cantidad/100)}g | Kcal: ${kcalTotales}`;
+    burbuja.textContent = `Proteína: ${(datos.proteinaG * (cantidad/100)).toFixed(2)}g | Carbos: ${(datos.carbosG * (cantidad/100)).toFixed(2)}g | Grasas: ${(datos.grasasG * (cantidad/100)).toFixed(2)}g | Kcal: ${(kcalTotales).toFixed(2)}`;
 }
 
 // Actualiza la burbuja al cambiar la cantidad

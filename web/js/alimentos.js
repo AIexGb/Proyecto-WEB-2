@@ -134,7 +134,7 @@ function actualizarBurbuja(fila) {
     }
 
     const kcalTotales = Math.round(datos.kcal_por_gramo * cantidad);
-    burbuja.textContent = `Proteína: ${datos.proteinaG}g | Carbos: ${datos.carbosG}g | Grasas: ${datos.grasasG}g | Kcal: ${kcalTotales}`;
+    burbuja.textContent = `Proteína: ${datos.proteinaG * (cantidad/100)}g | Carbos: ${datos.carbosG * (cantidad/100)}g | Grasas: ${datos.grasasG * (cantidad/100)}g | Kcal: ${kcalTotales}`;
 }
 
 // Actualiza la burbuja al cambiar la cantidad
@@ -293,9 +293,9 @@ function calcularKcalTotales() {
                 if (datos) {
                     const cantidad = parseFloat(ingrediente.cantidad) || 0;
                     kcalTotales += datos.kcal_por_gramo * cantidad;
-                    proteinasTotales += datos.proteinaG * cantidad;
-                    grasasTotales += datos.grasasG * cantidad;
-                    carbosTotales += datos.carbosG * cantidad;
+                    proteinasTotales += datos.proteinaG * (cantidad/100);
+                    grasasTotales += datos.grasasG * (cantidad/100);
+                    carbosTotales += datos.carbosG * (cantidad/100);
                 }
             });
         }

@@ -12,7 +12,7 @@
     
     <meta property="og:title" content="Planificador Nutricional | Calcula tu IMC y Calorías">
     <meta property="og:description" content="Descubre tu IMC, calorías diarias y plan nutricional personalizado.">
-    <meta property="og:image" content="/web/img/preview.jpg">
+    <meta property="og:image" content="/img/preview.jpg">
     <meta property="og:url" content="https://tusitio.com/paginas/planificador-nutricional/">
     <meta property="og:type" content="website">
 
@@ -20,11 +20,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Planificador Nutricional | Calcula tu IMC y Calorías">
     <meta name="twitter:description" content="Calcula tu IMC, metabolismo y requerimiento calórico diario.">
-    <meta name="twitter:image" content="/web/img/preview.jpg">
+    <meta name="twitter:image" content="/img/preview.jpg">
 
 
-    <link rel="stylesheet" href="/web/css/header&footer.css">
-    <link rel="stylesheet" href="/web/css/formulario.css">
+    <link rel="stylesheet" href="/css/header&footer.css">
+    <link rel="stylesheet" href="/css/formulario.css">
 
     <script type="application/ld+json">
 {
@@ -50,15 +50,15 @@
     <div class="contenido-principal">
 
             <header>
-        <a href="/web/index.html">
-            <div class="logo"><img src="/web/img/Logo-de-NutriLink.png" alt="Logo de la empresa de dietas" loading="lazy">
+        <a href="/index.html">
+            <div class="logo"><img src="/img/Logo-de-NutriLink.png" alt="Logo de la empresa de dietas" loading="lazy">
             </div>
         </a>
         <nav>
             <ul>
-                <li><a href="/web">Conocenos <img class="logo-toggle" src="/web/img/Icon_home_NutriLink.png" alt=""></a></li>
-                <li><a href="/web/paginas/Planificador_Nutricional">Planificador Nutricional <img class="logo-toggle"
-                            src="/web/img/Icon_formulario_NutriLink.png" alt=""></a></li>
+                <li><a href="/">Conocenos <img class="logo-toggle" src="/img/Icon_home_NutriLink.png" alt=""></a></li>
+                <li><a href="/paginas/Planificador_Nutricional">Planificador Nutricional <img class="logo-toggle"
+                            src="/img/Icon_formulario_NutriLink.png" alt=""></a></li>
             </ul>
         </nav>
 
@@ -78,29 +78,12 @@
                         type="text" 
                         maxlength="3" 
                         placeholder="Ejemplo: 70"
-                        oninput="
-                        
-                        this.value = this.value.replace(/[^0-9]/g,'');   
-                        
-                        if (this.value !== '' && (this.value < 30 || this.value > 200)) {
-                        this.setCustomValidity('El peso debe estar entre 30 kg y 200 kg');
-                        } else {
-                        this.setCustomValidity('');
-                         }
-                        ">
+                        >
                 </div>
 
                <div class="grupo-formulario">
                     <label>Altura (cm):</label>
-                    <input type="text" maxlength="3" placeholder="Ejemplo: 175"
-                        oninput="this.value = this.value.replace(/[^0-9]/g,'')
-                           
-                        if (this.value !== '' && (this.value < 100 || this.value > 220)) {
-                        this.setCustomValidity('La altura debe de estar entre 100 cm y 220 cm');
-                        } else {
-                        this.setCustomValidity('');
-                         }
-                        ">
+                    <input type="text" maxlength="3" placeholder="Ejemplo: 175">
                 </div>  
 
                 <div class="grupo-formulario">
@@ -155,7 +138,7 @@
                     </div>
 
                     <div style="display: flex; justify-content: center;" id="ContenedorBoton">
-                        <form action="/web/paginas/Seleccion_de_platillos/">
+                        <form action="/paginas/Seleccion_de_platillos/">
                             <br>
                            <div class="boton"> <button type="submit"  id="BotonSiguiente" disabled>Siguiente</button> </div>
                         </form>
@@ -192,16 +175,16 @@
                 <div class="columna">
                     <h2>Planificación</h2>
                     <ul>
-                        <li><a href="/web/">Conocenos</a></li>
-                        <li><a href="/web/paginas/Planificador_Nutricional/">Planificador Nutricional</a></li>
+                        <li><a href="/">Conocenos</a></li>
+                        <li><a href="/paginas/Planificador_Nutricional/">Planificador Nutricional</a></li>
                     </ul>
                 </div>
 
             </div>
         </footer>
     </div>
-    <script src="/web/js/index.js"></script>
-    <script src="/web/js/script.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

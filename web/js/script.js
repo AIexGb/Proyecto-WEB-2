@@ -116,4 +116,22 @@ document.querySelector(".formulario").addEventListener("submit", function (e) {
 
 });
 
+document.querySelectorAll(".grupo-formulario input")[0].addEventListener("input", function (e) {
+  e.target.value = e.target.value.replace(/[^0-9]/g,'');
+  if(e.target.value !== '' && (e.target.value < 30 || e.target.value > 200)){
+    e.target.setCustomValidity('El peso debe estar entre 30kg y 200kg');
+  }else{
+    e.target.setCustomValidity('');
+  }
+});
+
+document.querySelectorAll(".grupo-formulario input")[1].addEventListener("input", function(e) {
+  e.target.value = e.target.value.replace(/[^0-9]/g,'');
+  if(e.target.value !== '' && (e.target.value < 100 || e.target.value > 220)){
+    e.target.setCustomValidity('la altura debe estar entre 100cm y 220cm');
+  }else{
+    e.target.setCustomValidity('');
+  }
+})
+
 
