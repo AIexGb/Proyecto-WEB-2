@@ -893,7 +893,7 @@ document.addEventListener('input', e => {
         
         const fila = e.target.closest('.fila-entrada');
         actualizarBurbuja(fila);
-    }
+    }
 });
 
 // --------------------------------------------------------------------------------------
@@ -901,7 +901,9 @@ document.addEventListener('input', e => {
 // --------------------------------------------------------------------------------------
 function inicializarLabels(){
     document.getElementById("InputOptimo").value = Math.round(CaloriasOptimas) + " kcal";
-    document.getElementById("InputOptimoPP").value = Math.round(CaloriasOptimas / 3) + " kcal";
+    const savedCount = Object.values(recetasGuardadas).filter(arr => Array.isArray(arr) && arr.length > 0).length;
+    const divisor = Math.max(3, savedCount);
+    document.getElementById("InputOptimoPP").value = Math.round(CaloriasOptimas / divisor) + " kcal";
     document.getElementById("InputAgua").value = AguaRecomendada + " litros";
     localStorage.clear();
 }

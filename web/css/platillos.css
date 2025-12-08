@@ -988,6 +988,14 @@ button:active{
   }
 }
 
+@media screen and (min-width: 1400){
+  .burbuja-texto {
+    left: 120%;
+    width: 150px;
+    max-width: 300px;
+  }
+}
+
 
 
 
